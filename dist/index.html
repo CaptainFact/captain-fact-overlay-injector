@@ -5,10 +5,32 @@
 <body>
   <h1>Overlay's injector test page</h1>
   <div class="test-videos">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/OhWRT3PhMJs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+    <div class="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/OhWRT3PhMJs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
   <br/><br/><br/>
   <div class="cf-toggle-btn"></div>
+  <script type="text/javascript">
+    window.CaptainFactOverlayConfig = {
+      /**
+       * Function that select a list of video nodes on which we'll be injecting
+       * @param {object} document - The document containing page nodes
+       */
+      videosSelectorFunc: document => document.getElementsByClassName("video"),
+
+      /**
+       * Function that resolves url for a given video tag
+       * @param {object} videoTag - The video tag as returned by videosSelectorFunc
+       */
+      resolverFunc: videoTag => videoTag.querySelector("iframe").getAttribute("src"),
+
+      /**
+       * Injected node class
+       */
+      nodeClass: "captainfact-overlay"
+    }
+  </script>
   <script src="bundle.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-
+import {videosSelectorFunc, resolverFunc} from './config'
 import InjectedApp from './App/InjectedApp'
 import CFToggleButton from './CFToggleButton/CFToggleButton'
 
@@ -16,12 +16,13 @@ window.onload = () => {
   for (const domNode of toggleBtns)
     ReactDOM.render(<CFToggleButton/>, domNode)
 
-  // Load facts on videos
-  const youtubeFrames = document.querySelectorAll('iframe[src^="https://www.youtube.com"]')
-  for (const frame of youtubeFrames) {
-    // const injectDOM = document.createElement('div')
-    // injectDOM.className = DOM_NODE_CLASS
-    // frame.appendChild(injectDOM)
-    // console.log(frame)
+  // Inject facts on videos
+  const videoTags = videosSelectorFunc(document)
+  for (const videoTag of videoTags) {
+    const videoUrl = resolverFunc(videoTag)
+    const injectDOM = document.createElement('div')
+    injectDOM.className = DOM_NODE_CLASS
+    videoTag.appendChild(injectDOM)
+    ReactDOM.render(<InjectedApp videoUrl={videoUrl}/>, injectDOM)
   }
 }

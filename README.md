@@ -11,26 +11,9 @@ and can be integrated on any website freely.
 # Usage
 
 ```html
-<!-- Overlay configuration -->
+<!-- Overlay configuration, see details below -->
 <script type="javascript">
-  window.CaptainFactOverlayConfig = {
-    /**
-    * Function that select a list of video nodes on which we'll be injecting
-    * @param {object} document - The document containing page nodes
-    */
-    videosSelectorFunc: document => [],
-    
-    /**
-    * Function that resolves url for a given video tag
-    * @param {object} videoTag - The video tag as returned by videosSelectorFunc
-    */
-    resolverFunc: videoTag => "https://www.youtube.com/watch?v=xxxxxxxx",
-    
-    /**
-    * Injected node class 
-    */
-    nodeClass: "captainfact-overlay"
-  }
+  window.CaptainFactOverlayConfig = {}
 </script>
 
 <!-- Import CaptainFact main script -->
@@ -43,6 +26,29 @@ Button's state is stored in browser local storage
 ```html
 <!-- You can set the size by adding one of the following classes: cf-small, cf-large -->
 <div class="cf-toggle-btn"/>
+```
+
+# Configuration
+
+```ecmascript 6
+window.CaptainFactOverlayConfig = {
+  /**
+  * Function that select a list of video nodes on which we'll be injecting
+  * @param {object} document - The document containing page nodes
+  */
+  videosSelectorFunc: document => [],
+  
+  /**
+  * Function that resolves url for a given video tag
+  * @param {object} videoTag - The video tag as returned by videosSelectorFunc
+  */
+  resolverFunc: videoTag => "https://www.youtube.com/watch?v=xxxxxxxx",
+  
+  /**
+  * Injected node class 
+  */
+  nodeClass: "captainfact-overlay"
+}
 ```
 
 # Developing

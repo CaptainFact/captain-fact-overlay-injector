@@ -10,7 +10,7 @@ const getHostName = url =>
 const Source = ({source: {url, title, site_name}}) => (
   <a href={url} target="_BLANK" className={sourceLink}>
     <div>
-      <LocalImage src="new_tab.png" height="10"/>&nbsp;
+      <img src="../assets/new_tab.png" height="10"/>&nbsp;
       <span className={siteName}>
         { upperCase(site_name) || getHostName(url) }
       </span>

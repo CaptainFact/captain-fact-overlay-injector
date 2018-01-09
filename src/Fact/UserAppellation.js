@@ -1,12 +1,12 @@
 import React from "react"
 import { container } from './UserAppellation.css'
-import { CF_FRONT_URL } from '../config'
+import { frontendURL } from '../config'
 
 
 const UserAppellation = ({user: {username, name}}) => {
   const prettyUsername = ` @${username}`
   return (
-    <a href={`${CF_FRONT_URL}/u/${username}`} className={container}>
+    <a href={`${frontendURL}/u/${username}`} className={container}>
       <strong>{ name || prettyUsername }</strong>
       {name &&
       <small>

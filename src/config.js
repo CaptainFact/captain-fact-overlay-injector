@@ -1,9 +1,25 @@
-export const CF_FRONT_URL = "http://localhost:3333"
-export const CF_API_URL = "http://localhost:4000"
-export const STATEMENT_FOCUS_TIME = 30
-// TODO When porting from extension, it should use chrome.runtime.getURL('img/icon.png')
-export const ICONS = {
-  neutral: "img/icon.png",
-  confirm: "img/icon_confirm.png",
-  refute: "img/icon_refute.png"
+export default {
+  /**
+   * Function that select a list of video nodes on which we'll be injecting
+   * @param {object} document - The document containing page nodes
+   */
+  videosSelectorFunc: document => document.getElementsByClassName("video"),
+
+  /**
+   * Function that resolves url for a given video tag
+   * @param {object} videoTag - The video tag as returned by videosSelectorFunc
+   */
+  resolverFunc: videoTag => videoTag.querySelector("iframe").getAttribute("src"),
+
+
+  // ---- Other services ----
+  frontendURL: "http://localhost:3333",
+  apiURL: "http://localhost:4000",
+
+  // ---- Miscellaneous -----
+  overlayNodeClass: "captainfact-overlay",
+  statementFocusTime: 30,
+
+  // --- Override with provided config ----
+  ...(window.CaptainFactOverlayConfig || {})
 }

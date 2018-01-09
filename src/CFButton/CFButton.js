@@ -6,7 +6,10 @@ import classnames from 'classnames'
 import { cfbutton, pulse } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
-import { ICONS } from '../config'
+
+import iconNeutral from "../assets/icon.png"
+import iconConfirm from "../assets/icon_confirm.png"
+import iconRefute from "../assets/icon_refute.png"
 
 
 @connect(state => ({
@@ -18,17 +21,17 @@ import { ICONS } from '../config'
 export default class CFButton extends React.Component {
   getIcon() {
     if (!this.props.statement)
-      return ICONS.neutral
+      return iconNeutral
 
     const globalScore = this.props.statement.comments.reduce((score, comment) =>
       score + (comment.approve ? comment.score : -comment.score)
     , 0)
     if (globalScore > 0)
-      return ICONS.confirm
+      return iconConfirm
     else if (globalScore < 0)
-      return ICONS.refute
+      return iconRefute
     else
-      return ICONS.neutral
+      return iconNeutral
   }
 
   render() {

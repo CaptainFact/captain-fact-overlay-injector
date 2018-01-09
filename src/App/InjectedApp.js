@@ -16,23 +16,26 @@ export default class InjectedApp extends React.PureComponent {
     super(props)
     store = getStore()
   }
-
-  componentDidMount() {
-    const injectDOM = document.createElement('div')
-    injectDOM.className = ''
-    const refNode = document.getElementsByClassName('ytp-cards-button')[0]
-    refNode.parentNode.insertBefore(injectDOM, refNode.nextSibling)
-    ReactDOM.render(
-      <Provider store={store}>
-        <CFButton onClick={InterfaceState.openSidebar}/>
-      </Provider>, injectDOM
-    )
-  }
+  //
+  // componentDidMount() {
+  //   const injectDOM = document.createElement('div')
+  //   injectDOM.className = ''
+  //   const refNode = document.getElementsByClassName('ytp-cards-button')[0]
+  //   refNode.parentNode.insertBefore(injectDOM, refNode.nextSibling)
+  //   ReactDOM.render(
+  //     <Provider store={store}>
+  //       <CFButton onClick={InterfaceState.openSidebar}/>
+  //     </Provider>, injectDOM
+  //   )
+  // }
 
   render() {
     return (
       <Provider store={store}>
-        <App videoUrl={this.props.videoUrl}/>
+        <div>
+          <CFButton onClick={InterfaceState.openSidebar}/>
+          <App videoUrl={this.props.videoUrl}/>
+        </div>
       </Provider>
     )
   }

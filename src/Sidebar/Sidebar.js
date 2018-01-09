@@ -8,7 +8,7 @@ import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
 import { icon } from "../Utils/Icon.css"
 import { InterfaceState } from '../App/interface_reducer'
-import { CF_FRONT_URL, STATEMENT_FOCUS_TIME } from '../config'
+import { frontendURL, statementFocusTime } from '../config'
 
 import {
   sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
@@ -75,7 +75,7 @@ export default class Sidebar extends Component {
     if (currentTime === null)
       return -1
     return this.props.statements.findLastIndex(st =>
-      currentTime >= st.time && currentTime <= st.time + STATEMENT_FOCUS_TIME
+      currentTime >= st.time && currentTime <= st.time + statementFocusTime
     )
   }
 
@@ -121,10 +121,10 @@ export default class Sidebar extends Component {
     return (
       <div className={classnames(sidebar, this.collapseAnimation, {[collapsed]: this.props.isCollapsed})}>
         <div className={sidebarHeader}>
-          <a href={`${CF_FRONT_URL}/videos/${this.props.videoId}`} target="_BLANK"
+          <a href={`${frontendURL}/videos/${this.props.videoId}`} target="_BLANK"
              title="Open discussion on CaptainFact">
             <h1 className={title}>CaptainFact</h1>&nbsp;
-            <LocalImage src="new_tab.png" height="17"/>
+            <img src="../assets/new_tab.png" height="17"/>
           </a>
           <a title="Close sidebar" style={{float: 'right', cursor: 'pointer'}} onClick={InterfaceState.closeSidebar}>
             ❌

@@ -1,6 +1,6 @@
 import fetch from "isomorphic-fetch"
 
-import { CF_API_URL } from "../config"
+import { apiURL } from "../config"
 
 
 class CaptainFactHttpApi {
@@ -56,5 +56,5 @@ class CaptainFactHttpApi {
 
 
 // Configure HttpApi
-const HttpApi = new CaptainFactHttpApi(CF_API_URL)
+const HttpApi = new CaptainFactHttpApi(apiURL)
 export default HttpApi
