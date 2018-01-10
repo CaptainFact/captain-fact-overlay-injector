@@ -28,7 +28,7 @@
   <!-- CaptainFact injection -->
   <script>
     window.CaptainFactOverlayConfig = {
-      videosSelectorFunc: document => [document.getElementById('video')],
+      videosSelectorFunc: () => [document.getElementById('video')],
       urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
       activateToggleBtnClass: 'toggle-btn-container'
     }

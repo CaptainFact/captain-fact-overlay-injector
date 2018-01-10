@@ -24,7 +24,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   }
 
   mountAllFactsEngine() {
-    const videos = this.config.videosSelectorFunc(document)
+    const videos = this.config.videosSelectorFunc()
     if (videos.length === 0)
       return 0
     // TODO We only support a single video at the moment
@@ -32,12 +32,36 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   }
 
   mountFactEngine(video) {
+    const isOverlay = !this.config.display || this.config.display === 'overlay'
     const videoUrl = this.config.urlExtractor(video)
-    if (this.config.animated !== false)
+
+    // Ensure parent will hide sidebar correctly with animated overlay
+    if (this.config.animated !== false && isOverlay)
       video.style.overflow = 'hidden'
 
-    injectWithStore(video, <App videoUrl={videoUrl} player={video}/>)
-    injectWithStore(video, <CFButton onClick={InterfaceState.openSidebar}/>, CF_BUTTON_NODE_CLASS)
+    // Send components generators to injector
+    const injector = this.config.factsInjector || this.defaultFactsInjector
+    injector(
+      this.factsMounter, video,
+      () => <App videoUrl={videoUrl} player={video} display={this.config.display || 'overlay'}/>,
+      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
+    )
+  }
+
+  defaultFactsInjector(mountFunc, video, facts, toggleBtn) {
+    const injectDOM = document.createElement('div')
+    const injectDOM2 = document.createElement('div')
+
+    video.appendChild(injectDOM)
+    video.appendChild(injectDOM2)
+    mountFunc(injectDOM, facts)
+    mountFunc(injectDOM2, toggleBtn)
+  }
+
+  factsMounter(container, componentGenerator) {
+    const component = componentGenerator()
+    if (component)
+      mountWithStore(container, component)
   }
 
   mountActivateToggleBtns() {
@@ -45,7 +69,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
       return 0
     const allContainers = document.getElementsByClassName(this.config.activateToggleBtnClass)
     for (let container of allContainers) {
-      injectWithStore(container, <CFToggleButton/>)
+      mountWithStore(container, <CFToggleButton/>)
     }
   }
 }
@@ -54,20 +78,16 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
  * Create a dom node, append it to given node, and mount given React component in it
  * @param node - The node inside which component will be added
  * @param component - The component to mount
- * @param injectedClassName - HTML class for component's container
- * @param injectedType - Container HTML type (@default "div")
  */
-function injectWithStore(node, component, injectedClassName="", injectedType='div') {
-  const injectDOM = document.createElement(injectedType)
-  injectDOM.className = injectedClassName
-  node.appendChild(injectDOM)
+function mountWithStore(node, component) {
   ReactDOM.render(
     <Provider store={store}>
       {component}
     </Provider>
-  , injectDOM)
+  , node)
 }
 
+// If config is defined in the global scope, instantiate after window.onload
 if (typeof window.CaptainFactOverlayConfig !== 'undefined')
   window.addEventListener('load', () => {
     new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)

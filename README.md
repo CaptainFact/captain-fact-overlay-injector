@@ -61,7 +61,7 @@ window.CaptainFactOverlayConfig = {
   * Function that select a list of video nodes on which we'll be injecting
   * @param {object} document - The document containing page nodes
   */
-  videosSelectorFunc: document => [],
+  videosSelectorFunc: () => [],
   
   /**
   * Function that resolves url for a given video tag
@@ -72,9 +72,33 @@ window.CaptainFactOverlayConfig = {
   // ---- Optional ----
   
   /**
+  * Type of the player. Can be 'video' for regular <video/> tags or 'youtube' for
+  * Youtube iframes (must have jsapi activated)
+  */
+  playerType: 'video',
+  
+  /**
   * Css class selector specifying where CaptainFact activation toggle button should be mounted
   */
-  activateToggleBtnClass: null
+  activateToggleBtnClass: null,
+  
+  /**
+  * Display type
+  * overlay (default) - a right sidebar appearing above video, with a button to show / hide it
+  * block - a solid block to inject facts somewhere else. **You MUST specify factsInjector if using this mode**
+  */
+  display: 'overlay',
+  
+  /**
+  * By default, facts are added in a new div added to video children. You can change this behaviour
+  * by setting a custom function here. Mounting `visibilityToggle` is optional 
+  * @param mountFunc {function} - mount components (ex: mountFunc(myDiv, facts))
+  * @param video - the video, as returned by videosSelectorFunc
+  * @param facts - the facts component generator to pass to `mountFunc`
+  * @param visibilityToggle - the visibilityToggle component generator to pass to `mountFunc`
+  *                           (only for "overlay" display mode) 
+  */
+  factsInjector: (mountFunc, video, facts, visibilityToggle) => null
 }
 ```
 
