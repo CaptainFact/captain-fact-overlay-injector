@@ -7,9 +7,9 @@ import { cfbutton, pulse } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
 
-import iconNeutral from "../assets/icon.png"
-import iconConfirm from "../assets/icon_confirm.png"
-import iconRefute from "../assets/icon_refute.png"
+import iconNeutral from "../../assets/icon.png"
+import iconConfirm from "../../assets/icon_confirm.png"
+import iconRefute from "../../assets/icon_refute.png"
 
 
 @connect(state => ({

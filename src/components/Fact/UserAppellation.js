@@ -1,6 +1,6 @@
 import React from "react"
 import { container } from './UserAppellation.css'
-import { frontendURL } from '../config'
+import { frontendURL } from '../../config'
 
 
 const UserAppellation = ({user: {username, name}}) => {

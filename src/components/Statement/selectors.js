@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 // import { createCachedSelector } from 're-reselect'
 
-import { statementFocusTime } from "../config"
+import { statementFocusTime } from "../../config"
 
 
 // TODO Make this cached

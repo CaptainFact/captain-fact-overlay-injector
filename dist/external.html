@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>CaptainFact Overlay Injector - Testing</title>
+</head>
+<body>
+  <h1>Youtube video (iframe), facts in a separate block</h1>
+  <h2><a href="/"><= Back to index</a></h2>
+  <hr/><br/>
+  <div id="video"></div>
+  <div id="facts-container">
+    <h2>Facts</h2>
+  </div>
+  <div>
+    <h2>Activation Toggle</h2>
+    <div class="toggle-btn-container"></div>
+  </div>
+
+  <!-- Overlay injection -->
+  <script src="captainfact-overlay-injector.js"></script>
+
+  <!-- Load Youtube API -->
+  <script>
+    let player = null
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('video', {
+        width: 600,
+        height: 400,
+        videoId: 'OhWRT3PhMJs',
+        events: {
+          onReady: initialize
+        }
+      });
+    }
+    function initialize() {
+      new window.CaptainFactOverlayInjector({
+        videosSelectorFunc: document => [],
+        urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+        activateToggleBtnClass: 'toggle-btn-container'
+      })
+//      const factsContainer = document.getElementById('facts-container')
+//      const toggleBtnContainer = document.getElementById('toggle-btn-container')
+//      window.CaptainFactOverlay.injectOverlay(factsContainer, player, "https://www.youtube.com/embed/OhWRT3PhMJs", {
+//        display: 'block'
+//      })
+//      window.CaptainFactOverlay.injectActivationToggleButton(toggleBtnContainer)
+    }
+  </script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

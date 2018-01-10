@@ -10,6 +10,12 @@ and can be integrated on any website freely.
 
 # Usage
 
+## Declarative approach
+
+Just specify a config object in `window.CaptainFactOverlayConfig` global key and import script. This is the way
+you usually want to go as it is simple and allows you to load the script asynchronously without worrying about
+waiting for it to be ready.
+
 ```html
 <!-- Overlay configuration, see details below -->
 <script type="javascript">
@@ -20,18 +26,37 @@ and can be integrated on any website freely.
 <script src="[TODO]/embed.js" async/>
 ```
 
-You can also include the following div to provide a toggle button to enable / disable overlay.
-Button's state is stored in browser local storage
+## Imperative approach
+
+You can also import the library and instantiate it yourself:
 
 ```html
-<!-- You can set the size by adding one of the following classes: cf-small, cf-large -->
-<div class="cf-toggle-btn"/>
+<script src="[TODO]/embed.js"/>
 ```
+
+Then:
+
+```javascript
+let injector = new window.CaptainFactOverlayInjector({ /* Config here */ })
+```
+
+## Using NPM 
+
+TODO
+
+```javascript
+import CaptainFactOverlayInjector from 'captain-fact-overlay-injector'
+```
+
+(!) For now the overlay can only be injected to one video per page. It's not a small change to make, but
+we haven't done it yet.
 
 # Configuration
 
-```ecmascript 6
+```javascript
 window.CaptainFactOverlayConfig = {
+  // ---- Required ---- 
+  
   /**
   * Function that select a list of video nodes on which we'll be injecting
   * @param {object} document - The document containing page nodes
@@ -42,13 +67,35 @@ window.CaptainFactOverlayConfig = {
   * Function that resolves url for a given video tag
   * @param {object} videoTag - The video tag as returned by videosSelectorFunc
   */
-  resolverFunc: videoTag => "https://www.youtube.com/watch?v=xxxxxxxx",
+  urlExtractor: videoTag => "https://www.youtube.com/watch?v=xxxxxxxx",
+  
+  // ---- Optional ----
   
   /**
-  * Injected node class 
+  * Css class selector specifying where CaptainFact activation toggle button should be mounted
   */
-  nodeClass: "captainfact-overlay"
+  activateToggleBtnClass: null
 }
 ```
+
+## ON / OFF toggle button
+
+You can add a switch to offer your users the ability to disable CaptainFact. Button's state is
+stored in browser local storage.
+
+First add a div with a class name of your choice on your page:
+```html
+<div class="cf-toggle-btn"></div>
+```
+
+Then add it to your config:
+```javascript
+{
+  // ...
+  activateToggleBtnClass: "cf-toggle-btn"
+}
+```
+
+You can change the size of the button by setting a different `font-size` on container.
 
 # Developing

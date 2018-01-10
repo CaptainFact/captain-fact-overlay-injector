@@ -8,15 +8,15 @@ import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
 import { icon } from "../Utils/Icon.css"
 import { InterfaceState } from '../App/interface_reducer'
-import { frontendURL, statementFocusTime } from '../config'
+import { frontendURL, statementFocusTime } from '../../config'
 
 import {
   sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
-  slideIn, slideOut, statementsList
+  slideIn, slideOut, statementsList, isBlock, animated
 } from './Sidebar.css'
 import { PlaybackState } from '../App/playback_reducer'
-import LocalImage from '../Utils/LocalImage'
 
+import imgNewTab from "../../assets/new_tab.png"
 
 @connect(state => ({
   statements: state.Statements.data,
@@ -31,7 +31,7 @@ export default class Sidebar extends Component {
       currentTime: null,
       currentView: "facts"
     }
-    this.player = null
+    // this.player = null
     this.collapseAnimation = null
     this.handleTimeClick = this.handleTimeClick.bind(this)
     this.onTimeUpdate = this.onTimeUpdate.bind(this)
@@ -50,19 +50,20 @@ export default class Sidebar extends Component {
     fetchStatements(this.props.video.id)
 
     // TODO: Move to redux Plug onto youtube player
-    this.player = document.getElementsByClassName('video-stream')[0]
-    this.player.addEventListener('timeupdate', this.onTimeUpdate)
+    // TODO Listen for fullscreen
+    // this.player = document.getElementsByClassName('video-stream')[0]
+    this.props.player.addEventListener('timeupdate', this.onTimeUpdate)
   }
 
   componentWillUnmount() {
     // TODO move to effect
-    if (this.player)
-      this.player.removeEventListener('timeupdate', this.onTimeUpdate)
+    if (this.props.player)
+      this.props.player.removeEventListener('timeupdate', this.onTimeUpdate)
   }
 
   onTimeUpdate() {
     // TODO move to effect
-    const currentTime = Math.trunc(this.player.currentTime)
+    const currentTime = Math.trunc(this.props.player.currentTime)
     if (this.state.currentTime !== currentTime) {
       this.setState({ currentTime: currentTime + 1 })
       PlaybackState.setPosition(currentTime + 1)
@@ -81,7 +82,7 @@ export default class Sidebar extends Component {
 
   handleTimeClick(time) {
     // TODO move to effect
-    this.player.currentTime = time
+    this.props.player.currentTime = time
   }
 
   renderStatementJumpLink(jumpType, statement, textBefore='', textAfter='') {
@@ -118,17 +119,27 @@ export default class Sidebar extends Component {
   render() {
     const currentStatementIdx = this.getFocusedStatementIndex()
     const currentStatement = currentStatementIdx === -1 ? null : this.props.statements.get(currentStatementIdx)
+    const {statements, isCollapsed, display='overlay', animate=true} = this.props
+    const togglable = display === 'overlay'
+    const classes = classnames(sidebar, this.collapseAnimation, {
+      [collapsed]: togglable && isCollapsed,
+      [isBlock]: display === 'block',
+      [animated]: animate
+    })
+
     return (
-      <div className={classnames(sidebar, this.collapseAnimation, {[collapsed]: this.props.isCollapsed})}>
+      <div className={classes}>
         <div className={sidebarHeader}>
           <a href={`${frontendURL}/videos/${this.props.videoId}`} target="_BLANK"
              title="Open discussion on CaptainFact">
-            <h1 className={title}>CaptainFact</h1>&nbsp;
-            <img src="../assets/new_tab.png" height="17"/>
+            <h1 className={title}>CaptainFact <img src={imgNewTab}/></h1>
+
           </a>
+          {togglable &&
           <a title="Close sidebar" style={{float: 'right', cursor: 'pointer'}} onClick={InterfaceState.closeSidebar}>
             ❌
           </a>
+          }
         </div>
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>
@@ -141,7 +152,7 @@ export default class Sidebar extends Component {
           }
           {this.state.currentView === "statements" &&
             <div className={statementsList}>
-              {this.props.statements.map(s =>
+              {statements.map(s =>
                 <Statement  key={s.id} statement={s} onTimeClick={this.handleTimeClick}
                             textPrefix={s === currentStatement ? '➡️ ' : ''}/>
               )}

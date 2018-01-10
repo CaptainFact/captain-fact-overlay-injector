@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>CaptainFact Overlay Injector - Testing</title>
+  <link href="testlibs/videojs.css" rel="stylesheet">
+  <link href="testlibs/videojs-resolution-switcher.css" rel="stylesheet">
+</head>
+<body>
+  <h1>VideoJS, overlayed</h1>
+  <h2><a href="/"><= Back to index</a></h2>
+  <hr/>
+  <br/>
+  <video id="video" class="video-js vjs-default-skin" controls preload="auto" width="800" height="450"
+         poster="https://thinkerview.com/wp-content/uploads/Cedric-villani-1024x576.jpg"
+         data-setup='{"playbackRates": [1, 1.2, 1.5, 1.7, 2], "seek_param": "time"}'>
+    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=240"
+            type="video/mp4" label="240p" res="240" default="">
+    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=360"
+            type="video/mp4" label="360p" res="360" default="">
+    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=480"
+            type="video/mp4" label="480p" res="480" default="">
+  </video>
+  <script src="testlibs/video.js"></script>
+  <script src="testlibs/videojs-resolution-switcher.js"></script>
+  <script>videojs('video').videoJsResolutionSwitcher()</script>
+  <br/><br/>
+  <div class="toggle-btn-container"></div>
+
+  <!-- CaptainFact injection -->
+  <script>
+    window.CaptainFactOverlayConfig = {
+      videosSelectorFunc: document => [document.getElementById('video')],
+      urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+      activateToggleBtnClass: 'toggle-btn-container'
+    }
+  </script>
+  <script src="captainfact-overlay-injector.js"></script>
+</body>
+</html>

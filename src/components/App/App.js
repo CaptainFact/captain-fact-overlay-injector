@@ -9,7 +9,7 @@ import styles from './App.css'
 
 
 @connect(state => ({video: state.Video.data}))
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   componentDidMount() {
     fetchVideo(this.props.videoUrl)
   }
@@ -20,7 +20,10 @@ export default class App extends React.Component {
     else
       return (
         <div className={styles.app}>
-          <Sidebar video={this.props.video}/>
+          <Sidebar video={this.props.video}
+                   player={this.props.player}
+                   display={this.props.display}
+          />
         </div>
       )
   }

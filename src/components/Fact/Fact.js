@@ -2,7 +2,7 @@ import React from 'react'
 import Source from './Source.js'
 import UserAppellation from './UserAppellation'
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
-import { staticResource } from '../lib/static_resource'
+import { staticResource } from '../../lib/static_resource'
 import LocalImage from '../Utils/LocalImage'
 
 

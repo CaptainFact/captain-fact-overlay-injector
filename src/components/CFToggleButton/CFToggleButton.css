@@ -1,5 +1,5 @@
 .container {
-  height: 30px;
+  height: 2em;
   display: inline-block;
   background: #86d7ff;
   color: #2d2d2d;
@@ -14,28 +14,36 @@
 
 .icon {
   height: 100%;
-  margin-right: 5px;
+  margin-right: 0.3em;
 }
 
 .title {
-  font-size: 16px;
-  margin-right: 8px;
+  font-size: 1em;
+  margin-right: 0.3em;
+  color: #252525;
+  text-shadow: 0 0 3px #e8e8e8;
+  transition: text-shadow 0.3s;
+}
+
+.title:hover {
+  color: #3c84c3;
+  text-shadow: 0 0 4px white;
 }
 
 .radioBtn {
   height: 100%;
   max-height: 100%;
-  min-width: 40px;
+  min-width: 3em;
   text-align: center;
   display: inline-block;
   background: white;
-  cursor: pointer;
   color: black;
   user-select: none;
 }
 
-.radioBtn:hover {
+.radioBtn:not(.active):hover {
   color: grey;
+  cursor: pointer;
 }
 
 .radioBtn.active {
@@ -45,7 +53,7 @@
 }
 
 .radioBtn span {
-  padding: 8px;
   display: inline-block;
-  font-size: 12px;
+  padding: 0.55em;
+  font-size: 0.9em;
 }

@@ -1,11 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import {activatedLocalStorageKey} from '../../config'
 import {container, icon, title, radioBtn, active} from './CFToggleButton.css'
-import iconImg from '../assets/icon.png'
+import iconImg from '../../assets/icon.png'
 
-
-const LOCAL_STORAGE_KEY = 'captainfact_isActive'
 
 export default class CFToggleButton extends React.PureComponent {
   constructor(props, context) {
@@ -17,7 +16,7 @@ export default class CFToggleButton extends React.PureComponent {
     return (
       <div className={container}>
         <img className={icon} src={iconImg}/>
-        <span className={title}>CaptainFact</span>
+        <a href="https://captainfact.io" className={title}>CaptainFact</a>
         <div className={classNames(radioBtn, {[active]: this.state.isActive})} onClick={() => this.setActive(true)}>
           <span>ON</span>
         </div>
@@ -35,7 +34,7 @@ export default class CFToggleButton extends React.PureComponent {
 }
 
 const loadIsActive = () =>
-  localStorage.getItem(LOCAL_STORAGE_KEY) !== 'false'
+  localStorage.getItem(activatedLocalStorageKey) !== 'false'
 
 const saveIsActive = (isActive) =>
-  localStorage.setItem(LOCAL_STORAGE_KEY, isActive ? 'true' : 'false')
+  localStorage.setItem(activatedLocalStorageKey, isActive ? 'true' : 'false')

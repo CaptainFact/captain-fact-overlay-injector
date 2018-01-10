@@ -26,7 +26,6 @@ const middlewares = [CreateJumpstateMiddleware()]
 
 // Build store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)))
 
-const getStore = () => createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)))
-
-export default getStore
+export default store

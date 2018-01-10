@@ -8,24 +8,34 @@
     display: flex;
     flex-direction: column;
     max-height: 100%;
-    transition: width 0.2s;
     opacity: 0.6;
+}
+
+.sidebar.isBlock {
+    display: block;
+    position: relative;
+    opacity: 1;
+    width: 100%;
 }
 
 .sidebar:hover {
     opacity: 1.0;
 }
 
-.sidebar.collapsed {
-    transform: translateX(100%);
+.sidebar.collapsed:not(.animated) {
+    display: none;
 }
 
-.slideIn {
+.sidebar.animated.collapsed {
+  transform: translateX(100%);
+}
+
+.sidebar.animated.slideIn {
     animation: slideIn 0.3s forwards;
     -webkit-animation: slideIn 0.3s forwards;
 }
 
-.slideOut {
+.sidebar.animated.slideOut {
     animation: slideOut 0.3s forwards;
     -webkit-animation: slideOut 0.3s forwards;
 }
@@ -53,6 +63,13 @@
 
 .title {
     font-size: 1em;
+    margin: 0;
+    color: white;
+}
+
+.title img {
+    height: 0.6em;
+    width: 0.6em;
 }
 
 .title:hover {
@@ -69,6 +86,7 @@
     padding: 3px;
     border: 1px solid #2f2f2f;
     border-top: none;
+    color: white;
 }
 
 .statementsList > *:not(:last-child) {
@@ -83,5 +101,5 @@ a.jumpLink {
 
 a.jumpLink.disabled {
     pointer-events: none;
-    color: rgba(150, 150, 150, 0.74);
+    color: rgba(183, 183, 183, 0.74);
 }

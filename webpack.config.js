@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'captainfact-overlay-injector.js',
     path: path.resolve(__dirname, 'dist')
   }
 };

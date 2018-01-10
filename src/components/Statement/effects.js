@@ -1,6 +1,6 @@
 import { Effect } from 'jumpstate'
 import { StatementsState } from './reducer'
-import HttpApi from '../lib/http_api'
+import HttpApi from '../../lib/http_api'
 
 
 export const fetchStatements = new Effect('fetchStatements', videoId => {
