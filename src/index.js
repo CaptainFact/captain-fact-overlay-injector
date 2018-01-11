@@ -24,8 +24,12 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
 
   // ---- Public API ----
 
+  /**
+   * Enable the fact injector
+   * @returns {boolean} - returns false if already enabled or mounted
+   */
   enable() {
-    if (this.mountedFacts.length > 0) {
+    if (store.getState().Interface.isEnabled || this.mountedFacts.length > 0) {
       console.warn('Facts overlay already mounted, ignoring request')
       return false
     }
@@ -34,12 +38,25 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
     return true
   }
 
+  /**
+   * Disable fact injector and unmount all mounted facts
+   */
   disable() {
     // Delete all DOM elements
-    InterfaceState.disable()
-    store.reset()
     this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
     this.mountedFacts = []
+    InterfaceState.disable()
+    store.reset()
+  }
+
+  /**
+   * Unmount existing overlay and reload everything. Useful with single page apps
+   */
+  reload() {
+    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
+    this.mountedFacts = []
+    store.reset()
+    this.mountAll()
   }
 
   // ---- Private API ----
