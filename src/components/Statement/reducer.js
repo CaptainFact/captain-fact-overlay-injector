@@ -11,15 +11,7 @@ export const StatementsState = State('Statements', {
   })(),
   fetchSuccess(state, statements) {
     return state.merge({
-      data: new List(
-        statements.map(({comments, ...attributes}) =>
-          new Statement({
-            comments: new List(comments)
-                .filter(c => c.score >= 0 && c.source !== null && c.approve !== null) // Approving / Refuting facts
-                .sortBy(c => -c.score),
-            ...attributes
-          }))
-      ).sortBy(st => st.time),
+      data: prepareStatementsList(statements),
       isLoading: false
     })
   },
@@ -32,3 +24,15 @@ export const StatementsState = State('Statements', {
     return state.set('isLoading', isLoading)
   }
 })
+
+function prepareStatementsList(statements) {
+  const preparedStatements = []
+  statements.forEach(({comments, ...attributes}) => {
+    const preparedComments = new List(comments)
+      .filter(c => !c.score || c.score >= 0 && c.source !== null && c.approve !== null) // Approving / Refuting facts
+      .sortBy(c => c.score ? -c.score : 0)
+    if (preparedComments.count() > 0)
+      preparedStatements.push(new Statement({comments: preparedComments, ...attributes}))
+  })
+  return new List(preparedStatements).sortBy(st => st.time)
+}

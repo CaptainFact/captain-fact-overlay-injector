@@ -58,24 +58,27 @@ window.CaptainFactOverlayConfig = {
   // ---- Required ---- 
   
   /**
-  * Function that select a list of video nodes on which we'll be injecting
-  * @param {object} document - The document containing page nodes
+  * Function that selects all the nodes containing your videos. If `factsInjector` is not defined, facts will
+  * be added inside returned nodes.
   */
   videosSelectorFunc: () => [],
   
   /**
-  * Function that resolves url for a given video tag
-  * @param {object} videoTag - The video tag as returned by videosSelectorFunc
+  * Function that resolves url for a given video
+  * @param {object} video - The video tag as returned by videosSelectorFunc
   */
-  urlExtractor: videoTag => "https://www.youtube.com/watch?v=xxxxxxxx",
-  
-  // ---- Optional ----
+  urlExtractor: video => "https://www.youtube.com/watch?v=xxxxxxxx",
   
   /**
-  * Type of the player. Can be 'video' for regular <video/> tags or 'youtube' for
-  * Youtube iframes (must have jsapi activated)
+  * Function that resolves an url for a given video
+  * @param {object} video - The video tag as returned by videosSelectorFunc
+  * @param {object} adapters - adapters list for different types of players. Only `html5` is supported at the moment
+  * You can also implement your own, check `src/lib/video_adapters/html5.js` if you need an example.
   */
-  playerType: 'video',
+  getPlayer: (video, adapters) => adapters.HTML5(myDiv.querySelector('video')),
+  
+  // ---- Optional ----
+ 
   
   /**
   * Css class selector specifying where CaptainFact activation toggle button should be mounted

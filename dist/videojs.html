@@ -30,6 +30,7 @@
     window.CaptainFactOverlayConfig = {
       videosSelectorFunc: () => [document.getElementById('video')],
       urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+      getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
       activateToggleBtnClass: 'toggle-btn-container'
     }
   </script>

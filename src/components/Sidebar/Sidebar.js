@@ -12,7 +12,7 @@ import { frontendURL, statementFocusTime } from '../../config'
 
 import {
   sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
-  slideIn, slideOut, statementsList, isBlock, animated
+  slideIn, slideOut, statementsList, isBlock, animated, closeBtn
 } from './Sidebar.css'
 import { PlaybackState } from '../App/playback_reducer'
 
@@ -28,13 +28,11 @@ export default class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentTime: null,
-      currentView: "facts"
+      currentTime: null, currentView: "facts"
     }
     // this.player = null
     this.collapseAnimation = null
     this.handleTimeClick = this.handleTimeClick.bind(this)
-    this.onTimeUpdate = this.onTimeUpdate.bind(this)
   }
 
   componentWillUpdate(nextProps) {
@@ -48,22 +46,16 @@ export default class Sidebar extends Component {
 
   componentDidMount() {
     fetchStatements(this.props.video.id)
-
-    // TODO: Move to redux Plug onto youtube player
-    // TODO Listen for fullscreen
-    // this.player = document.getElementsByClassName('video-stream')[0]
-    this.props.player.addEventListener('timeupdate', this.onTimeUpdate)
+    this.props.player.onTimeUpdate(this.onTimeUpdate.bind(this))
   }
 
   componentWillUnmount() {
-    // TODO move to effect
-    if (this.props.player)
-      this.props.player.removeEventListener('timeupdate', this.onTimeUpdate)
+    this.props.player.destroy()
   }
 
-  onTimeUpdate() {
+  onTimeUpdate(currentTime) {
     // TODO move to effect
-    const currentTime = Math.trunc(this.props.player.currentTime)
+    currentTime = Math.trunc(currentTime)
     if (this.state.currentTime !== currentTime) {
       this.setState({ currentTime: currentTime + 1 })
       PlaybackState.setPosition(currentTime + 1)
@@ -82,7 +74,7 @@ export default class Sidebar extends Component {
 
   handleTimeClick(time) {
     // TODO move to effect
-    this.props.player.currentTime = time
+    this.props.player.setPosition(time)
   }
 
   renderStatementJumpLink(jumpType, statement, textBefore='', textAfter='') {
@@ -136,7 +128,7 @@ export default class Sidebar extends Component {
 
           </a>
           {togglable &&
-          <a title="Close sidebar" style={{float: 'right', cursor: 'pointer'}} onClick={InterfaceState.closeSidebar}>
+          <a title="Close sidebar" className={closeBtn} onClick={InterfaceState.closeSidebar}>
             ❌
           </a>
           }

@@ -8,6 +8,7 @@ import CFButton from './components/CFButton/CFButton'
 import { InterfaceState } from './components/App/interface_reducer'
 import store from './components/App/store'
 import App from './components/App/App'
+import videoAdapters from './lib/video_adapters'
 
 
 const DOM_NODE_CLASS = 'captainfact-overlay'
@@ -34,6 +35,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   mountFactEngine(video) {
     const isOverlay = !this.config.display || this.config.display === 'overlay'
     const videoUrl = this.config.urlExtractor(video)
+    const player = this.config.getPlayer(video, videoAdapters)
 
     // Ensure parent will hide sidebar correctly with animated overlay
     if (this.config.animated !== false && isOverlay)
@@ -43,7 +45,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
     const injector = this.config.factsInjector || this.defaultFactsInjector
     injector(
       this.factsMounter, video,
-      () => <App videoUrl={videoUrl} player={video} display={this.config.display || 'overlay'}/>,
+      () => <App videoUrl={videoUrl} player={player} display={this.config.display || 'overlay'}/>,
       () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
     )
   }

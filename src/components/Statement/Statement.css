@@ -1,7 +1,7 @@
 .statementDisplay {
     text-align: left;
-    padding: 7px;
-    background: #2f2f2f;
+    padding: 5px;
+    background: #31455d;
     color: #eaeaea;
     font-size: 0.9em;
 }
@@ -12,6 +12,7 @@
 
 .statementText {
     font-style: italic;
+    margin: 0.35em 0 0.1em 0;
 }
 
 .tag {
