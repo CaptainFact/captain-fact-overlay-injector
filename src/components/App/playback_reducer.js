@@ -2,11 +2,13 @@ import { State } from "jumpstate"
 import { Record } from "immutable"
 
 
+const INITIAL_STATE = new Record({
+  position: null,
+  forcedPosition: null
+})
+
 export const PlaybackState = State('Playback', {
-  initial: new Record({
-    position: null,
-    forcedPosition: null
-  })(),
+  initial: INITIAL_STATE(),
   setPosition(state, position) {
     return state.set('position', Math.trunc(position))
   },
@@ -18,5 +20,6 @@ export const PlaybackState = State('Playback', {
   },
   resetPosition(state) {
     return state.merge({position: null, forcedPosition: null})
-  }
+  },
+  reset: () => INITIAL_STATE()
 })

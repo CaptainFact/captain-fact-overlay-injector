@@ -3,12 +3,14 @@ import { State } from 'jumpstate'
 import Statement from './record'
 
 
+const INITIAL_STATE = new Record({
+  isLoading: false,
+  errors: null,
+  data: new List()
+})
+
 export const StatementsState = State('Statements', {
-  initial: new Record({
-    isLoading: false,
-    errors: null,
-    data: new List()
-  })(),
+  initial: INITIAL_STATE(),
   fetchSuccess(state, statements) {
     return state.merge({
       data: prepareStatementsList(statements),
@@ -22,7 +24,8 @@ export const StatementsState = State('Statements', {
   },
   setLoading(state, isLoading) {
     return state.set('isLoading', isLoading)
-  }
+  },
+  reset: () => INITIAL_STATE()
 })
 
 function prepareStatementsList(statements) {

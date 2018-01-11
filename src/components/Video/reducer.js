@@ -3,11 +3,13 @@ import { State } from 'jumpstate'
 import Video from './record'
 
 
+const INITIAL_STATE = new Record({
+  isLoading: false,
+  data: null
+})
+
 export const VideoState = State('Video', {
-  initial: new Record({
-    isLoading: false,
-    data: null
-  })(),
+  initial: INITIAL_STATE(),
   fetchSuccess(state, data) {
     return state.merge({
       isLoading: false,
@@ -20,6 +22,7 @@ export const VideoState = State('Video', {
   },
   setLoading(state, isLoading=true) {
     return state.set('isLoading', true)
-  }
+  },
+  reset: () => INITIAL_STATE()
 })
 

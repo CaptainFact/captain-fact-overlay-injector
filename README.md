@@ -79,9 +79,8 @@ window.CaptainFactOverlayConfig = {
   
   // ---- Optional ----
  
-  
   /**
-  * Css class selector specifying where CaptainFact activation toggle button should be mounted
+  * Css class selector specifying where CaptainFact activation toggle buttons should be mounted
   */
   activateToggleBtnClass: null,
   

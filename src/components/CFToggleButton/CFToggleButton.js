@@ -1,40 +1,32 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import {activatedLocalStorageKey} from '../../config'
 import {container, icon, title, radioBtn, active} from './CFToggleButton.css'
 import iconImg from '../../assets/icon.png'
 
 
+@connect(state => ({isEnabled: state.Interface.isEnabled}))
 export default class CFToggleButton extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context)
-    this.state = {isActive: loadIsActive()}
-  }
-
   render() {
     return (
       <div className={container}>
         <img className={icon} src={iconImg}/>
         <a href="https://captainfact.io" className={title}>CaptainFact</a>
-        <div className={classNames(radioBtn, {[active]: this.state.isActive})} onClick={() => this.setActive(true)}>
+        <div className={classNames(radioBtn, {[active]: this.props.isEnabled})} onClick={() => this.setEnabled(true)}>
           <span>ON</span>
         </div>
-        <div className={classNames(radioBtn, {[active]: !this.state.isActive})} onClick={() => this.setActive(false)}>
+        <div className={classNames(radioBtn, {[active]: !this.props.isEnabled})} onClick={() => this.setEnabled(false)}>
           <span>OFF</span>
         </div>
       </div>
     )
   }
 
-  setActive(isActive) {
-    this.setState({isActive})
-    saveIsActive(isActive)
+  setEnabled(enabled) {
+    if (!this.props.isEnabled && enabled)
+      this.props.enable()
+    else if (this.props.isEnabled && !enabled)
+      this.props.disable()
   }
 }
-
-const loadIsActive = () =>
-  localStorage.getItem(activatedLocalStorageKey) !== 'false'
-
-const saveIsActive = (isActive) =>
-  localStorage.setItem(activatedLocalStorageKey, isActive ? 'true' : 'false')

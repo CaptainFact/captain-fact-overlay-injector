@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 
-import {activatedLocalStorageKey} from './config'
 import CFToggleButton from './components/CFToggleButton/CFToggleButton'
 import CFButton from './components/CFButton/CFButton'
 import { InterfaceState } from './components/App/interface_reducer'
@@ -11,20 +10,48 @@ import App from './components/App/App'
 import videoAdapters from './lib/video_adapters'
 
 
-const DOM_NODE_CLASS = 'captainfact-overlay'
-const DOM_TOGGLE_BTN_NODE_CLASS = 'cf-toggle-btn'
-const CF_BUTTON_NODE_CLASS = 'CFButton'
-
-
 window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   constructor(config={}) {
-    this.config = config
     // TODO check config and warn user if missing keys
+    this.config = config
+    this.mountedFacts = []
+    this.factsMounter = this.factsMounter.bind(this)
+    this.enable = this.enable.bind(this)
+    this.disable = this.disable.bind(this)
+
+    this.mountAll()
+  }
+
+  // ---- Public API ----
+
+  enable() {
+    if (this.mountedFacts.length > 0) {
+      console.warn('Facts overlay already mounted, ignoring request')
+      return false
+    }
+    InterfaceState.enable()
+    this.mountAll()
+    return true
+  }
+
+  disable() {
+    // Delete all DOM elements
+    InterfaceState.disable()
+    store.reset()
+    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
+    this.mountedFacts = []
+  }
+
+  // ---- Private API ----
+
+  mountAll() {
     this.mountActivateToggleBtns()
     this.mountAllFactsEngine()
   }
 
   mountAllFactsEngine() {
+    if (!store.getState().Interface.isEnabled)
+      return false
     const videos = this.config.videosSelectorFunc()
     if (videos.length === 0)
       return 0
@@ -62,8 +89,10 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
 
   factsMounter(container, componentGenerator) {
     const component = componentGenerator()
-    if (component)
-      mountWithStore(container, component)
+    if (component) {
+      this.mountWithStore(container, component)
+      this.mountedFacts.push(container)
+    }
   }
 
   mountActivateToggleBtns() {
@@ -71,28 +100,28 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
       return 0
     const allContainers = document.getElementsByClassName(this.config.activateToggleBtnClass)
     for (let container of allContainers) {
-      mountWithStore(container, <CFToggleButton/>)
+      this.mountWithStore(container, <CFToggleButton enable={this.enable} disable={this.disable}/>)
     }
   }
-}
 
-/**
- * Create a dom node, append it to given node, and mount given React component in it
- * @param node - The node inside which component will be added
- * @param component - The component to mount
- */
-function mountWithStore(node, component) {
-  ReactDOM.render(
-    <Provider store={store}>
-      {component}
-    </Provider>
-  , node)
+  /**
+   * Mount given React component in node with a store binded
+   * @param node - The node inside which component will be added
+   * @param component - The component to mount
+   */
+  mountWithStore(node, component) {
+    ReactDOM.render(
+      <Provider store={store}>
+        {component}
+      </Provider>
+    , node)
+  }
 }
 
 // If config is defined in the global scope, instantiate after window.onload
 if (typeof window.CaptainFactOverlayConfig !== 'undefined')
   window.addEventListener('load', () => {
-    new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
+    window.injectedCaptainFactOverlay = new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
   })
 
 

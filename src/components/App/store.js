@@ -27,5 +27,11 @@ const middlewares = [CreateJumpstateMiddleware()]
 // Build store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)))
+store.reset = () => {
+  VideoState.reset()
+  StatementsState.reset()
+  PlaybackState.reset()
+  InterfaceState.reset()
+}
 
 export default store
