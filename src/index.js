@@ -15,6 +15,8 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
     // TODO check config and warn user if missing keys
     this.config = config
     this.mountedFacts = []
+    this.injectedFactsContainers = []
+    this.defaultFactsInjector = this.defaultFactsInjector.bind(this)
     this.factsMounter = this.factsMounter.bind(this)
     this.enable = this.enable.bind(this)
     this.disable = this.disable.bind(this)
@@ -43,8 +45,9 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
    */
   disable() {
     // Delete all DOM elements
-    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
-    this.mountedFacts = []
+    this.unmountAll()
+
+    // Disable and reset store
     InterfaceState.disable()
     store.reset()
   }
@@ -53,8 +56,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
    * Unmount existing overlay and reload everything. Useful with single page apps
    */
   reload() {
-    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
-    this.mountedFacts = []
+    this.unmountAll()
     store.reset()
     this.mountAll()
   }
@@ -64,6 +66,14 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   mountAll() {
     this.mountActivateToggleBtns()
     this.mountAllFactsEngine()
+  }
+
+  unmountAll() {
+    // Delete all DOM elements
+    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
+    this.injectedFactsContainers.map(domNode => domNode.parentNode.removeChild(domNode))
+    this.mountedFacts = []
+    this.injectedFactsContainers = []
   }
 
   mountAllFactsEngine() {
@@ -95,13 +105,15 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   }
 
   defaultFactsInjector(mountFunc, video, facts, toggleBtn) {
-    const injectDOM = document.createElement('div')
-    const injectDOM2 = document.createElement('div')
+    mountFunc(this.injectInNode(video), facts)
+    mountFunc(this.injectInNode(video), toggleBtn)
+  }
 
-    video.appendChild(injectDOM)
-    video.appendChild(injectDOM2)
-    mountFunc(injectDOM, facts)
-    mountFunc(injectDOM2, toggleBtn)
+  injectInNode(node) {
+    const injectDOM = document.createElement('div')
+    node.appendChild(injectDOM)
+    this.injectedFactsContainers.push(injectDOM)
+    return injectDOM
   }
 
   factsMounter(container, componentGenerator) {

@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>CaptainFact Overlay Injector - Testing</title>
+</head>
+<body>
+<h1>No video, just good old facts in a div</h1>
+<h2><a href="/"><= Back to index</a></h2>
+<hr/>
+<br/>
+<div id="video" style="display: block; width: 800px; position: relative;">
+</div>
+<br/><br/>
+<div>
+  <h2>Activation Toggle</h2>
+  <div class="toggle-btn-container"></div>
+</div>
+
+<!-- CaptainFact injection -->
+<script>
+  window.CaptainFactOverlayConfig = {
+    videosSelectorFunc: () => [document.getElementById('video')],
+    urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+    getPlayer: (video, adapters) => null,
+    activateToggleBtnClass: 'toggle-btn-container',
+    display: 'block'
+  }
+</script>
+<script src="captainfact-overlay-injector.js"></script>
+</body>
+</html>

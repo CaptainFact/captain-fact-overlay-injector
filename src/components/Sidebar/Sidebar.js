@@ -30,7 +30,6 @@ export default class Sidebar extends Component {
     this.state = {
       currentTime: null, currentView: "facts"
     }
-    // this.player = null
     this.collapseAnimation = null
     this.handleTimeClick = this.handleTimeClick.bind(this)
   }
@@ -46,11 +45,13 @@ export default class Sidebar extends Component {
 
   componentDidMount() {
     fetchStatements(this.props.video.id)
-    this.props.player.onTimeUpdate(this.onTimeUpdate.bind(this))
+    if (this.props.player)
+      this.props.player.onTimeUpdate(this.onTimeUpdate.bind(this))
   }
 
   componentWillUnmount() {
-    this.props.player.destroy()
+    if (this.props.player)
+      this.props.player.destroy()
   }
 
   onTimeUpdate(currentTime) {
@@ -74,7 +75,10 @@ export default class Sidebar extends Component {
 
   handleTimeClick(time) {
     // TODO move to effect
-    this.props.player.setPosition(time)
+    this.setState({ currentTime: time + 1 })
+    PlaybackState.setPosition(time + 1)
+    if (this.props.player)
+      this.props.player.setPosition(time)
   }
 
   renderStatementJumpLink(jumpType, statement, textBefore='', textAfter='') {
@@ -125,7 +129,6 @@ export default class Sidebar extends Component {
           <a href={`${frontendURL}/videos/${this.props.videoId}`} target="_BLANK"
              title="Open discussion on CaptainFact">
             <h1 className={title}>CaptainFact <img src={imgNewTab}/></h1>
-
           </a>
           {togglable &&
           <a title="Close sidebar" className={closeBtn} onClick={InterfaceState.closeSidebar}>

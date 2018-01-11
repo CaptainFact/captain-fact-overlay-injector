@@ -8,6 +8,11 @@ This repo holds the overlay injector script, that basically add facts over video
 It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension)
 and can be integrated on any website freely. 
 
+☑️ Basic injection <br>
+☐ Multiple videos on a single page <br>
+☐ Unit tests <br>
+
+
 # Usage
 
 ## Declarative approach
@@ -74,6 +79,7 @@ window.CaptainFactOverlayConfig = {
   * @param {object} video - The video tag as returned by videosSelectorFunc
   * @param {object} adapters - adapters list for different types of players. Only `html5` is supported at the moment
   * You can also implement your own, check `src/lib/video_adapters/html5.js` if you need an example.
+  * Injector support a null return value, which can be used if you just want to display facts without player binding. 
   */
   getPlayer: (video, adapters) => adapters.HTML5(myDiv.querySelector('video')),
   
