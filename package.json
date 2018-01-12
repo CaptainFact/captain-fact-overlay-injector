@@ -4,8 +4,22 @@
   "description": "http://captainfact.io - Injects facts overlays ",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --progress --watch",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "watch": "jest --watch",
+    "test": "jest",
+    "coverage": "jest --coverage '--collectCoverageFrom=app/**/!(record).{js,jsx}'"
+  },
+  "jest": {
+    "setupFiles": [
+      "./tests_setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png)$": "<rootDir>/src/__mocks__/fileMock.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -16,6 +30,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-decorators-legacy": "^1.2.0",
@@ -29,10 +44,18 @@
     "babel-runtime": "^6.3.19",
     "css-loader": "^0.28.8",
     "css-modules-require-hook": "^4.0.5",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
     "file-loader": "^1.1.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.0.6",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.10",
     "react-addons-test-utils": "^15.0.2",
+    "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.4.0",
+    "regenerator-runtime": "^0.11.1",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"

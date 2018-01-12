@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add a - sign if negative 1`] = `
+<span>
+  -0:00:42
+</span>
+`;
+
+exports[`prefix with given text 1`] = `
+<span>
+  Dont't feed greemlins after 
+  0:00:42
+</span>
+`;
+
+exports[`render time 1`] = `
+<span>
+  0:00:00
+</span>
+`;
+
+exports[`render time 2`] = `
+<span>
+  0:00:42
+</span>
+`;
+
+exports[`render time 3`] = `
+<span>
+  0:01:00
+</span>
+`;
+
+exports[`render time 4`] = `
+<span>
+  1:00:00
+</span>
+`;
+
+exports[`render time 5`] = `
+<span>
+  2:02:22
+</span>
+`;
+
+exports[`time becomes clickable if a function is passed 1`] = `
+<span>
+  <a
+    className="link"
+    onClick={[Function]}
+  >
+    0:22:14
+  </a>
+</span>
+`;

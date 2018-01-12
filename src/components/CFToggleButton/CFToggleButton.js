@@ -6,8 +6,7 @@ import {container, icon, title, radioBtn, active} from './CFToggleButton.css'
 import iconImg from '../../assets/icon.png'
 
 
-@connect(state => ({isEnabled: state.Interface.isEnabled}))
-export default class CFToggleButton extends React.PureComponent {
+export class CFToggleButton extends React.PureComponent {
   render() {
     return (
       <div className={container}>
@@ -30,3 +29,5 @@ export default class CFToggleButton extends React.PureComponent {
       this.props.disable()
   }
 }
+
+export default connect(state => ({isEnabled: state.Interface.isEnabled}))(CFToggleButton)
