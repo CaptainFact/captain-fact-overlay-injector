@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
+import "babel-polyfill"
+
+import DEFAULT_CONFIG from 'config'
+
+import store from './components/App/store'
+import { InterfaceState } from './components/App/interface_reducer'
+import { ConfigurationState } from './components/App/Configuration/reducer'
 
 import CFToggleButton from './components/CFToggleButton/CFToggleButton'
 import CFButton from './components/CFButton/CFButton'
-import { InterfaceState } from './components/App/interface_reducer'
-import store from './components/App/store'
 import App from './components/App/App'
 import videoAdapters from './lib/video_adapters'
 
@@ -13,7 +18,8 @@ import videoAdapters from './lib/video_adapters'
 window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   constructor(config={}) {
     // TODO check config and warn user if missing keys
-    this.config = config
+    ConfigurationState.load(config)
+    this.config = Object.assign(DEFAULT_CONFIG, config)
     this.mountedFacts = []
     this.injectedFactsContainers = []
     this.defaultFactsInjector = this.defaultFactsInjector.bind(this)

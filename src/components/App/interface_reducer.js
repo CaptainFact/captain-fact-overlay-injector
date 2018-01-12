@@ -1,6 +1,8 @@
 import { Record } from 'immutable'
 import { State } from 'jumpstate'
-import { activatedLocalStorageKey } from '../../config'
+
+
+const ACTIVATED_LOCALSTORAGE_KEY = 'captainfact_isActive'
 
 const INITIAL_STATE = new Record({
   isEnabled: loadIsActive(),
@@ -22,9 +24,9 @@ function stateIsEnabledChange(state, isEnabled) {
 }
 
 function loadIsActive() {
-  return localStorage.getItem(activatedLocalStorageKey) !== 'false'
+  return localStorage.getItem(ACTIVATED_LOCALSTORAGE_KEY) !== 'false'
 }
 
 function saveIsEnabled(isEnabled) {
-  return localStorage.setItem(activatedLocalStorageKey, isEnabled ? 'true' : 'false')
+  return localStorage.setItem(ACTIVATED_LOCALSTORAGE_KEY, isEnabled ? 'true' : 'false')
 }

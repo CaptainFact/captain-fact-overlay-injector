@@ -1,4 +1,5 @@
 const path = require('path');
+const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
 
 module.exports = {
   entry: './src/index.js',
@@ -6,10 +7,16 @@ module.exports = {
   devServer: {
     contentBase: './dist'
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      config: path.join(__dirname, './config/dev.js')
+    }
+  },
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'

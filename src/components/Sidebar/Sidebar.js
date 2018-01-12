@@ -8,7 +8,6 @@ import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
 import { icon } from "../Utils/Icon.css"
 import { InterfaceState } from '../App/interface_reducer'
-import { frontendURL, statementFocusTime } from '../../config'
 
 import {
   sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
@@ -17,6 +16,8 @@ import {
 import { PlaybackState } from '../App/playback_reducer'
 
 import imgNewTab from "../../assets/new_tab.png"
+import { FRONTEND_URL, STATEMENT_FOCUS_TIME } from '../../constants'
+
 
 @connect(state => ({
   statements: state.Statements.data,
@@ -69,7 +70,7 @@ export default class Sidebar extends Component {
     if (currentTime === null)
       return -1
     return this.props.statements.findLastIndex(st =>
-      currentTime >= st.time && currentTime <= st.time + statementFocusTime
+      currentTime >= st.time && currentTime <= st.time + STATEMENT_FOCUS_TIME
     )
   }
 
@@ -126,7 +127,7 @@ export default class Sidebar extends Component {
     return (
       <div className={classes}>
         <div className={sidebarHeader}>
-          <a href={`${frontendURL}/videos/${this.props.videoId}`} target="_BLANK"
+          <a href={`${FRONTEND_URL}/videos/${this.props.videoId}`} target="_BLANK"
              title="Open discussion on CaptainFact">
             <h1 className={title}>CaptainFact <img src={imgNewTab}/></h1>
           </a>
