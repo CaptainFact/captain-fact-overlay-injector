@@ -65,3 +65,36 @@ exports[`button disabled 1`] = `
   </div>
 </div>
 `;
+
+exports[`displays custom icon 1`] = `
+<div
+  className="container"
+>
+  <img
+    className="icon"
+    src="custom-icon.jpg"
+  />
+  <a
+    className="title"
+    href="https://captainfact.io"
+  >
+    CaptainFact
+  </a>
+  <div
+    className="radioBtn active"
+    onClick={[Function]}
+  >
+    <span>
+      ON
+    </span>
+  </div>
+  <div
+    className="radioBtn"
+    onClick={[Function]}
+  >
+    <span>
+      OFF
+    </span>
+  </div>
+</div>
+`;

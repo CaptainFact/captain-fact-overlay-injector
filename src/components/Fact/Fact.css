@@ -8,17 +8,18 @@
 }
 
 .sourceSection {
-  padding: 5px 10px;
+  min-height: 2em;
+  padding: 0.1em;
 }
 
 .scoreTag {
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: sans-serif;
   font-weight: bold;
   color: #cec8c8;
-  height: 1.2em;
-  background: rgba(53, 53, 53, 0.53);
-  padding: 0 5px;
+  background: rgba(53, 53, 53, 0.5);
+  padding: 0.4em 0.5em;
+  margin: 0.2em;
   border-radius: 4px;
   float: right;
 }

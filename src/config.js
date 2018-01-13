@@ -63,10 +63,13 @@ const DEFAULT_CONFIG = new Record({
      * Graphics resources URL. Can be used to add custom icons
      */
     graphics: new Record({
-      iconNeutral: undefined,
-      iconApprove: undefined,
-      iconRefute: undefined,
-      newTab: undefined
+      logo: new Record({
+        neutral: undefined,
+        confirm: undefined,
+        refute: undefined,
+      })(),
+      newTab: undefined,
+      star: undefined
     })()
   })()
 })()

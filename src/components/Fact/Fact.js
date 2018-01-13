@@ -3,7 +3,7 @@ import Source from './Source.js'
 import UserAppellation from './UserAppellation'
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
 import { staticResource } from '../../lib/static_resource'
-import starImage from '../../assets/star.png'
+import starImageFile from '../../assets/star.png'
 
 
 const getUserPicture = (userId, url, url_mini, size) => {
@@ -22,11 +22,11 @@ export default class Fact extends React.PureComponent {
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
-            <img src={starImage}/>
+            <img src={this.props.imgStar || starImageFile}/>
           </span>
           <Source source={source}/>
         </div>
-        {text !== null && text.length > 0 &&
+        {text && text.length > 0 &&
           <div className={userSection}>
             <img src={getUserPicture(user.id, user.picture_url, user.mini_picture_url, 32)} height="28"/>
             <div className={right}>

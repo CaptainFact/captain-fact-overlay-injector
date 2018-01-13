@@ -113,10 +113,13 @@ window.CaptainFactOverlayConfig = {
      * Graphics resources URL. Can be used to override default icons
      */
     graphics: {
-      iconNeutral: undefined,
-      iconApprove: undefined,
-      iconRefute: undefined,
-      newTab: undefined
+      logo: {
+        neutral: undefined,
+        approve: undefined,
+        refute: undefined,
+      },
+      newTab: undefined,
+      star: undefined
     }
   }
 }

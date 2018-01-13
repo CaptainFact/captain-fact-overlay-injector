@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import { cfbutton, pulse } from './CFButton.css'
+import { cfbutton, pulse, hidden } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
 
@@ -12,40 +12,50 @@ import iconConfirm from "../../assets/icon_confirm.png"
 import iconRefute from "../../assets/icon_refute.png"
 
 
-@connect(state => ({
-  statements: state.Statements.data,
-  displayed: state.Interface.sidebarCollapsed,
-  video: state.Video.data,
-  statement: getFocusedStatement(state)
-}))
-export default class CFButton extends React.Component {
-  getIcon() {
-    if (!this.props.statement)
-      return iconNeutral
-
-    const globalScore = this.props.statement.comments.reduce((score, comment) =>
-      score + (comment.approve ? comment.score : -comment.score)
-    , 0)
-    if (globalScore > 0)
-      return iconConfirm
-    else if (globalScore < 0)
-      return iconRefute
-    else
-      return iconNeutral
-  }
-
+export class CFButton extends React.PureComponent {
   render() {
-    if (!this.props.video || this.props.statements.size === 0)
+    if (!this.props.hasVideo || !this.props.hasStatements)
       return null
+
+    const globalScore = this.calculateGlobalScore()
     return (
-      <img src={this.getIcon()}
-        className={classnames("CFButton", cfbutton, {[pulse]: !!this.props.statement})}
+      <img src={this.getIcon(globalScore)}
+        className={this.getClassNames()}
         title="CaptainFact"
         onClick={InterfaceState.openSidebar}
-        style={{
-          display: this.props.displayed ? "block" : "none"
-        }}
       />
     )
   }
+
+  getClassNames() {
+    return classnames(cfbutton, {
+      [pulse]: !!this.props.statement,
+      [hidden]: !this.props.displayed
+    })
+  }
+
+  getIcon(globalScore) {
+    if (globalScore > 0)
+      return (this.props.icons && this.props.icons.confirm) || iconConfirm
+    else if (globalScore < 0)
+      return (this.props.icons && this.props.icons.refute) || iconRefute
+    else
+      return (this.props.icons && this.props.icons.neutral) || iconNeutral
+  }
+
+  calculateGlobalScore() {
+    // TODO This should be in Redux
+    if (!this.props.statement)
+      return 0
+    return this.props.statement.comments.reduce((score, comment) =>
+      score + (comment.approve ? comment.score : -comment.score)
+    , 0)
+  }
 }
+
+export default connect(state => ({
+  hasStatements: state.Statements.data.size !== 0,
+  hasVideo: !!state.Video.data,
+  displayed: state.Interface.sidebarCollapsed,
+  statement: getFocusedStatement(state)
+}))(CFButton)

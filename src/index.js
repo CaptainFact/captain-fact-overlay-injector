@@ -102,7 +102,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
     injector(
       this.factsMounter, video,
       () => <App videoUrl={videoUrl} player={player} config={this.config.app}/>,
-      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
+      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar} icons={this.config.app.logo}/> : null
     )
   }
 
@@ -131,7 +131,10 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
       return 0
     const allContainers = document.getElementsByClassName(this.config.injector.activateToggleBtnClass)
     for (let container of allContainers) {
-      this.mountWithStore(container, <CFToggleButton enable={this.enable} disable={this.disable}/>)
+      this.mountWithStore(
+        container,
+        <CFToggleButton enable={this.enable} disable={this.disable} icon={this.config.app.logo.neutral}/>
+      )
     }
   }
 

@@ -24,7 +24,7 @@ function stateIsEnabledChange(state, isEnabled) {
 }
 
 function loadIsActive() {
-  return localStorage.getItem(ACTIVATED_LOCALSTORAGE_KEY) !== 'false'
+  return !(typeof localStorage !== 'undefined' && localStorage.getItem(ACTIVATED_LOCALSTORAGE_KEY) === 'false')
 }
 
 function saveIsEnabled(isEnabled) {

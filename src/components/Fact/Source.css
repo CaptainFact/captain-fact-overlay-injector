@@ -3,6 +3,7 @@
   display: block;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   text-decoration: none;
+  padding: 0.5em;
 }
 
 .sourceLink:hover .articleTitle {
@@ -17,6 +18,7 @@
   color: white;
   font-weight: bold;
   font-size: 0.9em;
+  vertical-align: top;
 }
 
 .articleTitle {

@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import {container, icon, title, radioBtn, active} from './CFToggleButton.css'
-import iconImg from '../../assets/icon.png'
+import DEFAULT_ICON from '../../assets/icon.png'
 
 
 export class CFToggleButton extends React.PureComponent {
   render() {
     return (
       <div className={container}>
-        <img className={icon} src={iconImg}/>
+        <img className={icon} src={this.props.icon || DEFAULT_ICON}/>
         <a href="https://captainfact.io" className={title}>CaptainFact</a>
         <div className={classNames(radioBtn, {[active]: this.props.isEnabled})} onClick={() => this.setEnabled(true)}>
           <span>ON</span>

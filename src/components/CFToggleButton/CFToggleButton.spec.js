@@ -9,6 +9,10 @@ test('button disabled', () => {
   snapshot(<CFToggleButton isEnabled={false}/>)
 })
 
+test('displays custom icon', () => {
+  snapshot(<CFToggleButton isEnabled={true} icon="custom-icon.jpg"/>)
+})
+
 test('verify buttons labels and order', () => {
   const mounted = mount(<CFToggleButton isEnabled={false}/>)
   expect(mounted.find('.radioBtn').at(0).text()).toBe('ON')

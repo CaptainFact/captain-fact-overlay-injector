@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`full source 1`] = `
+<a
+  className="sourceLink"
+  href="https://truetruth.local/this-is-the-truth"
+  target="_BLANK"
+>
+  <div>
+    <img
+      height="10"
+      src="test-file-stub"
+    />
+     
+    <span
+      className="siteName"
+    >
+      TRUETRUTH
+    </span>
+  </div>
+  <span
+    className="articleTitle"
+  >
+    The true fact about facts
+  </span>
+</a>
+`;
+
+exports[`source without site name 1`] = `
+<a
+  className="sourceLink"
+  href="https://truetruth.local/this-is-the-truth"
+  target="_BLANK"
+>
+  <div>
+    <img
+      height="10"
+      src="test-file-stub"
+    />
+     
+    <span
+      className="siteName"
+    >
+      TRUETRUTH.LOCAL
+    </span>
+  </div>
+  <span
+    className="articleTitle"
+  >
+    The true fact about facts
+  </span>
+</a>
+`;
+
+exports[`with custom new tab image 1`] = `
+<a
+  className="sourceLink"
+  href="https://truetruth.local/this-is-the-truth"
+  target="_BLANK"
+>
+  <div>
+    <img
+      height="10"
+      src="custom-pic.jpg"
+    />
+     
+    <span
+      className="siteName"
+    >
+      TRUETRUTH
+    </span>
+  </div>
+  <span
+    className="articleTitle"
+  >
+    The true fact about facts
+  </span>
+</a>
+`;
