@@ -29,6 +29,7 @@ export default class HTML5Player {
    */
   onTimeUpdate(onUpdateFunc) {
     this.timeUpdatedFunc = onUpdateFunc
+    this._onTimeUpdate()
   }
 
   // TODO: Detect fullscreen / resize

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
-import "babel-polyfill"
 
 import store from './components/App/store'
 import { InterfaceState } from './components/App/interface_reducer'
