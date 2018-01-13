@@ -4,9 +4,10 @@
   "description": "http://captainfact.io - Injects facts overlays ",
   "scripts": {
     "build": "webpack --env production",
-    "start": "webpack-dev-server",
-    "watch": "jest --watch",
+    "start": "webpack-dev-server --env dev",
+    "watch": "webpack -w",
     "test": "jest",
+    "watch_test": "jest --watch",
     "coverage": "jest --coverage '--collectCoverageFrom=app/**/!(record).{js,jsx}'"
   },
   "jest": {

@@ -1,7 +1,7 @@
 import { Record } from 'immutable'
 
 
-const DEFAULT_CONFIG = new Record({
+export default new Record({
   injector: new Record({
     // Required
 
@@ -60,6 +60,12 @@ const DEFAULT_CONFIG = new Record({
     animate: true,
 
     /**
+     * Base sidebar / text size. By default, text has the same size as your default font-size.
+     * You can set a value like 1.5em (1.5 x your font size) or a value in pixels (10px)
+     */
+    baseSize: '1em',
+
+    /**
      * Graphics resources URL. Can be used to add custom icons
      */
     graphics: new Record({
@@ -73,10 +79,3 @@ const DEFAULT_CONFIG = new Record({
     })()
   })()
 })()
-
-const loadConfig = config => {
-  // TODO check config and warn user if missing required keys
-  return DEFAULT_CONFIG.mergeDeep(config)
-}
-
-export default loadConfig

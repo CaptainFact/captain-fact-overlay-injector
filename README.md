@@ -70,7 +70,7 @@ window.CaptainFactOverlayConfig = {
     /**
      * Function that resolves an url for a given video
      * @param {object} video - The video tag as returned by videosSelectorFunc
-     * @param {object} adapters - adapters list for different types of players. Only `html5` is supported at the moment
+     * @param {object} adapters - adapters list for different types of players. Only `HTML5` is supported at the moment
      * You can also implement your own, check `src/lib/video_adapters/html5.js` if you need an example.
      * Injector support a null return value, which can be used if you just want to display facts without player binding.
      */
@@ -115,7 +115,7 @@ window.CaptainFactOverlayConfig = {
     graphics: {
       logo: {
         neutral: undefined,
-        approve: undefined,
+        confirm: undefined,
         refute: undefined,
       },
       newTab: undefined,

@@ -23,7 +23,8 @@ import Header from './Header'
   statements: state.Statements.data,
   isLoading: state.Statements.isLoading,
   isCollapsed: state.Interface.sidebarCollapsed,
-  videoId: state.Video.data.id
+  videoId: state.Video.data.id,
+  config: state.Configuration.get('app')
 }))
 export default class Sidebar extends Component {
   constructor(props) {

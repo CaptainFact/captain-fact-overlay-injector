@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require("compression-webpack-plugin")
 
 
-module.exports = env => {
+module.exports = (env='dev') => {
   // Default config
   const config = {
     entry: {
@@ -13,7 +13,7 @@ module.exports = env => {
     },
     devtool: 'inline-source-map',
     devServer: {contentBase: './dist', port: 3342},
-    plugins: [new BundleAnalyzerPlugin()],
+    plugins: [new BundleAnalyzerPlugin({openAnalyzer: false})],
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {'env-constants': path.join(__dirname, `./constants/${env}.js`)}
@@ -43,7 +43,8 @@ module.exports = env => {
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
-      library: 'CaptainFactOverlayInjector'
+      library: 'CaptainFactOverlayInjector',
+      libraryTarget: 'umd'
     }
   };
 

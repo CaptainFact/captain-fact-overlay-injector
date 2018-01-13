@@ -4,17 +4,18 @@ import {Provider} from 'react-redux'
 
 import store from './components/App/store'
 import { InterfaceState } from './components/App/interface_reducer'
+import { ConfigurationState } from './components/App/Configuration/reducer'
 
+import videoAdapters from './lib/video_adapters'
 import CFToggleButton from './components/CFToggleButton/CFToggleButton'
 import CFButton from './components/CFButton/CFButton'
 import App from './components/App/App'
-import videoAdapters from './lib/video_adapters'
-import loadConfig from './config'
 
 
-window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
+class CaptainFactOverlayInjector {
   constructor(config) {
-    this.config = loadConfig(config)
+    ConfigurationState.load(config)
+    this.config = store.getState().Configuration
     this.mountedFacts = []
     this.injectedFactsContainers = []
     this.defaultFactsInjector = this.defaultFactsInjector.bind(this)
@@ -100,8 +101,8 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
     const injector = this.config.injector.factsInjector || this.defaultFactsInjector
     injector(
       this.factsMounter, video,
-      () => <App videoUrl={videoUrl} player={player} config={this.config.app}/>,
-      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar} icons={this.config.app.graphics.logo}/> : null
+      () => <App videoUrl={videoUrl} player={player}/>,
+      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
     )
   }
 
@@ -152,7 +153,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
 }
 
 // If config is defined in the global scope, instantiate after window.onload
-if (typeof window.CaptainFactOverlayConfig !== 'undefined')
+if (typeof window !== 'undefined' && typeof window.CaptainFactOverlayConfig !== 'undefined')
   window.addEventListener('load', () => {
     window.injectedCaptainFactOverlay = new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
   })

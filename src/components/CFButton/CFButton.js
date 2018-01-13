@@ -57,5 +57,6 @@ export default connect(state => ({
   hasStatements: state.Statements.data.size !== 0,
   hasVideo: !!state.Video.data,
   displayed: state.Interface.sidebarCollapsed,
-  statement: getFocusedStatement(state)
+  statement: getFocusedStatement(state),
+  icons: state.Configuration.getIn(['app', 'graphics', 'logo'])
 }))(CFButton)

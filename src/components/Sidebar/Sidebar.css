@@ -82,7 +82,7 @@
 }
 
 .jumpLink:hover {
-  text-shadow: 0 0 5px whitesmoke
+  text-shadow: 0 0 5px whitesmoke;
 }
 
 .jumpLink.disabled {

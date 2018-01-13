@@ -6,6 +6,10 @@
   padding: 0.5em;
 }
 
+.sourceLink img {
+  height: 1em;
+}
+
 .sourceLink:hover .articleTitle {
   text-decoration: underline;
 }

@@ -1,6 +1,6 @@
 .header {
   background: rgba(0, 0, 0, 0.75);
-  padding: 2px 7px 4px;
+  padding: 0.25em 0.5em;
   font-size: 1.5em;
   border: 1px solid #2f2f2f;
 }
@@ -23,6 +23,7 @@
 .title:hover {
   font-size: 1em;
   text-decoration: underline;
+  text-shadow: 0 0 5px whitesmoke;
 }
 
 .closeBtn {

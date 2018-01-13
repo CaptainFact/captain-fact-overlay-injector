@@ -4,6 +4,7 @@ import UserAppellation from './UserAppellation'
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
 import { staticResource } from '../../lib/static_resource'
 import starImageFile from '../../assets/star.png'
+import { connect } from 'react-redux'
 
 
 const getUserPicture = (userId, url, url_mini, size) => {
@@ -12,7 +13,7 @@ const getUserPicture = (userId, url, url_mini, size) => {
   return size <= 48 ? staticResource(url_mini) : staticResource(url)
 }
 
-export default class Fact extends React.PureComponent {
+export class Fact extends React.PureComponent {
   render() {
     const { approve, text, source, user, score } = this.props.comment
     const factType = approve === true ? approvingFact : approve === false ? refutingFact : regularFact
@@ -22,9 +23,9 @@ export default class Fact extends React.PureComponent {
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
-            <img src={this.props.imgStar || starImageFile}/>
+            <img src={this.props.graphics.star || starImageFile}/>
           </span>
-          <Source source={source}/>
+          <Source source={source} imgNewTab={this.props.graphics.newTab}/>
         </div>
         {text && text.length > 0 &&
           <div className={userSection}>
@@ -40,3 +41,6 @@ export default class Fact extends React.PureComponent {
   }
 }
 
+export default connect(state => ({
+  graphics: state.Configuration.getIn(['app', 'graphics'])
+}))(Fact)
