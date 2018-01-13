@@ -18,11 +18,15 @@
 <!-- CaptainFact injection -->
 <script>
   window.CaptainFactOverlayConfig = {
-    videosSelectorFunc: () => [document.getElementById('video')],
-    urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
-    getPlayer: (video, adapters) => null,
-    activateToggleBtnClass: 'toggle-btn-container',
-    display: 'block'
+    injector: {
+      videosSelectorFunc: () => [document.getElementById('video')],
+      urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+      getPlayer: (video, adapters) => null,
+      activateToggleBtnClass: 'toggle-btn-container',
+    },
+    app: {
+      display: 'block'
+    }
   }
 </script>
 <script src="captainfact-overlay-injector.js"></script>

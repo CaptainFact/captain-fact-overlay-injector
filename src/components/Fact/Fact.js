@@ -21,7 +21,8 @@ export default class Fact extends React.PureComponent {
       <div className={`${fact} ${factType}`}>
         <div className={sourceSection}>
           <span className={scoreTag}>
-            {score || 0} <img src={starImage} style={{height: '1em'}}/>
+            <span>{score || 0} </span>
+            <img src={starImage}/>
           </span>
           <Source source={source}/>
         </div>

@@ -3,23 +3,19 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import "babel-polyfill"
 
-import DEFAULT_CONFIG from 'config'
-
 import store from './components/App/store'
 import { InterfaceState } from './components/App/interface_reducer'
-import { ConfigurationState } from './components/App/Configuration/reducer'
 
 import CFToggleButton from './components/CFToggleButton/CFToggleButton'
 import CFButton from './components/CFButton/CFButton'
 import App from './components/App/App'
 import videoAdapters from './lib/video_adapters'
+import loadConfig from './config'
 
 
 window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
-  constructor(config={}) {
-    // TODO check config and warn user if missing keys
-    ConfigurationState.load(config)
-    this.config = Object.assign(DEFAULT_CONFIG, config)
+  constructor(config) {
+    this.config = loadConfig(config)
     this.mountedFacts = []
     this.injectedFactsContainers = []
     this.defaultFactsInjector = this.defaultFactsInjector.bind(this)
@@ -85,7 +81,7 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   mountAllFactsEngine() {
     if (!store.getState().Interface.isEnabled)
       return false
-    const videos = this.config.videosSelectorFunc()
+    const videos = this.config.injector.videosSelectorFunc()
     if (videos.length === 0)
       return 0
     // TODO We only support a single video at the moment
@@ -93,19 +89,19 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   }
 
   mountFactEngine(video) {
-    const isOverlay = !this.config.display || this.config.display === 'overlay'
-    const videoUrl = this.config.urlExtractor(video)
-    const player = this.config.getPlayer(video, videoAdapters)
+    const isOverlay = this.config.app.display === 'overlay'
+    const videoUrl = this.config.injector.urlExtractor(video)
+    const player = this.config.injector.getPlayer(video, videoAdapters)
 
     // Ensure parent will hide sidebar correctly with animated overlay
-    if (this.config.animated !== false && isOverlay)
+    if (this.config.app.animated !== false && isOverlay)
       video.style.overflow = 'hidden'
 
     // Send components generators to injector
-    const injector = this.config.factsInjector || this.defaultFactsInjector
+    const injector = this.config.injector.factsInjector || this.defaultFactsInjector
     injector(
       this.factsMounter, video,
-      () => <App videoUrl={videoUrl} player={player} display={this.config.display || 'overlay'}/>,
+      () => <App videoUrl={videoUrl} player={player} config={this.config.app}/>,
       () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
     )
   }
@@ -131,9 +127,9 @@ window.CaptainFactOverlayInjector = class CaptainFactOverlayInjector {
   }
 
   mountActivateToggleBtns() {
-    if (!this.config.activateToggleBtnClass)
+    if (!this.config.injector.activateToggleBtnClass)
       return 0
-    const allContainers = document.getElementsByClassName(this.config.activateToggleBtnClass)
+    const allContainers = document.getElementsByClassName(this.config.injector.activateToggleBtnClass)
     for (let container of allContainers) {
       this.mountWithStore(container, <CFToggleButton enable={this.enable} disable={this.disable}/>)
     }

@@ -7,12 +7,10 @@ import { StatementsState } from '../Statement/reducer'
 import { VideoState } from '../Video/reducer'
 import { PlaybackState } from './playback_reducer'
 import { InterfaceState } from './interface_reducer'
-import { ConfigurationState } from './Configuration/reducer'
 
 
 // Declare reducers
 const reducers = combineReducers({
-  Configuration: ConfigurationState,
   Video: VideoState,
   Statements: StatementsState,
   Interface: InterfaceState,
@@ -34,7 +32,6 @@ store.reset = () => {
   StatementsState.reset()
   PlaybackState.reset()
   InterfaceState.reset()
-  ConfigurationState.reset()
 }
 
 export default store

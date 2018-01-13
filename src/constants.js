@@ -1,3 +1,8 @@
-export const STATEMENT_FOCUS_TIME = 30
-export const FRONTEND_URL = "http://localhost:3333"
-export const API_URL = "http://localhost:4000"
+import envConstants from 'env-constants'
+
+
+export default Object.assign({
+  STATEMENT_FOCUS_TIME: 30,
+  FRONTEND_URL: null,
+  API_URL: null,
+}, envConstants)

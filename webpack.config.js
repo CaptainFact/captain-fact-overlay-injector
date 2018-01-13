@@ -5,12 +5,13 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    port: 3342
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      config: path.join(__dirname, './config/dev.js')
+      'env-constants': path.join(__dirname, `./constants/${env}.js`)
     }
   },
   module: {

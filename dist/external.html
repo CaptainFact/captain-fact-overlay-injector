@@ -33,11 +33,15 @@
     }
     function initialize() {
       new window.CaptainFactOverlayInjector({
-        videosSelectorFunc: document => [video],
-        urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
-        activateToggleBtnClass: 'toggle-btn-container',
-        display: 'block',
-        factsInjector: (mountFunc, video, facts) => mountFunc(document.getElementById('facts-container'), facts)
+        injector: {
+          videosSelectorFunc: document => [video],
+          urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+          activateToggleBtnClass: 'toggle-btn-container',
+          factsInjector: (mountFunc, video, facts) => mountFunc(document.getElementById('facts-container'), facts),
+        },
+        app: {
+          display: 'block'
+        }
       })
     }
   </script>

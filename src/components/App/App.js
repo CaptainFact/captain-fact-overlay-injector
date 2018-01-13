@@ -22,7 +22,7 @@ export default class App extends React.PureComponent {
         <div className={styles.app}>
           <Sidebar video={this.props.video}
                    player={this.props.player}
-                   display={this.props.display}
+                   config={this.props.config}
           />
         </div>
       )

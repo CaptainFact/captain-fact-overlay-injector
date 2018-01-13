@@ -15,8 +15,8 @@ import {
 } from './Sidebar.css'
 import { PlaybackState } from '../App/playback_reducer'
 
-import imgNewTab from "../../assets/new_tab.png"
 import { FRONTEND_URL, STATEMENT_FOCUS_TIME } from '../../constants'
+import Header from './Header'
 
 
 @connect(state => ({
@@ -116,27 +116,20 @@ export default class Sidebar extends Component {
   render() {
     const currentStatementIdx = this.getFocusedStatementIndex()
     const currentStatement = currentStatementIdx === -1 ? null : this.props.statements.get(currentStatementIdx)
-    const {statements, isCollapsed, display='overlay', animate=true} = this.props
-    const togglable = display === 'overlay'
+    const {statements, isCollapsed, config: {display, animate, graphics}} = this.props
+    const isOverlay = display === 'overlay'
     const classes = classnames(sidebar, this.collapseAnimation, {
-      [collapsed]: togglable && isCollapsed,
+      [collapsed]: isOverlay && isCollapsed,
       [isBlock]: display === 'block',
       [animated]: animate
     })
 
     return (
       <div className={classes}>
-        <div className={sidebarHeader}>
-          <a href={`${FRONTEND_URL}/videos/${this.props.videoId}`} target="_BLANK"
-             title="Open discussion on CaptainFact">
-            <h1 className={title}>CaptainFact <img src={imgNewTab}/></h1>
-          </a>
-          {togglable &&
-          <a title="Close sidebar" className={closeBtn} onClick={InterfaceState.closeSidebar}>
-            ❌
-          </a>
-          }
-        </div>
+        <Header videoId={this.props.videoId}
+                onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
+                imgNewTab={graphics.newTab}
+        />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>
           {this.state.currentView === "facts" && currentStatementIdx !== -1 &&
@@ -156,6 +149,6 @@ export default class Sidebar extends Component {
           }
         </div>
       </div>
-    );
+    )
   }
 }

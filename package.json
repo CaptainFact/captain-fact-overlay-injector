@@ -4,21 +4,19 @@
   "description": "http://captainfact.io - Injects facts overlays ",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "watch": "jest --watch",
     "test": "jest",
     "coverage": "jest --coverage '--collectCoverageFrom=app/**/!(record).{js,jsx}'"
   },
   "jest": {
-    "setupFiles": [
-      "./tests_setup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "setupFiles": ["./tests_setup.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "testPathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/constants/"],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png)$": "<rootDir>/src/__mocks__/fileMock.js"
+      "\\.(jpg|jpeg|png)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "env-constants": "<rootDir>/constants/test.js"
     }
   },
   "repository": {

@@ -10,8 +10,8 @@ export default class Statement extends PureComponent {
     const { text, speaker, time } = this.props.statement
     return (
       <div className={classnames(statementDisplay, {[focused]: this.props.isFocused})}>
-        {this.props.textPrefix || ''}
         <div className={tag}>
+          {this.props.textPrefix || ''}
           {speaker ? <strong>{speaker.full_name} at </strong> : 'At ' }
           <TimeDisplay textBefore="" time={time} handleClick={this.props.onTimeClick}/>
         </div>

@@ -1,68 +1,82 @@
 .fact {
-    display: block;
-    border-bottom: 1px solid #303030;
+  display: block;
+  border: 1px solid rgba(101, 101, 101, 0.65)
+}
+
+.fact:not(:last-child) {
+  margin-bottom: 0.25em;
 }
 
 .sourceSection {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 .scoreTag {
-    font-size: 1em;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: #cec8c8;
-    height: 1.2em;
-    background: rgba(53, 53, 53, 0.53);
-    padding: 0 5px;
-    border-radius: 4px;
-    float: right;
+  font-size: 1em;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #cec8c8;
+  height: 1.2em;
+  background: rgba(53, 53, 53, 0.53);
+  padding: 0 5px;
+  border-radius: 4px;
+  float: right;
+}
+
+.scoreTag span, .scoreTag img {
+  vertical-align: middle;
+}
+
+.scoreTag img {
+  height: 0.8em;
 }
 
 .userSection {
-    font-size: 0.8em;
-    padding: 5px 10px;
-    background-color: #4a4343;
-    display: flex;
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background-color: #4a4343;
+  display: flex;
 }
 
 .userSection > .right {
-    padding-left: 7px;
+  padding-left: 7px;
 }
 
 .userCommentText {
-    font-style: italic;
+  font-style: italic;
+  color: #bbbbbb;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.45);
 }
 
 /* Approving facts */
 
 .approvingFact > .sourceSection {
-    background-color: #2EBE00;
+  background-color: #2EBE00;
 }
 
 .approvingFact > .sourceSection:hover {
-    background-color: #2bb300;
+  background-color: #2bb300;
 }
 
 .approvingFact > .userSection {
-    background-color: #228c00;
+  background-color: #228c00;
 }
 
 /* Refuting facts */
 
 .refutingFact > .sourceSection {
-    background-color: #c5132c;
+  background-color: #c5132c;
 }
 
 .refutingFact > .sourceSection:hover {
-    background-color: #bd122a;
+  background-color: #bd122a;
 }
 
 .refutingFact > .userSection {
-    background-color: #8a2b38;
+  background-color: #8a2b38;
 }
 
 /* Regular fact */
 .regularFact > .sourceSection {
-    background: #636363;
+  background: #636363;
 }
