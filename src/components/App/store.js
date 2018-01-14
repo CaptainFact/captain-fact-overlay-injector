@@ -34,7 +34,6 @@ store.reset = () => {
   StatementsState.reset()
   PlaybackState.reset()
   InterfaceState.reset()
-  ConfigurationState.reset()
 }
 
 export default store

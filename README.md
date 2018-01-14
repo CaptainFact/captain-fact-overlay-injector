@@ -135,6 +135,28 @@ window.CaptainFactOverlayConfig = {
 }
 ```
 
+# API methods
+
+Injector has following methods :
+
+```javascript
+  /**
+   * Enable the fact injector
+   * @returns {boolean} - returns false if already enabled or mounted
+   */
+  enable()
+
+  /**
+   * Disable fact injector and unmount all mounted facts
+   */
+  disable()
+
+  /**
+   * Unmount existing overlay and reload everything (except configuration)
+   */
+  reload()
+```
+
 # Developing
 
 TODO

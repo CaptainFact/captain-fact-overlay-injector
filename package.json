@@ -4,6 +4,7 @@
   "description": "http://captainfact.io - Injects facts overlays ",
   "scripts": {
     "build": "webpack --env production",
+    "build_dev": "webpack --env dev",
     "start": "webpack-dev-server --env dev",
     "watch": "webpack -w",
     "test": "jest",

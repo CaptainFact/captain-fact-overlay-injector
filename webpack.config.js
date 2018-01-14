@@ -6,6 +6,8 @@ const CompressionPlugin = require("compression-webpack-plugin")
 
 
 module.exports = (env='dev') => {
+  console.log(`Build for ${env}`)
+
   // Default config
   const config = {
     entry: {
@@ -13,7 +15,7 @@ module.exports = (env='dev') => {
     },
     devtool: 'inline-source-map',
     devServer: {contentBase: './dist', port: 3342},
-    plugins: [new BundleAnalyzerPlugin({openAnalyzer: false})],
+    // plugins: [new BundleAnalyzerPlugin({openAnalyzer: false})],
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {'env-constants': path.join(__dirname, `./constants/${env}.js`)}

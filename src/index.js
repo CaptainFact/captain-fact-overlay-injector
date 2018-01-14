@@ -55,12 +55,17 @@ class CaptainFactOverlayInjector {
   }
 
   /**
-   * Unmount existing overlay and reload everything. Useful with single page apps
+   * Unmount existing overlay and reload everything (except configuration)
    */
   reload() {
     this.unmountAll()
     store.reset()
     this.mountAll()
+  }
+
+  isEnabled() {
+    // Only use isEnabled if ON / OFF toggle is present
+    return this.config.injector.onOffToggleSelector ? store.getState().Interface.isEnabled : true
   }
 
   // ---- Private API ----
@@ -79,7 +84,7 @@ class CaptainFactOverlayInjector {
   }
 
   mountAllFactsEngine() {
-    if (!store.getState().Interface.isEnabled)
+    if (!this.isEnabled())
       return false
     const videos = this.config.injector.videosSelector()
     if (videos.length === 0)
