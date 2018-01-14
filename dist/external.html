@@ -34,9 +34,9 @@
     function initialize() {
       new window.CaptainFactOverlayInjector({
         injector: {
-          videosSelectorFunc: document => [video],
+          videosSelector: document => [video],
           urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
-          activateToggleBtnClass: 'toggle-btn-container',
+          onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
           factsInjector: (mountFunc, video, facts) => mountFunc(document.getElementById('facts-container'), facts),
         },
         app: {

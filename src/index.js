@@ -7,7 +7,7 @@ import { InterfaceState } from './components/App/interface_reducer'
 import { ConfigurationState } from './components/App/Configuration/reducer'
 
 import videoAdapters from './lib/video_adapters'
-import CFToggleButton from './components/CFToggleButton/CFToggleButton'
+import OnOffToggle from './components/OnOffToggle/OnOffToggle'
 import CFButton from './components/CFButton/CFButton'
 import App from './components/App/App'
 
@@ -81,7 +81,7 @@ class CaptainFactOverlayInjector {
   mountAllFactsEngine() {
     if (!store.getState().Interface.isEnabled)
       return false
-    const videos = this.config.injector.videosSelectorFunc()
+    const videos = this.config.injector.videosSelector()
     if (videos.length === 0)
       return 0
     // TODO We only support a single video at the moment
@@ -127,13 +127,13 @@ class CaptainFactOverlayInjector {
   }
 
   mountActivateToggleBtns() {
-    if (!this.config.injector.activateToggleBtnClass)
+    if (!this.config.injector.onOffToggleSelector)
       return 0
-    const allContainers = document.getElementsByClassName(this.config.injector.activateToggleBtnClass)
+    const allContainers = this.config.injector.onOffToggleSelector()
     for (let container of allContainers) {
       this.mountWithStore(
         container,
-        <CFToggleButton enable={this.enable} disable={this.disable} icon={this.config.app.graphics.logo.neutral}/>
+        <OnOffToggle enable={this.enable} disable={this.disable} icon={this.config.app.graphics.logo.neutral}/>
       )
     }
   }

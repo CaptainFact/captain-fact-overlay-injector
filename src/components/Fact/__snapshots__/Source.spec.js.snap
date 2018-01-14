@@ -6,7 +6,9 @@ exports[`full source 1`] = `
   href="https://truetruth.local/this-is-the-truth"
   target="_BLANK"
 >
-  <div>
+  <div
+    className="siteNameContainer"
+  >
     <img
       src="test-file-stub"
     />
@@ -31,7 +33,9 @@ exports[`source without site name 1`] = `
   href="https://truetruth.local/this-is-the-truth"
   target="_BLANK"
 >
-  <div>
+  <div
+    className="siteNameContainer"
+  >
     <img
       src="test-file-stub"
     />
@@ -56,7 +60,9 @@ exports[`with custom new tab image 1`] = `
   href="https://truetruth.local/this-is-the-truth"
   target="_BLANK"
 >
-  <div>
+  <div
+    className="siteNameContainer"
+  >
     <img
       src="custom-pic.jpg"
     />

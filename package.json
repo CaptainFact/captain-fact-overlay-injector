@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --env dev",
     "watch": "webpack -w",
     "test": "jest",
-    "watch_test": "jest --watch",
+    "wtest": "jest --watch",
     "coverage": "jest --coverage '--collectCoverageFrom=app/**/!(record).{js,jsx}'"
   },
   "jest": {

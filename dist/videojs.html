@@ -34,10 +34,13 @@
   <script>
     window.CaptainFactOverlayConfig = {
       injector: {
-        videosSelectorFunc:     () => [document.getElementById('video')],
-        urlExtractor:           video => "https://www.youtube.com/embed/OhWRT3PhMJs",
-        getPlayer:              (video, adapters) => new adapters.HTML5(video.querySelector('video')),
-        activateToggleBtnClass: 'toggle-btn-container'
+        videosSelector: () => [document.getElementById('video')],
+        urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+        getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
+        onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
+      },
+      app: {
+        baseSize: '15px'
       }
     }
   </script>

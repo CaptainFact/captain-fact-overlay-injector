@@ -2,11 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import {container, icon, title, radioBtn, active} from './CFToggleButton.css'
+import {container, icon, title, radioBtn, active} from './OnOffToggle.css'
 import DEFAULT_ICON from '../../assets/icon.png'
 
 
-export class CFToggleButton extends React.PureComponent {
+export class OnOffToggle extends React.PureComponent {
   render() {
     return (
       <div className={container}>
@@ -30,4 +30,4 @@ export class CFToggleButton extends React.PureComponent {
   }
 }
 
-export default connect(state => ({isEnabled: state.Interface.isEnabled}))(CFToggleButton)
+export default connect(state => ({isEnabled: state.Interface.isEnabled}))(OnOffToggle)

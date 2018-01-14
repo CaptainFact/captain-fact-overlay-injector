@@ -20,6 +20,7 @@ export class CFButton extends React.PureComponent {
     const globalScore = this.calculateGlobalScore()
     return (
       <img src={this.getIcon(globalScore)}
+        style={{fontSize: this.props.baseSize || '1em'}}
         className={this.getClassNames()}
         title="CaptainFact"
         onClick={InterfaceState.openSidebar}
@@ -58,5 +59,6 @@ export default connect(state => ({
   hasVideo: !!state.Video.data,
   displayed: state.Interface.sidebarCollapsed,
   statement: getFocusedStatement(state),
-  icons: state.Configuration.getIn(['app', 'graphics', 'logo'])
+  icons: state.Configuration.app.graphics.logo,
+  baseSize: state.Configuration.app.baseSize
 }))(CFButton)

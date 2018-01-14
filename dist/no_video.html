@@ -19,10 +19,10 @@
 <script>
   window.CaptainFactOverlayConfig = {
     injector: {
-      videosSelectorFunc: () => [document.getElementById('video')],
+      videosSelector: () => [document.getElementById('video')],
       urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
       getPlayer: (video, adapters) => null,
-      activateToggleBtnClass: 'toggle-btn-container',
+      onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
     },
     app: {
       display: 'block'

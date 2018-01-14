@@ -1,5 +1,5 @@
 .cfbutton {
-  font-size: 13px;
+  font-size: 1em;
   position: absolute;
   right: 1.7em;
   top: 4.2em;
@@ -17,6 +17,10 @@
 
 .cfbutton:hover {
   transform: scale(1.1);
+}
+
+.cfbutton:not(.pulse):not(:hover) {
+  opacity: 0.6;
 }
 
 .pulse:not(:hover) {
