@@ -11,7 +11,7 @@ module.exports = (env='dev') => {
   // Default config
   const config = {
     entry: {
-      'captainfact-overlay-injector': './src/index.js'
+      'captain-fact-overlay-injector': './src/index.js'
     },
     devtool: 'inline-source-map',
     devServer: {contentBase: './dist', port: 3342},
@@ -38,7 +38,12 @@ module.exports = (env='dev') => {
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          use: ['file-loader']
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: (file) => `assets/[name].[ext]`
+            }
+          }
         }
       ]
     },
@@ -54,7 +59,7 @@ module.exports = (env='dev') => {
   if (env === 'production') {
     delete config.devtool
     delete config.devServer
-    config.entry['captainfact-overlay-injector.min'] = './src/index.js'
+    config.entry['captain-fact-overlay-injector.min'] = './src/index.js'
     config.plugins = [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')

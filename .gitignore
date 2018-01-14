@@ -3,4 +3,4 @@ npm-debug.log
 
 .idea
 dist/*
-!dist/*.html
+!dist/test

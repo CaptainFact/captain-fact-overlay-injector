@@ -9,7 +9,7 @@
   'use strict';
   var videojs = null;
   if(typeof window.videojs === 'undefined' && typeof require === 'function') {
-    videojs = require('video.js');
+    videojs = require('./video');
   } else {
     videojs = window.videojs;
   }
