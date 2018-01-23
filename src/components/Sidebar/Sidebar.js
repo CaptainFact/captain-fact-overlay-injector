@@ -3,7 +3,6 @@ import { Actions } from 'jumpstate'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import { fetchStatements } from '../Statement/effects'
 import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
 import { icon } from "../Utils/Icon.css"
@@ -46,7 +45,6 @@ export default class Sidebar extends Component {
   }
 
   componentDidMount() {
-    fetchStatements(this.props.video.id)
     if (this.props.player)
       this.props.player.onTimeUpdate(this.onTimeUpdate.bind(this))
   }

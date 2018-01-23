@@ -41,7 +41,8 @@ module.exports = (env='dev') => {
           use: {
             loader: 'file-loader',
             options: {
-              name: (file) => `assets/[name].[ext]`
+              name: '/[path][name].[ext]',
+              context: 'src',
             }
           }
         }

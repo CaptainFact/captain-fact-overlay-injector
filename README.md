@@ -8,9 +8,11 @@ This repo holds the overlay injector script, that basically add facts over video
 It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension)
 and can be integrated on any website freely. 
 
-☑️ Basic injection <br>
-☑️ Dynamic configuration <br>
-☐ Multiple videos on a single page <br>
+
+- [x] Basic injection
+- [x] Dynamic configuration
+- [ ] Multiple videos on a single page
+- [ ] Autosize
 
 
 # Usage

@@ -1,4 +1,5 @@
 import { Record } from 'immutable'
+import { API_URL } from '../../../constants'
 
 
 export default new Record({
@@ -87,5 +88,9 @@ export default new Record({
       newTab: undefined,
       star: undefined
     })()
-  })()
+  })(),
+
+  services: {
+    apiURL: API_URL
+  }
 })()

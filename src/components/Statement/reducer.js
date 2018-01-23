@@ -32,10 +32,14 @@ function prepareStatementsList(statements) {
   const preparedStatements = []
   statements.forEach(({comments, ...attributes}) => {
     const preparedComments = new List(comments)
-      .filter(c => !c.score || c.score >= 0 && c.source !== null && c.approve !== null) // Approving / Refuting facts
+      .filter(filterFacts) // Approving / Refuting facts
       .sortBy(c => c.score ? -c.score : 0)
     if (preparedComments.count() > 0)
       preparedStatements.push(new Statement({comments: preparedComments, ...attributes}))
   })
   return new List(preparedStatements).sortBy(st => st.time)
+}
+
+function filterFacts(c) {
+  return (!c.score || c.score >= 0) && c.source !== null && c.replyToId === null
 }
