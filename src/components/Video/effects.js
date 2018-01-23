@@ -14,7 +14,6 @@ const buildRequest = url => `{
       text
       time
       speaker {
-        id
         fullName
       }
       comments {

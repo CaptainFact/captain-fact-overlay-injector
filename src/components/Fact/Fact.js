@@ -29,7 +29,7 @@ export class Fact extends React.PureComponent {
         </div>
         {text && text.length > 0 &&
           <div className={userSection}>
-            <img src={getUserPicture(user.id, user.picture_url, user.mini_picture_url, 32)} height="28"/>
+            <img src={user.miniPictureUrl} height="24"/>
             <div className={right}>
               <UserAppellation user={user}/>&nbsp;
               <span className={userCommentText}>{text}</span>

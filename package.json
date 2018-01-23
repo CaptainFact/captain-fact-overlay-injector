@@ -8,6 +8,7 @@
     "build_dev": "webpack --env dev",
     "start": "webpack-dev-server --env dev",
     "watch": "webpack -w",
+    "watchp": "webpack -w -p",
     "test": "jest",
     "wtest": "jest --watch",
     "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'"

@@ -93,8 +93,7 @@ exports[`with text 1`] = `
     className="userSection"
   >
     <img
-      height="28"
-      src="https://api.adorable.io/avatars/32/42.png"
+      height="24"
     />
     <div
       className="right"

@@ -4,7 +4,7 @@
 }
 
 .fact:not(:last-child) {
-  margin-bottom: 0.25em;
+  border-bottom: 0.05em solid #353535;
 }
 
 .sourceSection {
@@ -80,4 +80,8 @@
 /* Regular fact */
 .regularFact > .sourceSection {
   background: #636363;
+}
+
+.regularFact > .sourceSection:hover {
+  background-color: #5d5d5d;
 }
