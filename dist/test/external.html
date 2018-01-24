@@ -7,7 +7,7 @@
   <h2><a href="/"><= Back to index</a></h2>
   <hr/><br/>
   <iframe id="video" type="text/html" width="640" height="360"
-          src="https://www.youtube.com/embed/OhWRT3PhMJs?enablejsapi=1"
+          src="https://www.youtube.com/embed/LMRdn_MQWXM?enablejsapi=1"
           frameborder="0"></iframe>
   <div>
     <h2>Facts</h2>
@@ -27,7 +27,7 @@
     let player = null
     function onYouTubeIframeAPIReady() {
       player = new YT.Player(video, {
-        videoId: 'OhWRT3PhMJs',
+        videoId: 'LMRdn_MQWXM',
         events: {onReady: initialize}
       });
     }
@@ -35,9 +35,10 @@
       new window.CaptainFactOverlayInjector({
         injector: {
           videosSelector: document => [video],
-          urlExtractor: video => "https://www.youtube.com/embed/OhWRT3PhMJs",
+          urlExtractor: video => "https://www.youtube.com/watch?v=LMRdn_MQWXM",
           onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container'),
           factsInjector: (mountFunc, video, facts) => mountFunc(document.getElementById('facts-container'), facts),
+          getPlayer: (video, adapters) => new adapters.Youtube(player),
         },
         app: {
           display: 'block'
