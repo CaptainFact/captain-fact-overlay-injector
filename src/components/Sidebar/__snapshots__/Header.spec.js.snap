@@ -5,7 +5,7 @@ exports[`default render 1`] = `
   className="header"
 >
   <a
-    href="https://testing.captainfact.io/videos/42"
+    href="https://testing.captainfact.io/videos/xxxx"
     target="_BLANK"
     title="Open discussion on CaptainFact"
   >
@@ -26,7 +26,7 @@ exports[`new tab image can be override 1`] = `
   className="header"
 >
   <a
-    href="https://testing.captainfact.io/videos/42"
+    href="https://testing.captainfact.io/videos/xxxx"
     target="_BLANK"
     title="Open discussion on CaptainFact"
   >
@@ -47,7 +47,7 @@ exports[`show toggle if given a close function 1`] = `
   className="header"
 >
   <a
-    href="https://testing.captainfact.io/videos/50"
+    href="https://testing.captainfact.io/videos/xxxx"
     target="_BLANK"
     title="Open discussion on CaptainFact"
   >
