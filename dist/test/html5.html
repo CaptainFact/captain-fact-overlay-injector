@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>CaptainFact Overlay Injector - Testing</title>
+</head>
+<body>
+<h1>Simple HTML5 player, overlayed (no fullscreen)</h1>
+<h2><a href="/"><= Back to index</a></h2>
+<hr/>
+<br/>
+<div id="video" style="display: block; width: 800px; height: 450px; position: relative;">
+  <video controls width="800" height="450" poster="https://thinkerview.com/wp-content/uploads/Cedric-villani-1024x576.jpg">
+    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=240"
+            type="video/mp4">
+  </video>
+</div>
+<br/><br/>
+<div>
+  <h2>Activation Toggle</h2>
+  <div class="toggle-btn-container"></div>
+</div>
+
+<!-- CaptainFact injection -->
+<script>
+  window.CaptainFactOverlayConfig = {
+    injector: {
+      videosSelector: () => [document.getElementById('video')],
+      urlExtractor: video => "https://www.youtube.com/watch?v=LMRdn_MQWXM",
+      getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
+      onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
+    }
+  }
+</script>
+<script src="../captain-fact-overlay-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+.fact {
+  display: block;
+  border: 1px solid rgba(101, 101, 101, 0.65)
+}
+
+.fact:not(:last-child) {
+  border-bottom: 0.05em solid #353535;
+}
+
+.sourceSection {
+  min-height: 2em;
+  padding: 0.1em;
+}
+
+.scoreTag {
+  font-size: 0.9em;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #cec8c8;
+  background: rgba(53, 53, 53, 0.5);
+  padding: 0.4em 0.5em;
+  margin: 0.2em;
+  border-radius: 4px;
+  float: right;
+}
+
+.scoreTag span, .scoreTag img {
+  vertical-align: middle;
+}
+
+.scoreTag img {
+  height: 0.8em;
+}
+
+.userSection {
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background-color: #4a4343;
+  display: flex;
+}
+
+.userSection > .right {
+  padding-left: 7px;
+}
+
+.userCommentText {
+  font-style: italic;
+  color: #dadada;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.45);
+}
+
+/* Approving facts */
+
+.approvingFact > .sourceSection {
+  background-color: #2EBE00;
+}
+
+.approvingFact > .sourceSection:hover {
+  background-color: #2bb300;
+}
+
+.approvingFact > .userSection {
+  background-color: #228c00;
+}
+
+/* Refuting facts */
+
+.refutingFact > .sourceSection {
+  background-color: #c5132c;
+}
+
+.refutingFact > .sourceSection:hover {
+  background-color: #bd122a;
+}
+
+.refutingFact > .userSection {
+  background-color: #8a2b38;
+}
+
+/* Regular fact */
+.regularFact > .sourceSection {
+  background: #636363;
+}
+
+.regularFact > .sourceSection:hover {
+  background-color: #5d5d5d;
+}

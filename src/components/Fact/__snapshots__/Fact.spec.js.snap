@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`approving fact 1`] = `
+<div
+  className="fact approvingFact"
+>
+  <div
+    className="sourceSection"
+  >
+    <span
+      className="scoreTag"
+    >
+      <span>
+        1337
+         
+      </span>
+      <img
+        src="test-file-stub"
+      />
+    </span>
+    <Source />
+  </div>
+</div>
+`;
+
+exports[`custom star image 1`] = `
+<div
+  className="fact approvingFact"
+>
+  <div
+    className="sourceSection"
+  >
+    <span
+      className="scoreTag"
+    >
+      <span>
+        1337
+         
+      </span>
+      <img
+        src="custom.jpg"
+      />
+    </span>
+    <Source />
+  </div>
+</div>
+`;
+
+exports[`refuting fact 1`] = `
+<div
+  className="fact refutingFact"
+>
+  <div
+    className="sourceSection"
+  >
+    <span
+      className="scoreTag"
+    >
+      <span>
+        1337
+         
+      </span>
+      <img
+        src="test-file-stub"
+      />
+    </span>
+    <Source />
+  </div>
+</div>
+`;
+
+exports[`with text 1`] = `
+<div
+  className="fact approvingFact"
+>
+  <div
+    className="sourceSection"
+  >
+    <span
+      className="scoreTag"
+    >
+      <span>
+        1337
+         
+      </span>
+      <img
+        src="test-file-stub"
+      />
+    </span>
+    <Source />
+  </div>
+  <div
+    className="userSection"
+  >
+    <img
+      height="24"
+    />
+    <div
+      className="right"
+    >
+      <UserAppellation
+        user={
+          Object {
+            "id": 42,
+          }
+        }
+      />
+       
+      <span
+        className="userCommentText"
+      >
+        Foobar
+      </span>
+    </div>
+  </div>
+</div>
+`;

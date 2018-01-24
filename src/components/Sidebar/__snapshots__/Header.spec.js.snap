@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default render 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="https://testing.captainfact.io/videos/xxxx"
+    target="_BLANK"
+    title="Open discussion on CaptainFact"
+  >
+    <h1
+      className="title"
+    >
+      CaptainFact 
+      <img
+        src="test-file-stub"
+      />
+    </h1>
+  </a>
+</div>
+`;
+
+exports[`new tab image can be override 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="https://testing.captainfact.io/videos/xxxx"
+    target="_BLANK"
+    title="Open discussion on CaptainFact"
+  >
+    <h1
+      className="title"
+    >
+      CaptainFact 
+      <img
+        src="overrided-pic.jpg"
+      />
+    </h1>
+  </a>
+</div>
+`;
+
+exports[`show toggle if given a close function 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="https://testing.captainfact.io/videos/xxxx"
+    target="_BLANK"
+    title="Open discussion on CaptainFact"
+  >
+    <h1
+      className="title"
+    >
+      CaptainFact 
+      <img
+        src="test-file-stub"
+      />
+    </h1>
+  </a>
+  <a
+    className="closeBtn"
+    onClick={[Function]}
+    title="Close sidebar"
+  >
+    ❌
+  </a>
+</div>
+`;

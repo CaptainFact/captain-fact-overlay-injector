@@ -1,0 +1,36 @@
+.statementDisplay {
+  text-align: left;
+  padding: 0.5em;
+  background: #31455d;
+  color: #eaeaea;
+  font-size: 0.9em;
+}
+
+.statementDisplay.focused {
+  box-shadow: 0 0 12px -3px black inset;
+}
+
+.statementText {
+  font-style: italic;
+  margin: 0.35em 0 0 0;
+}
+
+.tag {
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  color: #4a4a4a;
+  display: inline-flex;
+  font-size: 0.9em;
+  justify-content: center;
+  line-height: 1.5;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-right: 0.4em;
+  white-space: pre;
+  vertical-align: middle;
+}
+
+.tag a:hover {
+  color: #0761ce;
+}
