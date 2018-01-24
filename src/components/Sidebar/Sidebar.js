@@ -22,7 +22,7 @@ import Header from './Header'
   statements: state.Statements.data,
   isLoading: state.Statements.isLoading,
   isCollapsed: state.Interface.sidebarCollapsed,
-  videoId: state.Video.data.id,
+  videoHashId: state.Video.data.hashId,
   config: state.Configuration.get('app')
 }))
 export default class Sidebar extends Component {
@@ -125,7 +125,7 @@ export default class Sidebar extends Component {
 
     return (
       <div className={classes}>
-        <Header videoId={this.props.videoId}
+        <Header videoHashId={this.props.videoHashId}
                 onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
                 imgNewTab={graphics.newTab}
         />

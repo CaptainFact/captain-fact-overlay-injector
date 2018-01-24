@@ -6,9 +6,9 @@ import { header, closeBtn, title } from './Header.css'
 import DEFAULT_IMG_NEW_TAB from "../../assets/new_tab.png"
 
 
-export const Header = ({videoId, onCloseClick=null, imgNewTab=DEFAULT_IMG_NEW_TAB}) =>
+export const Header = ({videoHashId, onCloseClick=null, imgNewTab=DEFAULT_IMG_NEW_TAB}) =>
   <div className={header}>
-    <a href={`${FRONTEND_URL}/videos/${videoId}`} target="_BLANK" title="Open discussion on CaptainFact">
+    <a href={`${FRONTEND_URL}/videos/${videoHashId}`} target="_BLANK" title="Open discussion on CaptainFact">
       <h1 className={title}>CaptainFact <img src={imgNewTab}/></h1>
     </a>
     {onCloseClick &&
