@@ -2,16 +2,9 @@ import React from 'react'
 import Source from './Source.js'
 import UserAppellation from './UserAppellation'
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
-import { staticResource } from '../../lib/static_resource'
 import starImageFile from '../../assets/star.png'
 import { connect } from 'react-redux'
 
-
-const getUserPicture = (userId, url, url_mini, size) => {
-  if (!url || !url_mini)
-    return `https://api.adorable.io/avatars/${size}/${userId}.png`
-  return size <= 48 ? staticResource(url_mini) : staticResource(url)
-}
 
 export class Fact extends React.PureComponent {
   render() {
