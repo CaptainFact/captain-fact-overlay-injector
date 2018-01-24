@@ -30,7 +30,7 @@ waiting for it to be ready.
 </script>
 
 <!-- Import CaptainFact main script -->
-<script src="[TODO]/embed.js" async/>
+<script src="https://captainfact.surge.sh/captain-fact-overlay-injector.min.js" async/>
 ```
 
 ## Imperative approach
@@ -38,7 +38,7 @@ waiting for it to be ready.
 You can also import the library and instantiate it yourself:
 
 ```html
-<script src="[TODO]/embed.js"/>
+<script src="https://captainfact.surge.sh/captain-fact-overlay-injector.min.js"/>
 ```
 
 Then:

@@ -6,6 +6,7 @@ const CompressionPlugin = require("compression-webpack-plugin")
 
 
 module.exports = (env='dev') => {
+  const isProd = env === 'production'
   console.log(`Build for ${env}`)
 
   // Default config
@@ -43,6 +44,7 @@ module.exports = (env='dev') => {
             options: {
               name: '/[path][name].[ext]',
               context: 'src',
+              publicPath: isProd ? "https://captainfact.surge.sh" : ""
             }
           }
         }
@@ -57,7 +59,7 @@ module.exports = (env='dev') => {
   };
 
   // Production override
-  if (env === 'production') {
+  if (isProd) {
     delete config.devtool
     delete config.devServer
     config.entry['captain-fact-overlay-injector.min'] = './src/index.js'
