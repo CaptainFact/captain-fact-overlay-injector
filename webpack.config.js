@@ -18,7 +18,8 @@ module.exports = (env='dev') => {
   // Default config
   const config = {
     entry: {
-      'captain-fact-overlay-injector': './src/index.js'
+      'captain-fact-overlay-injector': './src/index.js',
+      'captain-fact-overlay-injector.min': './src/index.js'
     },
     devtool: 'inline-source-map',
     devServer: {contentBase: './dist', port: 3342},
@@ -67,7 +68,6 @@ module.exports = (env='dev') => {
   // Production override
   if (isProd) {
     delete config.devtool
-    config.entry['captain-fact-overlay-injector.min'] = './src/index.js'
     config.plugins = COMMON_PLUGINS.concat([
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')

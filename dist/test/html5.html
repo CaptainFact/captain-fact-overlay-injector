@@ -8,8 +8,8 @@
 <hr/>
 <br/>
 <div id="video" style="display: block; width: 800px; height: 450px; position: relative;">
-  <video controls width="800" height="450" poster="https://thinkerview.com/wp-content/uploads/Cedric-villani-1024x576.jpg">
-    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=240"
+  <video controls width="800" height="450" poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg">
+    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
             type="video/mp4">
   </video>
 </div>
@@ -24,7 +24,7 @@
   window.CaptainFactOverlayConfig = {
     injector: {
       videosSelector: () => [document.getElementById('video')],
-      urlExtractor: video => "https://www.youtube.com/watch?v=LMRdn_MQWXM",
+      urlExtractor: video => "https://www.youtube.com/watch?v=3HgwtHenFWs",
       getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
       onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
     }

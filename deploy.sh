@@ -11,4 +11,4 @@ else
   exit 1
 fi
 
-surge ${REMOTE}
+surge -d ${REMOTE} -p ./dist
