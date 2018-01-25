@@ -2,4 +2,7 @@ node_modules
 npm-debug.log
 
 .idea
-dist/bundle.js
+dist/*
+!dist/test
+!dist/index.html
+coverage

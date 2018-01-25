@@ -1,60 +1,36 @@
 import fetch from "isomorphic-fetch"
 
-import { CF_API_URL } from "../config"
+import { API_URL } from "../constants"
 
 
 class CaptainFactHttpApi {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl
-    this.headers = {}
-  }
-
   prepareResponse(promise) {
     return promise.then(response => {
       return response.text().then((body) => {
         body = body ? JSON.parse(body) : null
-        if (!response.ok) {
-          if (body.error)
-            throw body.error
-          else
-            throw body.errors
-        }
+        if (body.errors)
+          throw body.errors
         else
-          return body
+          return body.data
       })
     })
   }
 
-  makeRequest(resourceUrl, requestType, data) {
-    const response = fetch(this.baseUrl + resourceUrl, {
+  makeRequest(apiURL, requestType, data) {
+    const response = fetch(apiURL, {
       method: requestType,
       body: data ? JSON.stringify(data) : '',
-      headers: Object.assign({
-        "Content-Type": "application/json"
-      }, this.headers)
+      headers: {"Content-Type": "application/json"}
     })
     return this.prepareResponse(response)
   }
 
-  get(resourceUrl) {
-    const response = fetch(this.baseUrl + resourceUrl, this.headers)
-    return this.prepareResponse(response)
-  }
-
-  post(resourceUrl, data) {
-    return this.makeRequest(resourceUrl, "POST", data)
-  }
-
-  put(resourceUrl, data) {
-    return this.makeRequest(resourceUrl, "PUT", data)
-  }
-
-  delete(resourceUrl, data) {
-    return this.makeRequest(resourceUrl, "DELETE", data)
+  post(apiURL, data) {
+    return this.makeRequest(apiURL, "POST", data)
   }
 }
 
 
 // Configure HttpApi
-const HttpApi = new CaptainFactHttpApi(CF_API_URL)
+const HttpApi = new CaptainFactHttpApi()
 export default HttpApi

@@ -1,0 +1,91 @@
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45%;
+  max-width: 30em;
+  z-index: 70;
+  background-color: rgba(0, 0, 0, 0.43);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  opacity: 0.6;
+}
+
+.sidebar.isBlock {
+  display: block;
+  position: relative;
+  opacity: 1;
+  width: 100%;
+}
+
+.sidebar:hover {
+  opacity: 1.0;
+}
+
+.sidebar.collapsed:not(.animated) {
+  display: none;
+}
+
+.sidebar.animated.collapsed {
+  transform: translateX(100%);
+}
+
+.sidebar.animated.slideIn {
+  animation: slideIn 0.3s forwards;
+  -webkit-animation: slideIn 0.3s forwards;
+}
+
+.sidebar.animated.slideOut {
+  animation: slideOut 0.3s forwards;
+  -webkit-animation: slideOut 0.3s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.sidebarContent {
+  overflow-y: auto;
+}
+
+.actionsLinks {
+  text-align: center;
+  padding: 3px;
+  border: 1px solid #2f2f2f;
+  border-top: none;
+  color: white;
+}
+
+.statementsList > *:not(:last-child) {
+  border-bottom: 1px solid #111111;
+}
+
+.jumpLink {
+  margin: 0 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.jumpLink:hover {
+  text-shadow: 0 0 5px whitesmoke;
+}
+
+.jumpLink.disabled {
+  pointer-events: none;
+  color: rgba(183, 183, 183, 0.74);
+}

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with only username 1`] = `
+<a
+  className="container"
+  href="https://testing.captainfact.io/u/Toto"
+>
+  <strong>
+    @Toto
+  </strong>
+</a>
+`;
+
+exports[`render with username + name 1`] = `
+<a
+  className="container"
+  href="https://testing.captainfact.io/u/Toto"
+  title="Titi Toto"
+>
+  <strong>
+    @Toto
+  </strong>
+</a>
+`;

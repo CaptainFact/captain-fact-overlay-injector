@@ -2,13 +2,18 @@
 <head>
   <title>CaptainFact Overlay Injector - Testing</title>
 </head>
-<body>
-  <h1>Overlay's injector test page</h1>
-  <div class="test-videos">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/OhWRT3PhMJs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-  </div>
-  <br/><br/><br/>
-  <div class="cf-toggle-btn"></div>
-  <script src="bundle.js"></script>
+<body style="font-size: 2em;">
+  <h1 style="margin: 30px;text-align: center;">
+    <img style="vertical-align: middle;" src="/assets/icon.png">
+    <span style="vertical-align: middle;">Overlay's injector tests</span>
+  </h1>
+  <hr>
+  <br>
+  <ul style="margin: 0 auto;max-width: 720px;">
+    <li><a href="/test/videojs.html">VideoJS, overlayed</a></li>
+    <li><a href="/test/html5.html">Simple HTML5 player, overlayed (no fullscreen)</a></li>
+    <li><a href="/test/no_video.html">No video, just good old facts in a div</a></li>
+    <li><a href="/test/youtube.html">Youtube video (iframe), facts in a separate block</a></li>
+  </ul>
 </body>
 </html>

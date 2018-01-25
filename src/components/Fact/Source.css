@@ -1,0 +1,35 @@
+.sourceLink {
+  text-decoration-color: lightgrey;
+  display: block;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.sourceLink img {
+  height: 0.8em;
+}
+
+.sourceLink:hover .articleTitle {
+  text-decoration: underline;
+}
+
+.siteNameContainer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  margin-bottom: 0.2em;
+}
+
+.siteName {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.articleTitle {
+  font-size: 0.9em;
+  color: #e0e0e0;
+  text-decoration-color: lightgrey;
+}

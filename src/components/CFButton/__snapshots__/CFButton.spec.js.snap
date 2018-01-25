@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Has default icons 1`] = `
+<img
+  className="cfbutton pulse"
+  onClick={[Function]}
+  src="test-file-stub"
+  style={
+    Object {
+      "fontSize": "1em",
+    }
+  }
+  title="CaptainFact"
+/>
+`;
+
+exports[`Has default icons 2`] = `
+<img
+  className="cfbutton pulse"
+  onClick={[Function]}
+  src="test-file-stub"
+  style={
+    Object {
+      "fontSize": "1em",
+    }
+  }
+  title="CaptainFact"
+/>
+`;
+
+exports[`Returns nothing if it has no video or statement 1`] = `""`;
+
+exports[`Returns nothing if it has no video or statement 2`] = `""`;
+
+exports[`approve icon if approve 1`] = `
+<img
+  className="cfbutton pulse"
+  onClick={[Function]}
+  src="approve-icon.jpg"
+  style={
+    Object {
+      "fontSize": "1em",
+    }
+  }
+  title="CaptainFact"
+/>
+`;
+
+exports[`neutral icon if unsure 1`] = `
+<img
+  className="cfbutton pulse"
+  onClick={[Function]}
+  src="neutral-icon.jpg"
+  style={
+    Object {
+      "fontSize": "1em",
+    }
+  }
+  title="CaptainFact"
+/>
+`;
+
+exports[`refute icon if refute 1`] = `
+<img
+  className="cfbutton pulse"
+  onClick={[Function]}
+  src="refute-icon.jpg"
+  style={
+    Object {
+      "fontSize": "1em",
+    }
+  }
+  title="CaptainFact"
+/>
+`;

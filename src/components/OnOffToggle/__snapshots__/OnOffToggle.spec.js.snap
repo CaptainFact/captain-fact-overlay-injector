@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button activated 1`] = `
+<div
+  className="container"
+>
+  <img
+    className="icon"
+    src="test-file-stub"
+  />
+  <a
+    className="title"
+    href="https://captainfact.io"
+  >
+    CaptainFact
+  </a>
+  <div
+    className="radioBtn active"
+    onClick={[Function]}
+  >
+    <span>
+      ON
+    </span>
+  </div>
+  <div
+    className="radioBtn"
+    onClick={[Function]}
+  >
+    <span>
+      OFF
+    </span>
+  </div>
+</div>
+`;
+
+exports[`button disabled 1`] = `
+<div
+  className="container"
+>
+  <img
+    className="icon"
+    src="test-file-stub"
+  />
+  <a
+    className="title"
+    href="https://captainfact.io"
+  >
+    CaptainFact
+  </a>
+  <div
+    className="radioBtn"
+    onClick={[Function]}
+  >
+    <span>
+      ON
+    </span>
+  </div>
+  <div
+    className="radioBtn active"
+    onClick={[Function]}
+  >
+    <span>
+      OFF
+    </span>
+  </div>
+</div>
+`;
+
+exports[`displays custom icon 1`] = `
+<div
+  className="container"
+>
+  <img
+    className="icon"
+    src="custom-icon.jpg"
+  />
+  <a
+    className="title"
+    href="https://captainfact.io"
+  >
+    CaptainFact
+  </a>
+  <div
+    className="radioBtn active"
+    onClick={[Function]}
+  >
+    <span>
+      ON
+    </span>
+  </div>
+  <div
+    className="radioBtn"
+    onClick={[Function]}
+  >
+    <span>
+      OFF
+    </span>
+  </div>
+</div>
+`;

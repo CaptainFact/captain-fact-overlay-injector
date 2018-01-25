@@ -1,0 +1,33 @@
+.header {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 0.25em 0.5em;
+  font-size: 1.5em;
+  border: 1px solid #2f2f2f;
+}
+
+.header h1 {
+  display: inline-block;
+}
+
+.title {
+  font-size: 1em;
+  margin: 0;
+  color: white;
+}
+
+.title img {
+  height: 0.6em;
+  width: 0.6em;
+}
+
+.title:hover {
+  font-size: 1em;
+  text-decoration: underline;
+  text-shadow: 0 0 5px whitesmoke;
+}
+
+.closeBtn {
+  float: right;
+  color: white;
+  cursor: pointer;
+}
