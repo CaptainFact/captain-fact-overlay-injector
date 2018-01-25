@@ -3,10 +3,11 @@
   <title>CaptainFact Overlay Injector - Testing</title>
 </head>
 <body style="font-size: 2em;">
-  <h1 style="margin: 30px;text-align: center;">
+  <h1 style="margin: 30px 30px 0;text-align: center;">
     <img style="vertical-align: middle;" src="/assets/icon.png">
     <span style="vertical-align: middle;">Overlay's injector tests</span>
   </h1>
+  <h2 style="font-size: 0.75em;color: grey; text-align: center;">Version: <span id="app-version"></span></h2>
   <hr>
   <br>
   <ul style="margin: 0 auto;max-width: 720px;">
@@ -15,5 +16,9 @@
     <li><a href="/test/no_video.html">No video, just good old facts in a div</a></li>
     <li><a href="/test/youtube.html">Youtube video (iframe), facts in a separate block</a></li>
   </ul>
+  <script src="./captain-fact-overlay-injector.js"></script>
+  <script>
+    document.getElementById("app-version").innerHTML = window.CaptainFactOverlayInjector.getVersion()
+  </script>
 </body>
 </html>

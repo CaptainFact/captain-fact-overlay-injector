@@ -1,12 +1,13 @@
 {
   "name": "captain-fact-overlay-injector",
-  "version": "0.0.1",
+  "version": "0.8.0",
   "description": "http://captainfact.io - Injects facts overlays ",
   "main": "dist/captain-fact-overlay-injector.js",
   "scripts": {
     "build": "webpack --env production",
     "build_dev": "webpack --env dev",
     "start": "webpack-dev-server --env dev",
+    "startp": "webpack-dev-server --env production",
     "watch": "webpack -w",
     "watchp": "webpack -w -p",
     "test": "jest",

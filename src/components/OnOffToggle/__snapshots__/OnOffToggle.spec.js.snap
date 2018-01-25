@@ -11,6 +11,7 @@ exports[`button activated 1`] = `
   <a
     className="title"
     href="https://captainfact.io"
+    target="__BLANK"
   >
     CaptainFact
   </a>
@@ -44,6 +45,7 @@ exports[`button disabled 1`] = `
   <a
     className="title"
     href="https://captainfact.io"
+    target="__BLANK"
   >
     CaptainFact
   </a>
@@ -77,6 +79,7 @@ exports[`displays custom icon 1`] = `
   <a
     className="title"
     href="https://captainfact.io"
+    target="__BLANK"
   >
     CaptainFact
   </a>
