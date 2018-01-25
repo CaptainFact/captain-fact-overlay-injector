@@ -5,6 +5,12 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require("compression-webpack-plugin")
 
 
+const COMMON_PLUGINS = [
+  new webpack.DefinePlugin({
+    CF_VERSION: JSON.stringify(require("./package.json").version)
+  })
+]
+
 module.exports = (env='dev') => {
   const isProd = env === 'production'
   console.log(`Build for ${env}`)
@@ -12,11 +18,12 @@ module.exports = (env='dev') => {
   // Default config
   const config = {
     entry: {
-      'captain-fact-overlay-injector': './src/index.js'
+      'captain-fact-overlay-injector': './src/index.js',
+      'captain-fact-overlay-injector.min': './src/index.js'
     },
     devtool: 'inline-source-map',
     devServer: {contentBase: './dist', port: 3342},
-    // plugins: [new BundleAnalyzerPlugin({openAnalyzer: false})],
+    plugins: COMMON_PLUGINS.concat([]),
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {'env-constants': path.join(__dirname, `./constants/${env}.js`)}
@@ -61,9 +68,7 @@ module.exports = (env='dev') => {
   // Production override
   if (isProd) {
     delete config.devtool
-    delete config.devServer
-    config.entry['captain-fact-overlay-injector.min'] = './src/index.js'
-    config.plugins = [
+    config.plugins = COMMON_PLUGINS.concat([
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
@@ -73,7 +78,7 @@ module.exports = (env='dev') => {
       new CompressionPlugin({
         test: /\.js/
       })
-    ]
+    ])
   }
 
   return config

@@ -48,9 +48,14 @@ export class CFButton extends React.PureComponent {
     // TODO This should be in Redux
     if (!this.props.statement)
       return 0
-    return this.props.statement.comments.reduce((score, comment) =>
-      score + (comment.approve ? comment.score : -comment.score)
-    , 0)
+
+    return this.props.statement.comments.reduce((score, comment) => {
+      if (comment.approve === true)
+        return score + Math.max(comment.score, 0)
+      else if (comment.approve === false)
+        return score - Math.max(comment.score, 0)
+      return score
+    }, 0)
   }
 }
 

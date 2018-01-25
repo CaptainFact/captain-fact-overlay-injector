@@ -11,7 +11,7 @@ export class OnOffToggle extends React.PureComponent {
     return (
       <div className={container}>
         <img className={icon} src={this.props.icon || DEFAULT_ICON}/>
-        <a href="https://captainfact.io" className={title}>CaptainFact</a>
+        <a href="https://captainfact.io" target="__BLANK" className={title}>CaptainFact</a>
         <div className={classNames(radioBtn, {[active]: this.props.isEnabled})} onClick={() => this.setEnabled(true)}>
           <span>ON</span>
         </div>

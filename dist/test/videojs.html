@@ -10,13 +10,11 @@
   <hr/>
   <br/>
   <video id="video" class="video-js vjs-default-skin" controls preload="auto" width="800" height="450"
-         poster="https://thinkerview.com/wp-content/uploads/Cedric-villani-1024x576.jpg"
+         poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg"
          data-setup='{"playbackRates": [1, 1.2, 1.5, 1.7, 2], "seek_param": "time"}'>
-    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=240"
-            type="video/mp4" label="240p" res="240" default="">
-    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=360"
+    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
             type="video/mp4" label="360p" res="360" default="">
-    <source src="//thinkerview.com/podcast-download/1958/cedric-villani-intelligence-artificielle-perspectives-futures.mp4?ref=videoplayer&amp;res=480"
+    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=480"
             type="video/mp4" label="480p" res="480" default="">
   </video>
   <script src="testlibs/video.js"></script>
@@ -35,7 +33,7 @@
     window.CaptainFactOverlayConfig = {
       injector: {
         videosSelector: () => [document.getElementById('video')],
-        urlExtractor: video => "https://www.youtube.com/watch?v=LMRdn_MQWXM",
+        urlExtractor: video => "https://www.youtube.com/watch?v=3HgwtHenFWs",
         getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
         onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
       },
@@ -44,6 +42,6 @@
       }
     }
   </script>
-  <script src="../captain-fact-overlay-injector.js"></script>
+  <script src="../captain-fact-overlay-injector.min.js"></script>
 </body>
 </html>

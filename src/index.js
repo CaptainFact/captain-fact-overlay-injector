@@ -29,6 +29,14 @@ class CaptainFactOverlayInjector {
   // ---- Public API ----
 
   /**
+   * Return the current lib version
+   * @returns {string}
+   */
+  static getVersion() {
+    return CF_VERSION
+  }
+
+  /**
    * Enable the fact injector
    * @returns {boolean} - returns false if already enabled or mounted
    */
