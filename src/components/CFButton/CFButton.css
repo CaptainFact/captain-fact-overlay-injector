@@ -32,36 +32,11 @@
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
-  10% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
-  14% {
-    transform: scale(1.4);
-    box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.60);
-  }
-  20% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
-  22% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
-  23% {
-    transform: scale(1.2);
-    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.60);
-  }
-  26% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60);
-  }
+  0%    { transform: rotate(0deg)   scale(1); box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60); }
+  10%   { transform: rotate(0deg)   scale(1); box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60); }
+  14%   { transform: rotate(-10deg) scale(1.4); box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.60); }
+  20%   { transform: rotate(10deg)  scale(1); box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60); }
+  23%   { transform: rotate(5deg)   scale(1.2); box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.60); }
+  26%   { transform: rotate(0deg)   scale(1); box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60); }
+  100%  { transform: rotate(0deg)   scale(1); box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.60); }
 }

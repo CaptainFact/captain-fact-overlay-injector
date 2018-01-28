@@ -1,6 +1,6 @@
 {
   "name": "captain-fact-overlay-injector",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "http://captainfact.io - Injects facts overlays ",
   "main": "dist/captain-fact-overlay-injector.js",
   "scripts": {
