@@ -33,7 +33,8 @@ This repo holds the overlay injector script, that basically add facts over video
 It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension)
 and can be integrated on any website freely. 
 
-You can check the live demo here: https://captainfact.surge.sh/
+You can check the [live demo](https://captainfact.surge.sh) with various integrations or the production version
+used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.com)
 
 # TODO
 

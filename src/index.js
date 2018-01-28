@@ -95,7 +95,7 @@ class CaptainFactOverlayInjector {
     if (!this.isEnabled())
       return false
     const videos = this.config.injector.videosSelector()
-    if (videos.length === 0)
+    if (videos.length === 0 || !videos[0])
       return 0
     // TODO We only support a single video at the moment
     this.mountFactEngine(videos[0])
