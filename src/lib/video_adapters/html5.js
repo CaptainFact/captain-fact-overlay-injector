@@ -32,8 +32,6 @@ export default class HTML5Player {
     this._onTimeUpdate()
   }
 
-  // TODO: Detect fullscreen / resize
-
   // ----- Private -----
   _onTimeUpdate() {
     if (this.timeUpdatedFunc)

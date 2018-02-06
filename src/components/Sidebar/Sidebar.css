@@ -2,14 +2,17 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 45%;
-  max-width: 30em;
+  width: 25em;
   z-index: 70;
   background-color: rgba(0, 0, 0, 0.43);
   display: flex;
   flex-direction: column;
   max-height: 100%;
   opacity: 0.6;
+}
+
+:global(.cf_xmobile) .sidebar {
+  opacity: 1;
 }
 
 .sidebar.isBlock {

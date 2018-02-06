@@ -6,3 +6,4 @@ dist/*
 !dist/test
 !dist/index.html
 coverage
+scripts/db

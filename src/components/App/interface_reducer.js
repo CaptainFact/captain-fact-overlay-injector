@@ -6,7 +6,8 @@ const ACTIVATED_LOCALSTORAGE_KEY = 'captainfact_isActive'
 
 const INITIAL_STATE = new Record({
   isEnabled: loadIsActive(),
-  sidebarCollapsed: true
+  sidebarCollapsed: true,
+  forceResize: null
 })
 
 export const InterfaceState = State('Interface', {
@@ -15,6 +16,7 @@ export const InterfaceState = State('Interface', {
   disable: state => stateIsEnabledChange(state, false),
   openSidebar: state => state.set('sidebarCollapsed', false),
   closeSidebar: state => state.set('sidebarCollapsed', true),
+  forceResize: state => state.set('forceResize', Date.now()),
   reset: (state) => INITIAL_STATE().set('isEnabled', state.isEnabled)
 })
 

@@ -40,8 +40,8 @@ used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.
 
 - [x] Basic injection
 - [x] Dynamic configuration
+- [x] Autosize
 - [ ] Multiple videos on a single page
-- [ ] Autosize
 
 # Usage
 
@@ -86,7 +86,7 @@ window.CaptainFactOverlayConfig = {
     // Required
 
     /**
-     * Function that selects all the nodes containing your videos.
+     * Function that selects all the nodes containing your video containers.
      * If `factsInjector` is not defined, facts will be added inside returned nodes.
      */
     videosSelector: undefined,
@@ -150,6 +150,16 @@ window.CaptainFactOverlayConfig = {
     animate: true,
   
     /**
+    * Enable autosize. It looks at parent container's size and adapt `baseSize` based on it 
+    */
+    autoSize: true,
+    
+    /**
+     * Minimum text size.
+     */
+    baseSize: '15px',
+  
+    /**
      * Graphics resources URL. Can be used to override default icons
      */
     graphics: {
@@ -171,6 +181,12 @@ Injector has following methods :
 
 ```javascript
   /**
+   * (static) Return the current lib version
+   * @returns {string}
+   */
+  getVersion()
+
+  /**
    * Enable the fact injector
    * @returns {boolean} - returns false if already enabled or mounted
    */
@@ -185,8 +201,43 @@ Injector has following methods :
    * Unmount existing overlay and reload everything (except configuration)
    */
   reload()
+  
+  /**
+   * @returns {boolean} true if enabled, false otherwise
+   */
+  isEnabled()
+  
+  /**
+   * Autosize only triggers on window size change or fullscreen toggle.
+   * If your application has special needs or resize events, you can use
+   * this method to force autosize refresh
+   */
+  forceResize()
 ```
 
 # Developing
 
-TODO
+1. Start the API
+
+We provide docker images of the API so you can get started quickly.
+[Install docker](https://docs.docker.com/install/) then run `./scripts/start_graphql_api.sh`. It will create a stack
+using docker-compose with both the database (postgres) and the GraphQL API and start an
+[Elixir](https://elixir-lang.org/) console.
+
+2. Generate some data
+
+[TODO]
+
+3. Start developing !
+
+You can now start working on the injector. Run `npm install` to install dependencies then `npm start`. A dev server
+will be available on `localhost:3342`, serving the test pages in `dist`. 
+
+Sources as located in `src` with `index.js` being the main entrypoint of the API.
+
+If you encounter a problem at any step of the process or don't know where to start with, send us a message on
+[the chat](https://gitter.im/CaptainFact).
+
+4. Bonus: API documentation
+
+[TODO]

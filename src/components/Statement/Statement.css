@@ -13,6 +13,7 @@
 .statementText {
   font-style: italic;
   margin: 0.35em 0 0 0;
+  display: inline;
 }
 
 .tag {
@@ -29,6 +30,7 @@
   margin-right: 0.4em;
   white-space: pre;
   vertical-align: middle;
+  margin-bottom: 1px;
 }
 
 .tag a:hover {

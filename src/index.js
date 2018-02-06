@@ -8,7 +8,6 @@ import { ConfigurationState } from './components/App/Configuration/reducer'
 
 import videoAdapters from './lib/video_adapters'
 import OnOffToggle from './components/OnOffToggle/OnOffToggle'
-import CFButton from './components/CFButton/CFButton'
 import App from './components/App/App'
 
 
@@ -71,9 +70,21 @@ class CaptainFactOverlayInjector {
     this.mountAll()
   }
 
+  /**
+   * @returns {boolean} true if enabled, false otherwise
+   */
   isEnabled() {
     // Only use isEnabled if ON / OFF toggle is present
     return this.config.injector.onOffToggleSelector ? store.getState().Interface.isEnabled : true
+  }
+
+  /**
+   * Autosize only triggers on window size change or fullscreen toggle.
+   * If your application has special needs or resize events, you can use
+   * this method to force autosize refresh
+   */
+  forceResize() {
+    InterfaceState.forceResize()
   }
 
   // ---- Private API ----
@@ -113,15 +124,12 @@ class CaptainFactOverlayInjector {
     // Send components generators to injector
     const injector = this.config.injector.factsInjector || this.defaultFactsInjector
     injector(
-      this.factsMounter, video,
-      () => <App videoUrl={videoUrl} player={player}/>,
-      () => isOverlay ? <CFButton onClick={InterfaceState.openSidebar}/> : null
+      this.factsMounter, video, () => <App videoUrl={videoUrl} player={player} container={video}/>
     )
   }
 
-  defaultFactsInjector(mountFunc, video, facts, toggleBtn) {
+  defaultFactsInjector(mountFunc, video, facts) {
     mountFunc(this.injectInNode(video), facts)
-    mountFunc(this.injectInNode(video), toggleBtn)
   }
 
   injectInNode(node) {

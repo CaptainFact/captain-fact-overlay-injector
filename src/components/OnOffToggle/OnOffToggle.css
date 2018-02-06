@@ -1,10 +1,13 @@
 .container {
   height: 2em;
+  line-height: 1em;
   display: inline-block;
   background: #86d7ff;
   color: #2d2d2d;
   border-radius: 1em 0 0 1em;
   border: 1px solid lightgrey;
+  font-size: 1em;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .container > * {
@@ -18,7 +21,7 @@
 }
 
 .title {
-  font-size: 1em;
+  font-size: 1.1em;
   margin-right: 0.3em;
   color: #252525;
   text-shadow: 0 0 3px #e8e8e8;

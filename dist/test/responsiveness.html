@@ -4,20 +4,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="testlibs/videojs.css" rel="stylesheet">
   <link href="testlibs/videojs-resolution-switcher.css" rel="stylesheet">
+  <link href="https://thinkerview.com/wp-content/uploads/wp-less-cache/ebor-theme-styles.css?ver=1495893764" rel="stylesheet">
 </head>
 <body>
-  <h1>VideoJS, overlayed</h1>
+  <h1>Responsiveness</h1>
   <h2><a href="/"><= Back to index</a></h2>
   <hr/>
-  <br/>
-  <video id="video" class="video-js vjs-default-skin" controls preload="auto" width="800" style="max-width: 100%;"
-         poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg"
-         data-setup='{"playbackRates": [1, 1.2, 1.5, 1.7, 2], "seek_param": "time"}'>
-    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
-            type="video/mp4" label="360p" res="360" default="">
-    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=480"
-            type="video/mp4" label="480p" res="480" default="">
-  </video>
+  <div style="resize: both; overflow: auto; width: 800px;">
+    <video id="video" class="video-js vjs-default-skin" controls preload="auto" width="800" style="width: 100%;"
+           poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg"
+           data-setup='{"playbackRates": [1, 1.2, 1.5, 1.7, 2], "seek_param": "time"}'>
+      <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
+              type="video/mp4" label="360p" res="360" default="">
+      <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=480"
+              type="video/mp4" label="480p" res="480" default="">
+    </video>
+    <br/>
+  </div>
   <script src="testlibs/video.js"></script>
   <script src="testlibs/videojs-resolution-switcher.js"></script>
   <script>videojs('video').videoJsResolutionSwitcher()</script>
@@ -30,8 +33,9 @@
   </div>
 
   <!-- CaptainFact injection -->
+  <script src="../captain-fact-overlay-injector.min.js"></script>
   <script>
-    window.CaptainFactOverlayConfig = {
+    let injector = new window.CaptainFactOverlayInjector({
       injector: {
         videosSelector: () => [document.getElementById('video')],
         urlExtractor: video => "https://www.youtube.com/watch?v=3HgwtHenFWs",
@@ -41,8 +45,8 @@
       app: {
         baseSize: '15px'
       }
-    }
+    })
+    setInterval(injector.forceResize, 1000)
   </script>
-  <script src="../captain-fact-overlay-injector.min.js"></script>
 </body>
 </html>

@@ -71,10 +71,15 @@ export default new Record({
     animate: true,
 
     /**
+     * Enable autosize. It looks at container's size and adapt `baseSize` based on it
+     */
+    autoSize: true,
+
+    /**
      * Base sidebar / text size. By default, text has the same size as your default font-size.
      * You can set a value like 1.5em (1.5 x your font size) or a value in pixels (10px)
      */
-    baseSize: '1em',
+    baseSize: '15px',
 
     /**
      * Graphics resources URL. Can be used to add custom icons
