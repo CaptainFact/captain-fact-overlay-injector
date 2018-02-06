@@ -92,25 +92,27 @@ exports[`with text 1`] = `
   <div
     className="userSection"
   >
-    <img
-      height="24"
-    />
-    <div
-      className="right"
-    >
-      <UserAppellation
-        user={
-          Object {
-            "id": 42,
-          }
-        }
+    <div>
+      <img
+        height="24"
       />
-       
-      <span
-        className="userCommentText"
+      <div
+        className="right"
       >
-        Foobar
-      </span>
+        <UserAppellation
+          user={
+            Object {
+              "id": 42,
+            }
+          }
+        />
+         
+        <span
+          className="userCommentText"
+        >
+          Foobar
+        </span>
+      </div>
     </div>
   </div>
 </div>
