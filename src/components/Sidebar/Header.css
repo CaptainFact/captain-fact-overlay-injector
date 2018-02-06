@@ -5,6 +5,10 @@
   border: 1px solid #2f2f2f;
 }
 
+.header a {
+  vertical-align: sub;
+}
+
 .header h1 {
   display: inline-block;
 }
