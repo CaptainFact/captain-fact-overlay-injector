@@ -33,19 +33,22 @@
 }
 
 .userSection {
+  background-color: #4a4343;
+  width: 100%;
+}
+
+.userSection > div {
   font-size: 0.8em;
   padding: 0.5em 0.4em;
-  background-color: #4a4343;
   display: flex;
-  width: 100%;
 }
 
 .userSection img {
   height: 24px;
 }
 
-.userSection > .right {
-  padding-left: 7px;
+.userSection .right {
+  padding-left: 0.4em;
 }
 
 .userCommentText {

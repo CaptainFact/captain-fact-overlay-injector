@@ -22,10 +22,12 @@ export class Fact extends React.PureComponent {
         </div>
         {text && text.length > 0 &&
           <div className={userSection}>
-            <img src={user.miniPictureUrl} height="24"/>
-            <div className={right}>
-              <UserAppellation user={user}/>&nbsp;
-              <span className={userCommentText}>{text}</span>
+            <div>
+              <img src={user.miniPictureUrl} height="24"/>
+              <div className={right}>
+                <UserAppellation user={user}/>&nbsp;
+                <span className={userCommentText}>{text}</span>
+              </div>
             </div>
           </div>
         }
