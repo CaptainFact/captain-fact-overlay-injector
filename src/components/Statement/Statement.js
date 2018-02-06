@@ -15,7 +15,7 @@ export default class Statement extends PureComponent {
           {speaker ? <strong>{speaker.fullName} at </strong> : 'At ' }
           <TimeDisplay textBefore="" time={time} handleClick={this.props.onTimeClick}/>
         </div>
-        <p className={statementText}>“ {text}</p>
+        <p className={statementText}>{text}</p>
       </div>
     );
   }

@@ -20,7 +20,6 @@ export class CFButton extends React.PureComponent {
     const globalScore = this.calculateGlobalScore()
     return (
       <img src={this.getIcon(globalScore)}
-        style={{fontSize: this.props.baseSize || '1em'}}
         className={this.getClassNames()}
         title="CaptainFact"
         onClick={InterfaceState.openSidebar}

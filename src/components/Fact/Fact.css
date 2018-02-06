@@ -34,9 +34,13 @@
 
 .userSection {
   font-size: 0.8em;
-  padding: 5px 10px;
+  padding: 0.5em 0.4em;
   background-color: #4a4343;
   display: flex;
+}
+
+.userSection img {
+  height: 24px;
 }
 
 .userSection > .right {
