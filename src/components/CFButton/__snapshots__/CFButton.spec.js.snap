@@ -5,11 +5,6 @@ exports[`Has default icons 1`] = `
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
-  style={
-    Object {
-      "fontSize": "1em",
-    }
-  }
   title="CaptainFact"
 />
 `;
@@ -19,11 +14,6 @@ exports[`Has default icons 2`] = `
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
-  style={
-    Object {
-      "fontSize": "1em",
-    }
-  }
   title="CaptainFact"
 />
 `;
@@ -37,11 +27,6 @@ exports[`approve icon if approve 1`] = `
   className="cfbutton pulse"
   onClick={[Function]}
   src="approve-icon.jpg"
-  style={
-    Object {
-      "fontSize": "1em",
-    }
-  }
   title="CaptainFact"
 />
 `;
@@ -51,11 +36,6 @@ exports[`neutral icon if unsure 1`] = `
   className="cfbutton pulse"
   onClick={[Function]}
   src="neutral-icon.jpg"
-  style={
-    Object {
-      "fontSize": "1em",
-    }
-  }
   title="CaptainFact"
 />
 `;
@@ -65,11 +45,6 @@ exports[`refute icon if refute 1`] = `
   className="cfbutton pulse"
   onClick={[Function]}
   src="refute-icon.jpg"
-  style={
-    Object {
-      "fontSize": "1em",
-    }
-  }
   title="CaptainFact"
 />
 `;

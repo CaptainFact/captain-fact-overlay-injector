@@ -3,9 +3,9 @@
 CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2-)
 
 if [ "$CURRENT_BRANCH" = "master" ]; then
-  REMOTE=captainfact.surge.sh
+  REMOTE=embed.captainfact.io
 elif [ "$CURRENT_BRANCH" = "staging" ]; then
-  REMOTE=staging.captainfact.surge.sh
+  REMOTE=staging.embed.captainfact.io
 else
   echo "Unknown branch: $CURRENT_BRANCH"
   exit 1

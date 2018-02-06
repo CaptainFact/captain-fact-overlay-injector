@@ -51,7 +51,7 @@ module.exports = (env='dev') => {
             options: {
               name: '/[path][name].[ext]',
               context: 'src',
-              publicPath: isProd ? "https://captainfact.surge.sh" : ""
+              publicPath: isProd ? "https://embed.captainfact.io" : ""
             }
           }
         }
