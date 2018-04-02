@@ -14,8 +14,10 @@ import { InterfaceState } from './interface_reducer'
 
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
 const BASE_CONTAINER_SIZE = 800
-const MIN_RATIO = 1.0
-const MAX_RATIO = 2.0
+const BASE_DIM = 800*450
+const MAX_DIM = 1920*1080
+const MIN_RATIO = 1
+const MAX_RATIO = 1.5
 const SIZE_THRESHOLDS = {
   0: 'cf_xmobile',
   769: 'cf_xtablet',
@@ -81,7 +83,7 @@ export default class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize)
       return this.props.config.app.baseSize
-    const modifierRatio = Math.max(Math.min((this.props.container.offsetWidth / BASE_CONTAINER_SIZE), MAX_RATIO), MIN_RATIO)
+    const modifierRatio = Math.min(((this.props.container.offsetWidth*this.props.container.offsetHeight-BASE_DIM) * (MAX_RATIO-MIN_RATIO) / (MAX_DIM-BASE_DIM)) + MIN_RATIO, MAX_RATIO);
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`
   }
