@@ -83,7 +83,7 @@ export default class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize)
       return this.props.config.app.baseSize
-    const modifierRatio = Math.min(((this.props.container.offsetWidth*this.props.container.offsetHeight-BASE_DIM) * (MAX_RATIO-MIN_RATIO) / (MAX_DIM-BASE_DIM)) + MIN_RATIO, MAX_RATIO);
+    const modifierRatio = Math.min(((this.props.container.offsetWidth*this.props.container.offsetHeight-BASE_DIM) * (MAX_RATIO-MIN_RATIO) / (MAX_DIM-BASE_DIM)) + MIN_RATIO, MAX_RATIO)
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`
   }
