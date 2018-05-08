@@ -2,12 +2,12 @@ const webpack = require('webpack')
 const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const CompressionPlugin = require("compression-webpack-plugin")
+const CompressionPlugin = require('compression-webpack-plugin')
 
 
 const COMMON_PLUGINS = [
   new webpack.DefinePlugin({
-    CF_VERSION: JSON.stringify(require("./package.json").version)
+    CF_VERSION: JSON.stringify(require('./package.json').version)
   })
 ]
 
@@ -26,7 +26,11 @@ module.exports = (env='dev') => {
     plugins: COMMON_PLUGINS.concat([]),
     resolve: {
       extensions: ['.js', '.jsx'],
-      alias: {'env-constants': path.join(__dirname, `./constants/${env}.js`)}
+      alias: {
+        'env-constants': path.join(__dirname, `./constants/${env}.js`),
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat'
+      }
     },
     module: {
       loaders: [
@@ -51,7 +55,7 @@ module.exports = (env='dev') => {
             options: {
               name: '/[path][name].[ext]',
               context: 'src',
-              publicPath: isProd ? "https://embed.captainfact.io" : ""
+              publicPath: isProd ? 'https://embed.captainfact.io' : ''
             }
           }
         }
@@ -63,7 +67,7 @@ module.exports = (env='dev') => {
       library: 'CaptainFactOverlayInjector',
       libraryTarget: 'umd'
     }
-  };
+  }
 
   // Production override
   if (isProd) {

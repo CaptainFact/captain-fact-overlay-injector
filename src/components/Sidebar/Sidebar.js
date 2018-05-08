@@ -97,6 +97,7 @@ export default class Sidebar extends Component {
     const { statements } = this.props
     const prevStatement = statements.findLast((s, idx) => s.time < currentTime && idx !== currentStatementIdx)
     const nextStatement = statements.find((s, idx) => s.time > currentTime && idx !== currentStatementIdx)
+
     return (
       <div className={actionsLinks}>
         {this.renderStatementJumpLink('Previous', prevStatement, '⏮️ ')}
@@ -141,7 +142,7 @@ export default class Sidebar extends Component {
               {statements.map(s =>
                 <Statement  key={s.id} statement={s} onTimeClick={this.handleTimeClick}
                   textPrefix={s === currentStatement ? '➡️ ' : ''}/>
-              )}
+              ).toArray()}
             </div>
           }
         </div>
