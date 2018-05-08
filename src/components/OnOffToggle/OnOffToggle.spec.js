@@ -1,4 +1,5 @@
-import {OnOffToggle} from './OnOffToggle'
+import React from 'react'
+import { OnOffToggle } from './OnOffToggle'
 
 
 test('button activated', () => {

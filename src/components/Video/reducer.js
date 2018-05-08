@@ -21,7 +21,7 @@ export const VideoState = State('Video', {
     return state
   },
   setLoading(state, isLoading=true) {
-    return state.set('isLoading', true)
+    return state.set('isLoading', isLoading)
   },
   reset: () => INITIAL_STATE()
 })

@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
 import { FRONTEND_URL } from '../../constants'
 
 import { header, closeBtn, title } from './Header.css'
-import DEFAULT_IMG_NEW_TAB from "../../assets/new_tab.png"
+import DEFAULT_IMG_NEW_TAB from '../../assets/new_tab.png'
 
 
 export const Header = ({videoHashId, onCloseClick=null, imgNewTab=DEFAULT_IMG_NEW_TAB}) =>

@@ -12,7 +12,8 @@
     "watchp": "webpack -w -p",
     "test": "jest",
     "wtest": "jest --watch",
-    "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'"
+    "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "jest": {
     "setupFiles": [

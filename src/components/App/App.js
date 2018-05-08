@@ -13,7 +13,6 @@ import { InterfaceState } from './interface_reducer'
 
 
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
-const BASE_CONTAINER_SIZE = 800
 const BASE_DIM = 800*450
 const MAX_DIM = 1920*1080
 const MIN_RATIO = 1
@@ -51,11 +50,11 @@ export default class App extends React.PureComponent {
 
   render() {
     if (!this.props.video)
-      return <div style={{display: "none"}}/>
+      return <div style={{display: 'none'}}/>
     else
       return (
         <div className={classNames(styles.app, this.getScreenType())}
-             style={{fontSize: this.getSize()}}>
+          style={{fontSize: this.getSize()}}>
           {this.props.config.app.display === 'overlay' &&
           <CFButton onClick={InterfaceState.openSidebar}/>
           }
@@ -73,7 +72,7 @@ export default class App extends React.PureComponent {
     let screenType
     for (let threshold in SIZE_THRESHOLDS) {
       if (containerWidth < threshold)
-        break;
+        break
       screenType = SIZE_THRESHOLDS[threshold]
     }
     return screenType
