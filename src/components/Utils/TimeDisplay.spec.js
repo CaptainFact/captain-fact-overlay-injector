@@ -1,3 +1,4 @@
+import React from 'react'
 import TimeDisplay from './TimeDisplay'
 
 
@@ -18,7 +19,7 @@ test('prefix with given text', () => {
 })
 
 test('time becomes clickable if a function is passed', () => {
-  snapshot(<TimeDisplay time={1334} handleClick={(time) => "Awesome"}/>)
+  snapshot(<TimeDisplay time={1334} handleClick={() => 'Awesome'}/>)
 })
 
 test('handleClick gets called with time', () => {

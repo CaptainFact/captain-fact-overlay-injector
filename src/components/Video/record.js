@@ -1,10 +1,10 @@
-import { Record } from "immutable"
+import { Record } from 'immutable'
 
 
 const Video = new Record({
   id: 0,
-  hashId: "",
-  url: ""
+  hashId: '',
+  url: ''
 })
 
 export default Video

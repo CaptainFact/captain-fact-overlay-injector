@@ -169,7 +169,7 @@ class CaptainFactOverlayInjector {
       <Provider store={store}>
         {component}
       </Provider>
-    , node)
+      , node)
   }
 }
 
