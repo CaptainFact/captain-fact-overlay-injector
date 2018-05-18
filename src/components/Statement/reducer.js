@@ -33,7 +33,7 @@ function prepareStatementsList(statements) {
   statements.forEach(({comments, ...attributes}) => {
     const preparedComments = new List(comments)
       .filter(filterFacts) // Approving / Refuting facts
-      .sortBy(c => c.score ? -c.score : 0)
+      .sortBy(c => (c.score ? -c.score : 0))
     if (preparedComments.count() > 0)
       preparedStatements.push(new Statement({comments: preparedComments, ...attributes}))
   })

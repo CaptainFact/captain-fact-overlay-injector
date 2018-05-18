@@ -17,7 +17,7 @@ function formatSeconds(totalSeconds) {
   return `${sign}${hours}:${padLeft(minutes, 2, '0')}:${seconds}`
 }
 
-const TimeDisplay = ({ time, handleClick, textBefore='' }) => {
+const TimeDisplay = ({ time, handleClick, textBefore = '' }) => {
   const formattedTime = formatSeconds(time)
   const content = handleClick ?
     <a onClick={() => handleClick(time)} className={link}>{formattedTime}</a> :

@@ -25,9 +25,8 @@ test('time becomes clickable if a function is passed', () => {
 test('handleClick gets called with time', () => {
   const time = 4242
   const clickFunc = jest.fn()
-  const mounted = mount(<TimeDisplay time={time} handleClick={clickFunc}/>)
+  const mounted = shallow(<TimeDisplay time={time} handleClick={clickFunc}/>)
   const link = mounted.find('a').first()
-
   link.simulate('click')
   expect(clickFunc).toBeCalledWith(time)
 })

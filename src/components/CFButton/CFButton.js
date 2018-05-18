@@ -39,8 +39,7 @@ export class CFButton extends React.PureComponent {
       return (this.props.icons && this.props.icons.confirm) || iconConfirm
     else if (globalScore < 0)
       return (this.props.icons && this.props.icons.refute) || iconRefute
-    else
-      return (this.props.icons && this.props.icons.neutral) || iconNeutral
+    return (this.props.icons && this.props.icons.neutral) || iconNeutral
   }
 
   calculateGlobalScore() {

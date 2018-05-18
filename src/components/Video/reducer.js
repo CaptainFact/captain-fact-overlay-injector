@@ -20,7 +20,7 @@ export const VideoState = State('Video', {
     console.log(`[CaptainFact] Error while fetching video info: ${errors}`)
     return state
   },
-  setLoading(state, isLoading=true) {
+  setLoading(state, isLoading = true) {
     return state.set('isLoading', isLoading)
   },
   reset: () => INITIAL_STATE()

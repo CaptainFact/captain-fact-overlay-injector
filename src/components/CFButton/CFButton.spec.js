@@ -15,7 +15,7 @@ const VALID_PROPS = new Record({
   }
 })()
 
-const buildProps = (customProps={}) => VALID_PROPS.mergeDeep(customProps).toJS()
+const buildProps = (customProps = {}) => VALID_PROPS.mergeDeep(customProps).toJS()
 
 const POSITIVE_PROPS = buildProps({statement: {comments: [
   {approve: true, score: 25},
