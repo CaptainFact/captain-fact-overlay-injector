@@ -1,9 +1,10 @@
 import Enzyme, { shallow, render, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import React from 'react'
+import jsdomGlobal from 'jsdom-global'
 
 
-global.React = React
+// Initialize the global DOM
+jsdomGlobal()
 
 // React 16 Enzyme adapter
 Enzyme.configure({ adapter: new Adapter() })
@@ -15,3 +16,4 @@ global.mount = mount
 
 // Add a helper to register snapshot
 global.snapshot = component => expect(shallow(component)).toMatchSnapshot()
+

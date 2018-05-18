@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
@@ -7,7 +7,7 @@ import FactsContainer from '../Fact/FactsContainer.js'
 import { InterfaceState } from '../App/interface_reducer'
 
 import {
-  sidebar, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
+  sidebar, sidebarContent, jumpLink, actionsLinks, disabled, collapsed,
   slideIn, slideOut, statementsList, isBlock, animated
 } from './Sidebar.css'
 import { PlaybackState } from '../App/playback_reducer'
@@ -23,7 +23,7 @@ import Header from './Header'
   videoHashId: state.Video.data.hashId,
   config: state.Configuration.get('app')
 }))
-export default class Sidebar extends Component {
+export default class Sidebar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -79,10 +79,10 @@ export default class Sidebar extends Component {
       this.props.player.setPosition(time)
   }
 
-  renderStatementJumpLink(jumpType, statement, textBefore='', textAfter='') {
+  renderStatementJumpLink(jumpType, statement, textBefore = '', textAfter = '') {
     return (
       <a className={classnames(jumpLink, {[disabled]: !statement})}
-        onClick={() => statement ? this.handleTimeClick(statement.time) : true}>
+        onClick={() => (statement ? this.handleTimeClick(statement.time) : true)}>
         {textBefore}{jumpType} {textAfter}
       </a>
     )
@@ -132,7 +132,7 @@ export default class Sidebar extends Component {
         <div className={sidebarContent}>
           {this.state.currentView === 'facts' && currentStatementIdx !== -1 &&
             <div>
-              <Statement statement={currentStatement} isFocused={true}
+              <Statement statement={currentStatement} isFocused
                 onTimeClick={this.handleTimeClick}/>
               <FactsContainer comments={currentStatement.comments}/>
             </div>
