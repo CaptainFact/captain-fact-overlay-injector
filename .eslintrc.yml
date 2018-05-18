@@ -105,5 +105,5 @@ rules:
 
 globals:
   snapshot: false # For tests
-  mount: false
+  shallow: false
   CF_VERSION: false

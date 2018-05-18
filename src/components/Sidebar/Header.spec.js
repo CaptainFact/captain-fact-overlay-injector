@@ -16,7 +16,7 @@ test('new tab image can be override', () => {
 
 test('call function when clicking on close', () => {
   const closeFunc = jest.fn()
-  const mounted = mount(<Header videoHashId="xxxx" onCloseClick={closeFunc}/>)
+  const mounted = shallow(<Header videoHashId="xxxx" onCloseClick={closeFunc}/>)
 
   mounted.find('.closeBtn').first().simulate('click')
   expect(closeFunc).toBeCalled()
