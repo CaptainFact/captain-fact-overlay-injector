@@ -1,4 +1,3 @@
-import React from 'react'
 import TimeDisplay from './TimeDisplay'
 
 
@@ -19,14 +18,15 @@ test('prefix with given text', () => {
 })
 
 test('time becomes clickable if a function is passed', () => {
-  snapshot(<TimeDisplay time={1334} handleClick={() => 'Awesome'}/>)
+  snapshot(<TimeDisplay time={1334} handleClick={(time) => "Awesome"}/>)
 })
 
 test('handleClick gets called with time', () => {
   const time = 4242
   const clickFunc = jest.fn()
-  const mounted = shallow(<TimeDisplay time={time} handleClick={clickFunc}/>)
+  const mounted = mount(<TimeDisplay time={time} handleClick={clickFunc}/>)
   const link = mounted.find('a').first()
+
   link.simulate('click')
   expect(clickFunc).toBeCalledWith(time)
 })

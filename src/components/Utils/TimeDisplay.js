@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import padLeft from 'voca/pad_left'
 
 import { link } from './TimeDisplay.css'
@@ -6,7 +6,7 @@ import { link } from './TimeDisplay.css'
 
 function formatSeconds(totalSeconds) {
   if (!totalSeconds)
-    return '0:00:00'
+    return "0:00:00"
 
   const sign = totalSeconds < 0 ? '-' : ''
   const absSeconds = Math.abs(totalSeconds)
@@ -17,7 +17,7 @@ function formatSeconds(totalSeconds) {
   return `${sign}${hours}:${padLeft(minutes, 2, '0')}:${seconds}`
 }
 
-const TimeDisplay = ({ time, handleClick, textBefore = '' }) => {
+const TimeDisplay = ({ time, handleClick, textBefore="" }) => {
   const formattedTime = formatSeconds(time)
   const content = handleClick ?
     <a onClick={() => handleClick(time)} className={link}>{formattedTime}</a> :
