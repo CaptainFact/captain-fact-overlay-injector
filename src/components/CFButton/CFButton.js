@@ -7,9 +7,9 @@ import { cfbutton, pulse, hidden } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
 
-import iconNeutral from '../../assets/icon.png'
-import iconConfirm from '../../assets/icon_confirm.png'
-import iconRefute from '../../assets/icon_refute.png'
+import iconNeutral from "../../assets/icon.png"
+import iconConfirm from "../../assets/icon_confirm.png"
+import iconRefute from "../../assets/icon_refute.png"
 
 
 export class CFButton extends React.PureComponent {
@@ -19,12 +19,10 @@ export class CFButton extends React.PureComponent {
 
     const globalScore = this.calculateGlobalScore()
     return (
-      <img 
-        src={this.getIcon(globalScore)}
+      <img src={this.getIcon(globalScore)}
         className={this.getClassNames()}
         title="CaptainFact"
         onClick={InterfaceState.openSidebar}
-        alt="CF"
       />
     )
   }
@@ -41,7 +39,8 @@ export class CFButton extends React.PureComponent {
       return (this.props.icons && this.props.icons.confirm) || iconConfirm
     else if (globalScore < 0)
       return (this.props.icons && this.props.icons.refute) || iconRefute
-    return (this.props.icons && this.props.icons.neutral) || iconNeutral
+    else
+      return (this.props.icons && this.props.icons.neutral) || iconNeutral
   }
 
   calculateGlobalScore() {

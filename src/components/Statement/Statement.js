@@ -17,6 +17,6 @@ export default class Statement extends PureComponent {
         </div>
         <p className={statementText}>{text}</p>
       </div>
-    )
+    );
   }
 }
