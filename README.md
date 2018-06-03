@@ -27,6 +27,15 @@
     </tr>
   </tbody>
 </table>
+
+<hr/>
+
+<p align="center">
+<a href="https://opencollective.com/webpack/donate" target="_blank">
+  <img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width=300 />
+</a>
+</p>
+
 <hr/>
 
 This repo holds the overlay injector script, that basically add facts over videos.
