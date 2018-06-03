@@ -15,8 +15,10 @@ import { InterfaceState } from './interface_reducer'
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
 const BASE_DIM = 800 * 450
 const MAX_DIM = 1920 * 1080
+const DIM_INTERVAL = MAX_DIM - BASE_DIM
 const MIN_RATIO = 1
 const MAX_RATIO = 1.5
+const RATIO_INTERVAL = MAX_RATIO - MIN_RATIO
 const SIZE_THRESHOLDS = {
   0: 'cf_xmobile',
   769: 'cf_xtablet',
@@ -52,8 +54,10 @@ export default class App extends React.PureComponent {
     if (!this.props.video)
       return <div style={{display: 'none'}}/>
     return (
-      <div className={classNames(styles.app, this.getScreenType())}
-        style={{fontSize: this.getSize()}}>
+      <div
+        className={classNames(styles.app, this.getScreenType())}
+        style={{fontSize: this.getSize()}}
+      >
         {this.props.config.app.display === 'overlay' &&
         <CFButton onClick={InterfaceState.openSidebar}/>
         }
@@ -81,7 +85,10 @@ export default class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize)
       return this.props.config.app.baseSize
-    const modifierRatio = Math.min(((this.props.container.offsetWidth * this.props.container.offsetHeight - BASE_DIM) * (MAX_RATIO - MIN_RATIO) / (MAX_DIM - BASE_DIM)) + MIN_RATIO, MAX_RATIO)
+
+    const playerDim = this.props.container.offsetWidth * this.props.container.offsetHeight
+    const minRatio = (((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL) + MIN_RATIO
+    const modifierRatio = Math.min(minRatio, MAX_RATIO)
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`
   }
