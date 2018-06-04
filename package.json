@@ -1,6 +1,6 @@
 {
   "name": "captain-fact-overlay-injector",
-  "version": "0.8.1",
+  "version": "0.8.10",
   "description": "http://captainfact.io - Injects facts overlays ",
   "main": "dist/captain-fact-overlay-injector.js",
   "scripts": {
@@ -12,7 +12,10 @@
     "watchp": "webpack -w -p",
     "test": "jest",
     "wtest": "jest --watch",
-    "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'"
+    "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint_all": "./node_modules/.bin/eslint src/**/*.js",
+    "lint_fix": "./node_modules/.bin/eslint src --fix"
   },
   "jest": {
     "setupFiles": [
@@ -59,6 +62,11 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
     "file-loader": "^1.1.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
