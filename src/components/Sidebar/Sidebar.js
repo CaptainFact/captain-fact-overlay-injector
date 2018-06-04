@@ -5,15 +5,16 @@ import classnames from 'classnames'
 import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
 import { InterfaceState } from '../App/interface_reducer'
+import { STATEMENT_FOCUS_TIME } from '../../constants'
+import { PlaybackState } from '../App/playback_reducer'
+import Header from './Header'
 
 import {
   sidebar, sidebarContent, jumpLink, actionsLinks, disabled, collapsed,
   slideIn, slideOut, statementsList, isBlock, animated
 } from './Sidebar.css'
-import { PlaybackState } from '../App/playback_reducer'
-
-import { STATEMENT_FOCUS_TIME } from '../../constants'
-import Header from './Header'
+import imgPrev from '../../assets/prev.svg'
+import imgNext from '../../assets/next.svg'
 
 
 @connect(state => ({
@@ -81,15 +82,19 @@ export default class Sidebar extends React.Component {
 
   renderStatementJumpLink(jumpType, statement, textBefore = '', textAfter = '') {
     return (
-      <a className={classnames(jumpLink, {[disabled]: !statement})}
-        onClick={() => (statement ? this.handleTimeClick(statement.time) : true)}>
-        {textBefore}{jumpType} {textAfter}
-      </a>
+      <button
+        className={classnames(jumpLink, {[disabled]: !statement})}
+        onClick={() => (statement ? this.handleTimeClick(statement.time) : true)}
+      >
+        {textBefore} {jumpType} {textAfter}
+      </button>
     )
   }
 
   toggleView() {
-    this.setState({currentView: (this.state.currentView === 'facts' ? 'statements' : 'facts')})
+    this.setState({
+      currentView: (this.state.currentView === 'facts' ? 'statements' : 'facts')
+    })
   }
 
   renderStatementNavigateLinks(currentStatementIdx) {
@@ -100,13 +105,13 @@ export default class Sidebar extends React.Component {
 
     return (
       <div className={actionsLinks}>
-        {this.renderStatementJumpLink('Previous', prevStatement, '⏮️ ')}
+        {this.renderStatementJumpLink('Previous', prevStatement, <img src={imgPrev} alt="<"/>)}
         {statements.size > 1 &&
-          <a className={jumpLink} onClick={this.toggleView.bind(this)}>
+          <button className={jumpLink} onClick={() => this.toggleView()}>
             Show {this.state.currentView === 'facts' ? 'Statements' : 'Facts'}
-          </a>
+          </button>
         }
-        {this.renderStatementJumpLink('Next', nextStatement, '', ' ⏭️')}
+        {this.renderStatementJumpLink('Next', nextStatement, null, <img src={imgNext} alt=">"/>)}
       </div>
     )
   }
@@ -124,7 +129,8 @@ export default class Sidebar extends React.Component {
 
     return (
       <div className={classes}>
-        <Header videoHashId={this.props.videoHashId}
+        <Header
+          videoHashId={this.props.videoHashId}
           onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
           imgNewTab={graphics.newTab}
         />
@@ -132,17 +138,24 @@ export default class Sidebar extends React.Component {
         <div className={sidebarContent}>
           {this.state.currentView === 'facts' && currentStatementIdx !== -1 &&
             <div>
-              <Statement statement={currentStatement} isFocused
-                onTimeClick={this.handleTimeClick}/>
+              <Statement
+                statement={currentStatement}
+                isFocused
+                onTimeClick={this.handleTimeClick}
+              />
               <FactsContainer comments={currentStatement.comments}/>
             </div>
           }
           {this.state.currentView === 'statements' &&
             <div className={statementsList}>
-              {statements.map(s =>
-                <Statement  key={s.id} statement={s} onTimeClick={this.handleTimeClick}
-                  textPrefix={s === currentStatement ? '➡️ ' : ''}/>
-              ).toArray()}
+              {statements.map(s => (
+                <Statement
+                  key={s.id}
+                  statement={s}
+                  onTimeClick={this.handleTimeClick}
+                  textPrefix={s === currentStatement ? '> ' : ''}
+                />
+              )).toArray()}
             </div>
           }
         </div>

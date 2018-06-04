@@ -34,4 +34,9 @@
   float: right;
   color: white;
   cursor: pointer;
+  padding: 0.3em 0.3em 0 0;
+}
+
+.closeBtn:not(:hover) {
+  opacity: 0.9;
 }
