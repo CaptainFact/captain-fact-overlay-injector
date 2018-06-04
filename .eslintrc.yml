@@ -30,10 +30,14 @@ rules:
   no-continue: off
   no-plusplus: off
   radix: off
+  guard-for-in: ['warn']
   eol-last: ['warn']
   no-nested-ternary: ['warn']
   prefer-const: ['warn']
   import/no-named-as-default: ['warn']
+  import/no-extraneous-dependencies: off # Don't play way with preact
+  import/no-unresolved: ['error', {ignore: ['env-constants']}]
+  import/extensions: off
   no-restricted-globals: ["error", "event", "fdescribe"]
   no-mixed-operators: ['warn']
   react/no-multi-comp: ['warn']
@@ -50,9 +54,9 @@ rules:
   react/no-unescaped-entities: ['warn']
   react/no-unused-prop-types: ['warn']
   react/self-closing-comp: ['warn']
-  react/jsx-filename-extension: off
   react/jsx-indent: ['warn']
   react/no-array-index-key: ['warn']
+  jsx-a11y/accessible-emoji: ['warn']
   jsx-a11y/anchor-is-valid: 
     - warn
     - components: ['Link']
@@ -62,6 +66,7 @@ rules:
   jsx-a11y/click-events-have-key-events: ['warn']
   jsx-a11y/no-static-element-interactions: ['warn']
   jsx-a11y/media-has-caption: ['warn']
+  jsx-a11y/no-noninteractive-element-interactions: ['warn']
   jsx-a11y/anchor-has-content: off
 
   # Following rule haves been disabled for compatibility with
@@ -96,8 +101,9 @@ rules:
   react/react-in-jsx-scope: off # Generates erros in tests
   react/sort-comp: off
   react/require-default-props: off
+  react/jsx-filename-extension: off
 
 globals:
   snapshot: false # For tests
-  mount: false
-  CF_VERSION: false 
+  shallow: false
+  CF_VERSION: false

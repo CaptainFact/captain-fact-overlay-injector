@@ -1,3 +1,4 @@
+import React from 'react'
 import { Record } from 'immutable'
 import { CFButton } from './CFButton'
 

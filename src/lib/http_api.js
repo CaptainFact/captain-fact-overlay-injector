@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch'
 
-import { API_URL } from '../constants'
-
 
 class CaptainFactHttpApi {
   prepareResponse(promise) {
