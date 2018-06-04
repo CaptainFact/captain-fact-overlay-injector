@@ -27,7 +27,11 @@ const SIZE_THRESHOLDS = {
   1408: 'cf_xfullhd'
 }
 
-@connect(state => ({video: state.Video.data, config: state.Configuration, forceResize: state.Interface.forceResize}))
+@connect(state => ({
+  video: state.Video.data,
+  config: state.Configuration,
+  forceResize: state.Interface.forceResize
+}))
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props)

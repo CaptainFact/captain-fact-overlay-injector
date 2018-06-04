@@ -91,7 +91,10 @@ export default new Record({
         refute: undefined,
       })(),
       newTab: undefined,
-      star: undefined
+      star: undefined,
+      next: undefined,
+      prev: undefined,
+      close: undefined,
     })()
   })(),
 
