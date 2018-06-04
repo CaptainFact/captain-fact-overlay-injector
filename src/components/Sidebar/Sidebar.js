@@ -7,6 +7,7 @@ import FactsContainer from '../Fact/FactsContainer'
 import { InterfaceState } from '../App/interface_reducer'
 import { STATEMENT_FOCUS_TIME } from '../../constants'
 import { PlaybackState } from '../App/playback_reducer'
+import { getGraphics } from '../App/Configuration/selectors'
 import Header from './Header'
 
 import {
@@ -14,8 +15,8 @@ import {
   slideIn, slideOut, statementsList, isBlock, animated
 } from './Sidebar.css'
 
-import imgPrev from '../../assets/prev.svg'
-import imgNext from '../../assets/next.svg'
+import DEFAULT_IMG_PREV from '../../assets/prev.svg'
+import DEFAULT_IMG_NEXT from '../../assets/next.svg'
 
 
 @connect(state => ({
@@ -23,7 +24,9 @@ import imgNext from '../../assets/next.svg'
   isLoading: state.Statements.isLoading,
   isCollapsed: state.Interface.sidebarCollapsed,
   videoHashId: state.Video.data.hashId,
-  config: state.Configuration.get('app')
+  config: state.Configuration.get('app'),
+  imgNext: getGraphics(state).next || DEFAULT_IMG_NEXT,
+  imgPrev: getGraphics(state).prev || DEFAULT_IMG_PREV
 }))
 export default class Sidebar extends Component {
   constructor(props) {
@@ -100,9 +103,10 @@ export default class Sidebar extends Component {
 
   renderStatementNavigateLinks(currentStatementIdx) {
     const { currentTime } = this.state
-    const { statements } = this.props
+    const { statements, imgNext, imgPrev } = this.props
     const prevStatement = statements.findLast((s, idx) => s.time < currentTime && idx !== currentStatementIdx)
     const nextStatement = statements.find((s, idx) => s.time > currentTime && idx !== currentStatementIdx)
+
     return (
       <div className={actionsLinks}>
         {this.renderStatementJumpLink('Previous', prevStatement, <img src={imgPrev} alt="<"/>)}
@@ -133,6 +137,7 @@ export default class Sidebar extends Component {
           videoHashId={this.props.videoHashId}
           onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
           imgNewTab={graphics.newTab}
+          imgClose={graphics.close}
         />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>

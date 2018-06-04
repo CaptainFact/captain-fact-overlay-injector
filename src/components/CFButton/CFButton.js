@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import { cfbutton, pulse, hidden } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
+import { getGraphics } from '../App/Configuration/selectors'
 
 import iconNeutral from '../../assets/icon.png'
 import iconConfirm from '../../assets/icon_confirm.png'
@@ -64,6 +65,6 @@ export default connect(state => ({
   hasVideo: !!state.Video.data,
   displayed: state.Interface.sidebarCollapsed,
   statement: getFocusedStatement(state),
-  icons: state.Configuration.app.graphics.logo,
+  icons: getGraphics(state).logo,
   baseSize: state.Configuration.app.baseSize
 }))(CFButton)
