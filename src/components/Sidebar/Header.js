@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
 import { FRONTEND_URL } from '../../constants'
 
@@ -19,6 +19,7 @@ export const Header = ({
       href={`${FRONTEND_URL}/videos/${videoHashId}`}
       target="_BLANK"
       title="Open discussion on CaptainFact"
+      rel="noopener noreferrer"
     >
       <h1 className={title}>CaptainFact <img src={imgNewTab} alt=""/></h1>
     </a>

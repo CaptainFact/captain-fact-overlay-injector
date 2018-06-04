@@ -2,6 +2,7 @@
 
 exports[`Has default icons 1`] = `
 <img
+  alt="CF"
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
@@ -11,6 +12,7 @@ exports[`Has default icons 1`] = `
 
 exports[`Has default icons 2`] = `
 <img
+  alt="CF"
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
@@ -24,6 +26,7 @@ exports[`Returns nothing if it has no video or statement 2`] = `""`;
 
 exports[`approve icon if approve 1`] = `
 <img
+  alt="CF"
   className="cfbutton pulse"
   onClick={[Function]}
   src="approve-icon.jpg"
@@ -33,6 +36,7 @@ exports[`approve icon if approve 1`] = `
 
 exports[`neutral icon if unsure 1`] = `
 <img
+  alt="CF"
   className="cfbutton pulse"
   onClick={[Function]}
   src="neutral-icon.jpg"
@@ -42,6 +46,7 @@ exports[`neutral icon if unsure 1`] = `
 
 exports[`refute icon if refute 1`] = `
 <img
+  alt="CF"
   className="cfbutton pulse"
   onClick={[Function]}
   src="refute-icon.jpg"

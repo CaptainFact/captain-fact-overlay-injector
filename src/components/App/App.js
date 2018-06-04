@@ -13,9 +13,12 @@ import { InterfaceState } from './interface_reducer'
 
 
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
-const BASE_CONTAINER_SIZE = 800
-const MIN_RATIO = 1.0
-const MAX_RATIO = 2.0
+const BASE_DIM = 800 * 450
+const MAX_DIM = 1920 * 1080
+const DIM_INTERVAL = MAX_DIM - BASE_DIM
+const MIN_RATIO = 1
+const MAX_RATIO = 1.5
+const RATIO_INTERVAL = MAX_RATIO - MIN_RATIO
 const SIZE_THRESHOLDS = {
   0: 'cf_xmobile',
   769: 'cf_xtablet',
@@ -49,17 +52,18 @@ export default class App extends React.PureComponent {
 
   render() {
     if (!this.props.video)
-      return <div style={{display: "none"}}/>
-    else
-      return (
-        <div className={classNames(styles.app, this.getScreenType())}
-             style={{fontSize: this.getSize()}}>
-          {this.props.config.app.display === 'overlay' &&
-          <CFButton onClick={InterfaceState.openSidebar}/>
-          }
-          <Sidebar video={this.props.video} player={this.props.player}/>
-        </div>
-      )
+      return <div style={{display: 'none'}}/>
+    return (
+      <div
+        className={classNames(styles.app, this.getScreenType())}
+        style={{fontSize: this.getSize()}}
+      >
+        {this.props.config.app.display === 'overlay' &&
+        <CFButton onClick={InterfaceState.openSidebar}/>
+        }
+        <Sidebar video={this.props.video} player={this.props.player}/>
+      </div>
+    )
   }
 
   onResize() {
@@ -69,9 +73,9 @@ export default class App extends React.PureComponent {
   getScreenType() {
     const containerWidth = this.props.container.offsetWidth
     let screenType
-    for (let threshold in SIZE_THRESHOLDS) {
+    for (const threshold in SIZE_THRESHOLDS) {
       if (containerWidth < threshold)
-        break;
+        break
       screenType = SIZE_THRESHOLDS[threshold]
     }
     return screenType
@@ -81,7 +85,10 @@ export default class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize)
       return this.props.config.app.baseSize
-    const modifierRatio = Math.max(Math.min((this.props.container.offsetWidth / BASE_CONTAINER_SIZE), MAX_RATIO), MIN_RATIO)
+
+    const playerDim = this.props.container.offsetWidth * this.props.container.offsetHeight
+    const minRatio = (((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL) + MIN_RATIO
+    const modifierRatio = Math.min(minRatio, MAX_RATIO)
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`
   }

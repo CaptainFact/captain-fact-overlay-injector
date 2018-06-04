@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Fact from './Fact.js'
+import Fact from './Fact'
 
 
 export default class FactsContainer extends React.PureComponent {
@@ -9,7 +9,7 @@ export default class FactsContainer extends React.PureComponent {
       <div>
         {this.props.comments.map(comment =>
           <Fact key={comment.id} comment={comment}/>
-        )}
+        ).toArray()}
       </div>
     )
   }

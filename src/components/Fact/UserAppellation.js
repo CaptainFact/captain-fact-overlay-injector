@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 import { container } from './UserAppellation.css'
 import { FRONTEND_URL } from '../../constants'

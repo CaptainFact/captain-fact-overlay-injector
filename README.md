@@ -27,6 +27,15 @@
     </tr>
   </tbody>
 </table>
+
+<hr/>
+
+<p align="center">
+<a href="https://opencollective.com/webpack/donate" target="_blank">
+  <img src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" width=300 />
+</a>
+</p>
+
 <hr/>
 
 This repo holds the overlay injector script, that basically add facts over videos.
@@ -217,27 +226,12 @@ Injector has following methods :
 
 # Developing
 
-1. Start the API
-
-We provide docker images of the API so you can get started quickly.
-[Install docker](https://docs.docker.com/install/) then run `./scripts/start_graphql_api.sh`. It will create a stack
-using docker-compose with both the database (postgres) and the GraphQL API and start an
-[Elixir](https://elixir-lang.org/) console.
-
-2. Generate some data
-
-[TODO]
-
-3. Start developing !
-
-You can now start working on the injector. Run `npm install` to install dependencies then `npm start`. A dev server
-will be available on `localhost:3342`, serving the test pages in `dist`. 
-
-Sources as located in `src` with `index.js` being the main entrypoint of the API.
-
-If you encounter a problem at any step of the process or don't know where to start with, send us a message on
-[the chat](https://gitter.im/CaptainFact).
-
-4. Bonus: API documentation
-
-[TODO]
+* Install (if you don't have them):
+  * [Docker](https://docs.docker.com/install/) (to start the API easily)
+  * [Node.js](http://nodejs.org)
+  * App dependencies: `npm install`
+  
+* Run:
+  * `./dev/start_graphql_api.sh` - Start the GraphQL API. You can access GraphiQL at http://localhost:4002/graphiql
+  * `npm start` - Start the overlay injector test pages on http://localhost:3342
+  * `npm run test` - run all unit tests
