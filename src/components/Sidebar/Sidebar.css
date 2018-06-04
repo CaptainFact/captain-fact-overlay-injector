@@ -84,6 +84,11 @@
   cursor: pointer;
 }
 
+.jumpLink img {
+  height: 0.6em;
+  vertical-align: middle;
+}
+
 .jumpLink:hover {
   text-shadow: 0 0 5px whitesmoke;
 }
