@@ -82,6 +82,10 @@
   margin: 0 5px;
   user-select: none;
   cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1em;
 }
 
 .jumpLink img {
