@@ -2,10 +2,8 @@
 
 cd -- "$(dirname $0)"
 
-mkdir -p __db_data
-
 echo "Starting containers"
-docker-compose up -d || exit 1
+docker-compose up -d
 
 echo "Waiting for API to be ready..."
 

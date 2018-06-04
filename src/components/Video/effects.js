@@ -6,7 +6,7 @@ import { StatementsState } from '../Statement/reducer'
 
 
 const buildRequest = url => `{
-  video(url: "${url}") {
+	video(url: "${url}") {
     hashId
     url
     statements {
@@ -35,7 +35,7 @@ const buildRequest = url => `{
           url
         }
       }
-    }
+  	}
   }
 }`
 

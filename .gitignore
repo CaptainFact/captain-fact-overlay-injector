@@ -7,5 +7,4 @@ dist/*
 !dist/index.html
 !dist/robots.txt
 coverage
-
-/dev/__db_data
+scripts/db
