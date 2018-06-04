@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Fact from './Fact.js'
+import Fact from './Fact'
 
 
 export default class FactsContainer extends React.PureComponent {

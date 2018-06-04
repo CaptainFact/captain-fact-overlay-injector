@@ -50,6 +50,7 @@ rules:
   react/no-unescaped-entities: ['warn']
   react/no-unused-prop-types: ['warn']
   react/self-closing-comp: ['warn']
+  react/jsx-filename-extension: off
   react/jsx-indent: ['warn']
   react/no-array-index-key: ['warn']
   jsx-a11y/anchor-is-valid: 
@@ -98,3 +99,5 @@ rules:
 
 globals:
   snapshot: false # For tests
+  mount: false
+  CF_VERSION: false 

@@ -4,12 +4,14 @@ exports[`full source 1`] = `
 <a
   className="sourceLink"
   href="https://truetruth.local/this-is-the-truth"
+  rel="noopener noreferrer"
   target="_BLANK"
 >
   <div
     className="siteNameContainer"
   >
     <img
+      alt=""
       src="test-file-stub"
     />
      
@@ -31,12 +33,14 @@ exports[`source without site name 1`] = `
 <a
   className="sourceLink"
   href="https://truetruth.local/this-is-the-truth"
+  rel="noopener noreferrer"
   target="_BLANK"
 >
   <div
     className="siteNameContainer"
   >
     <img
+      alt=""
       src="test-file-stub"
     />
      
@@ -58,12 +62,14 @@ exports[`with custom new tab image 1`] = `
 <a
   className="sourceLink"
   href="https://truetruth.local/this-is-the-truth"
+  rel="noopener noreferrer"
   target="_BLANK"
 >
   <div
     className="siteNameContainer"
   >
     <img
+      alt=""
       src="custom-pic.jpg"
     />
      

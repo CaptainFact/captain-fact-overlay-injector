@@ -1,5 +1,5 @@
 import React from 'react'
-import Source from './Source.js'
+import Source from './Source'
 import UserAppellation from './UserAppellation'
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
 import starImageFile from '../../assets/star.png'
@@ -16,7 +16,7 @@ export class Fact extends React.PureComponent {
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
-            <img src={this.props.graphics.star || starImageFile}/>
+            <img src={this.props.graphics.star || starImageFile} alt="pts"/>
           </span>
           <Source source={source} imgNewTab={this.props.graphics.newTab}/>
         </div>

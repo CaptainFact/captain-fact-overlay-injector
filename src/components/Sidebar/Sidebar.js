@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import { Actions } from 'jumpstate'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import Statement from '../Statement/Statement.js'
-import FactsContainer from '../Fact/FactsContainer.js'
-import { icon } from '../Utils/Icon.css'
+import Statement from '../Statement/Statement'
+import FactsContainer from '../Fact/FactsContainer'
 import { InterfaceState } from '../App/interface_reducer'
 import { STATEMENT_FOCUS_TIME } from '../../constants'
 import { PlaybackState } from '../App/playback_reducer'
 import Header from './Header'
 
 import {
-  sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled, collapsed,
-  slideIn, slideOut, statementsList, isBlock, animated, closeBtn
+  sidebar, sidebarContent, jumpLink, actionsLinks, disabled, collapsed,
+  slideIn, slideOut, statementsList, isBlock, animated
 } from './Sidebar.css'
 
 import imgPrev from '../../assets/prev.svg'
