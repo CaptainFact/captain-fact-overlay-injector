@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 
 import { FRONTEND_URL } from '../../constants'
 
 import { header, closeBtn, title } from './Header.css'
+
 import DEFAULT_IMG_NEW_TAB from '../../assets/new_tab.png'
 import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
 
