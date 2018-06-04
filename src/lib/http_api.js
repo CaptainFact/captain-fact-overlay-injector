@@ -1,6 +1,6 @@
-import fetch from "isomorphic-fetch"
+import fetch from 'isomorphic-fetch'
 
-import { API_URL } from "../constants"
+import { API_URL } from '../constants'
 
 
 class CaptainFactHttpApi {
@@ -20,13 +20,13 @@ class CaptainFactHttpApi {
     const response = fetch(apiURL, {
       method: requestType,
       body: data ? JSON.stringify(data) : '',
-      headers: {"Content-Type": "application/json"}
+      headers: {'Content-Type': 'application/json'}
     })
     return this.prepareResponse(response)
   }
 
   post(apiURL, data) {
-    return this.makeRequest(apiURL, "POST", data)
+    return this.makeRequest(apiURL, 'POST', data)
   }
 }
 

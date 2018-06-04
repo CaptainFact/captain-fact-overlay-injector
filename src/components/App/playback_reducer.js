@@ -1,5 +1,5 @@
-import { State } from "jumpstate"
-import { Record } from "immutable"
+import { State } from 'jumpstate'
+import { Record } from 'immutable'
 
 
 const INITIAL_STATE = new Record({

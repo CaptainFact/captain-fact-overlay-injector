@@ -14,7 +14,6 @@
     "wtest": "jest --watch",
     "coverage": "jest --coverage '--collectCoverageFrom=src/**/!(record).{js,jsx}'",
     "lint": "./node_modules/.bin/eslint src",
-    "lint_all": "./node_modules/.bin/eslint src/**/*.js",
     "lint_fix": "./node_modules/.bin/eslint src --fix"
   },
   "jest": {

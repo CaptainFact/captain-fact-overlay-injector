@@ -5,14 +5,14 @@ import classnames from 'classnames'
 
 import Statement from '../Statement/Statement.js'
 import FactsContainer from '../Fact/FactsContainer.js'
-import { icon } from "../Utils/Icon.css"
+import { icon } from '../Utils/Icon.css'
 import { InterfaceState } from '../App/interface_reducer'
 import { STATEMENT_FOCUS_TIME } from '../../constants'
 import { PlaybackState } from '../App/playback_reducer'
 import Header from './Header'
 
 import {
-  sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled , collapsed,
+  sidebar, sidebarHeader, title, sidebarContent, jumpLink, actionsLinks, disabled, collapsed,
   slideIn, slideOut, statementsList, isBlock, animated, closeBtn
 } from './Sidebar.css'
 
@@ -31,7 +31,7 @@ export default class Sidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentTime: null, currentView: "facts"
+      currentTime: null, currentView: 'facts'
     }
     this.collapseAnimation = null
     this.handleTimeClick = this.handleTimeClick.bind(this)
@@ -83,7 +83,7 @@ export default class Sidebar extends Component {
       this.props.player.setPosition(time)
   }
 
-  renderStatementJumpLink(jumpType, statement, textBefore='', textAfter='') {
+  renderStatementJumpLink(jumpType, statement, textBefore = '', textAfter = '') {
     return (
       <button
         className={classnames(jumpLink, {[disabled]: !statement})}
@@ -138,7 +138,7 @@ export default class Sidebar extends Component {
         />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>
-          {this.state.currentView === "facts" && currentStatementIdx !== -1 &&
+          {this.state.currentView === 'facts' && currentStatementIdx !== -1 &&
             <div>
               <Statement
                 statement={currentStatement}
@@ -148,7 +148,7 @@ export default class Sidebar extends Component {
               <FactsContainer comments={currentStatement.comments}/>
             </div>
           }
-          {this.state.currentView === "statements" &&
+          {this.state.currentView === 'statements' &&
             <div className={statementsList}>
               {statements.map(s => (
                 <Statement

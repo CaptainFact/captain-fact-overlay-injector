@@ -2,7 +2,7 @@ import {OnOffToggle} from './OnOffToggle'
 
 
 test('button activated', () => {
-  snapshot(<OnOffToggle isEnabled={true}/>)
+  snapshot(<OnOffToggle isEnabled/>)
 })
 
 test('button disabled', () => {
@@ -10,7 +10,7 @@ test('button disabled', () => {
 })
 
 test('displays custom icon', () => {
-  snapshot(<OnOffToggle isEnabled={true} icon="custom-icon.jpg"/>)
+  snapshot(<OnOffToggle isEnabled icon="custom-icon.jpg"/>)
 })
 
 test('verify buttons labels and order', () => {

@@ -49,17 +49,18 @@ export default class App extends React.PureComponent {
 
   render() {
     if (!this.props.video)
-      return <div style={{display: "none"}}/>
-    else
-      return (
-        <div className={classNames(styles.app, this.getScreenType())}
-             style={{fontSize: this.getSize()}}>
-          {this.props.config.app.display === 'overlay' &&
+      return <div style={{display: 'none'}}/>
+    return (
+      <div
+        className={classNames(styles.app, this.getScreenType())}
+        style={{fontSize: this.getSize()}}
+      >
+        {this.props.config.app.display === 'overlay' &&
           <CFButton onClick={InterfaceState.openSidebar}/>
-          }
-          <Sidebar video={this.props.video} player={this.props.player}/>
-        </div>
-      )
+        }
+        <Sidebar video={this.props.video} player={this.props.player}/>
+      </div>
+    )
   }
 
   onResize() {
@@ -69,9 +70,9 @@ export default class App extends React.PureComponent {
   getScreenType() {
     const containerWidth = this.props.container.offsetWidth
     let screenType
-    for (let threshold in SIZE_THRESHOLDS) {
+    for (const threshold in SIZE_THRESHOLDS) {
       if (containerWidth < threshold)
-        break;
+        break
       screenType = SIZE_THRESHOLDS[threshold]
     }
     return screenType

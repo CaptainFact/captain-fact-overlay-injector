@@ -151,7 +151,7 @@ class CaptainFactOverlayInjector {
     if (!this.config.injector.onOffToggleSelector)
       return 0
     const allContainers = this.config.injector.onOffToggleSelector()
-    for (let container of allContainers) {
+    for (const container of allContainers) {
       this.mountWithStore(
         container,
         <OnOffToggle enable={this.enable} disable={this.disable} icon={this.config.app.graphics.logo.neutral}/>
@@ -169,7 +169,7 @@ class CaptainFactOverlayInjector {
       <Provider store={store}>
         {component}
       </Provider>
-    , node)
+      , node)
   }
 }
 

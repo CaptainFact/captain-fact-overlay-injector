@@ -8,13 +8,13 @@ const VALID_PROPS = new Record({
   displayed: true,
   statement: {comments: []},
   icons: {
-    neutral: "neutral-icon.jpg",
-    confirm: "approve-icon.jpg",
-    refute: "refute-icon.jpg",
+    neutral: 'neutral-icon.jpg',
+    confirm: 'approve-icon.jpg',
+    refute: 'refute-icon.jpg',
   }
 })()
 
-const buildProps = (customProps={}) => VALID_PROPS.mergeDeep(customProps).toJS()
+const buildProps = (customProps = {}) => VALID_PROPS.mergeDeep(customProps).toJS()
 
 const POSITIVE_PROPS = buildProps({statement: {comments: [
   {approve: true, score: 25},
@@ -33,27 +33,27 @@ const NEUTRAL_PROPS = buildProps({statement: {comments: [
   {approve: true, score: 10},
 ]}})
 
-test("Returns nothing if it has no video or statement", () => {
+test('Returns nothing if it has no video or statement', () => {
   snapshot(<CFButton {...buildProps({hasVideo: false})}/>)
   snapshot(<CFButton {...buildProps({hasStatements: false})}/>)
 })
 
-test("neutral icon if unsure", () => {
+test('neutral icon if unsure', () => {
   snapshot(<CFButton {...NEUTRAL_PROPS}/>)
 })
 
-test("approve icon if approve", () => {
+test('approve icon if approve', () => {
   snapshot(<CFButton {...POSITIVE_PROPS}/>)
 })
 
-test("refute icon if refute", () => {
+test('refute icon if refute', () => {
   snapshot(<CFButton {...NEGATIVE_PROPS}/>)
 })
 
-test("Has default icons", () => {
+test('Has default icons', () => {
   // Without icons
   snapshot(<CFButton {...buildProps({icons: null})}/>)
 
   // With partial icons object
-  snapshot(<CFButton {...buildProps({icons: {approved: "APPROVED.JPG"}})}/>)
+  snapshot(<CFButton {...buildProps({icons: {approved: 'APPROVED.JPG'}})}/>)
 })
