@@ -12,11 +12,12 @@ export const Header = ({
   videoHashId,
   onCloseClick = null,
   imgNewTab = DEFAULT_IMG_NEW_TAB,
-  imgClose = DEFAULT_IMG_CLOSE
+  imgClose = DEFAULT_IMG_CLOSE,
+  param = ""
 }) => (
   <div className={header}>
     <a
-      href={`${FRONTEND_URL}/videos/${videoHashId}`}
+      href={`${FRONTEND_URL}/videos/${videoHashId}?${param}`}
       target="_BLANK"
       title="Open discussion on CaptainFact"
       rel="noopener noreferrer"

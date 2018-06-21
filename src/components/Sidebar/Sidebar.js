@@ -130,6 +130,7 @@ export default class Sidebar extends Component {
       [isBlock]: display === 'block',
       [animated]: animate
     })
+    const param = currentStatement != null ? "statement=" + currentStatement.id : ""
 
     return (
       <div className={classes}>
@@ -138,6 +139,7 @@ export default class Sidebar extends Component {
           onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
           imgNewTab={graphics.newTab}
           imgClose={graphics.close}
+          param={param}
         />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>
