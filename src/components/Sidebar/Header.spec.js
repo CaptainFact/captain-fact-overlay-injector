@@ -24,5 +24,10 @@ test('call function when clicking on close', () => {
 
 test('with empty url params', () => {
   const urlParams = {}
-  snapshot(<Header videoHashId="xxxx" imgNewTab="overrided-pic.jpg" urlParams={urlParams}/>)
+  snapshot(<Header videoHashId="xxxx" urlParams={urlParams}/>)
+})
+
+test('with statement in url params', () => {
+  const urlParams = {statement: 61}
+  snapshot(<Header videoHashId="xxxx" urlParams={urlParams}/>)
 })
