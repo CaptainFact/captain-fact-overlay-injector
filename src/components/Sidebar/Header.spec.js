@@ -21,3 +21,8 @@ test('call function when clicking on close', () => {
   mounted.find('.closeBtn').first().simulate('click')
   expect(closeFunc).toBeCalled()
 })
+
+test('with empty url params', () => {
+  const urlParams = {}
+  snapshot(<Header videoHashId="xxxx" imgNewTab="overrided-pic.jpg" urlParams={urlParams}/>)
+})
