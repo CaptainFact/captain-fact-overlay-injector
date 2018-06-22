@@ -78,3 +78,49 @@ exports[`show toggle if given a close function 1`] = `
   </button>
 </div>
 `;
+
+exports[`with empty url params 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="https://testing.captainfact.io/videos/xxxx"
+    rel="noopener noreferrer"
+    target="_BLANK"
+    title="Open discussion on CaptainFact"
+  >
+    <h1
+      className="title"
+    >
+      CaptainFact 
+      <img
+        alt=""
+        src="test-file-stub"
+      />
+    </h1>
+  </a>
+</div>
+`;
+
+exports[`with statement in url params 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="https://testing.captainfact.io/videos/xxxx?statement=61"
+    rel="noopener noreferrer"
+    target="_BLANK"
+    title="Open discussion on CaptainFact"
+  >
+    <h1
+      className="title"
+    >
+      CaptainFact 
+      <img
+        alt=""
+        src="test-file-stub"
+      />
+    </h1>
+  </a>
+</div>
+`;
