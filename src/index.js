@@ -10,6 +10,8 @@ import videoAdapters from './lib/video_adapters'
 import OnOffToggle from './components/OnOffToggle/OnOffToggle'
 import App from './components/App/App'
 
+import { I18nextProvider } from 'react-i18next'
+import i18n from './1i18n'
 
 class CaptainFactOverlayInjector {
   constructor(config) {
@@ -166,9 +168,11 @@ class CaptainFactOverlayInjector {
    */
   mountWithStore(node, component) {
     ReactDOM.render(
-      <Provider store={store}>
-        {component}
-      </Provider>
+      <I18nextProvider i18n={i18n}>
+        <Provider store={store} i18n={i18n}>
+          {component}
+        </Provider>
+      </I18nextProvider>
       , node)
   }
 }

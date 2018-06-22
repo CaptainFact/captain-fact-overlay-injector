@@ -11,6 +11,7 @@ import { fetchVideo } from '../Video/effects'
 import styles from './App.css'
 import { InterfaceState } from './interface_reducer'
 
+import { Trans } from "react-i18next"
 
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
 const BASE_DIM = 800 * 450

@@ -12,7 +12,9 @@ import iconNeutral from '../../assets/icon.png'
 import iconConfirm from '../../assets/icon_confirm.png'
 import iconRefute from '../../assets/icon_refute.png'
 
+import { translate, Trans, I18n } from "react-i18next"
 
+@translate(['translations'], { wait: true })
 export class CFButton extends React.PureComponent {
   render() {
     if (!this.props.hasVideo || !this.props.hasStatements)
@@ -23,9 +25,9 @@ export class CFButton extends React.PureComponent {
       <img 
         src={this.getIcon(globalScore)}
         className={this.getClassNames()}
-        title="CaptainFact"
+        title={ this.props.t('CaptainFact') }
         onClick={InterfaceState.openSidebar}
-        alt="CF"
+        alt={ this.props.t('CF') }
       />
     )
   }
