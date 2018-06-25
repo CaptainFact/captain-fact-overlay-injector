@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 import classnames from 'classnames'
 
 import Statement from '../Statement/Statement'
@@ -28,6 +29,7 @@ import DEFAULT_IMG_NEXT from '../../assets/next.svg'
   imgNext: getGraphics(state).next || DEFAULT_IMG_NEXT,
   imgPrev: getGraphics(state).prev || DEFAULT_IMG_PREV
 }))
+@translate(['translations'], { wait: true })
 export default class Sidebar extends Component {
   constructor(props) {
     super(props)
@@ -106,16 +108,17 @@ export default class Sidebar extends Component {
     const { statements, imgNext, imgPrev } = this.props
     const prevStatement = statements.findLast((s, idx) => s.time < currentTime && idx !== currentStatementIdx)
     const nextStatement = statements.find((s, idx) => s.time > currentTime && idx !== currentStatementIdx)
+    const t = this.props.t
 
     return (
       <div className={actionsLinks}>
-        {this.renderStatementJumpLink('Previous', prevStatement, <img src={imgPrev} alt="<"/>)}
+        {this.renderStatementJumpLink(t('Previous'), prevStatement, <img src={imgPrev} alt="<"/>)}
         {statements.size > 1 &&
           <button className={jumpLink} onClick={() => this.toggleView()}>
-            Show {this.state.currentView === 'facts' ? 'Statements' : 'Facts'}
+            {this.state.currentView === 'facts' ? t('Show Statements') : t('Show Facts') }
           </button>
         }
-        {this.renderStatementJumpLink('Next', nextStatement, null, <img src={imgNext} alt=">"/>)}
+        {this.renderStatementJumpLink(t('Next'), nextStatement, null, <img src={imgNext} alt=">"/>)}
       </div>
     )
   }
@@ -138,6 +141,7 @@ export default class Sidebar extends Component {
           onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
           imgNewTab={graphics.newTab}
           imgClose={graphics.close}
+          t={this.props.t}
         />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>

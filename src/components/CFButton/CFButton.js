@@ -2,6 +2,7 @@ import 'isomorphic-fetch'
 import React from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
+import { translate } from 'react-i18next'
 
 import { cfbutton, pulse, hidden } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
@@ -11,8 +12,6 @@ import { getGraphics } from '../App/Configuration/selectors'
 import iconNeutral from '../../assets/icon.png'
 import iconConfirm from '../../assets/icon_confirm.png'
 import iconRefute from '../../assets/icon_refute.png'
-
-import { translate, Trans, I18n } from "react-i18next"
 
 @translate(['translations'], { wait: true })
 export class CFButton extends React.PureComponent {
