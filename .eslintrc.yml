@@ -56,8 +56,10 @@ rules:
   react/self-closing-comp: ['warn']
   react/jsx-indent: ['warn']
   react/no-array-index-key: ['warn']
+  react/jsx-uses-react: ['error']
+  react/jsx-uses-vars: ['error']
   jsx-a11y/accessible-emoji: ['warn']
-  jsx-a11y/anchor-is-valid: 
+  jsx-a11y/anchor-is-valid:
     - warn
     - components: ['Link']
       specialLink: ['To']
