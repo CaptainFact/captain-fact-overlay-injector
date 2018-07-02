@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 
 import { FRONTEND_URL } from '../../constants'
@@ -11,28 +10,26 @@ import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
 
 @translate(['translations'])
 export default class Header extends Component {
-  
   render() {
-      const {t} = this.props
-      const imgNewTab = this.props.imgNewTab
-      const onCloseClick = this.props.onCloseClick
-      return (
-        <div className={header}>
-          <a
-            href={`${FRONTEND_URL}/videos/${this.props.videoHashId}`}
-            target="_BLANK"
-            title={t('Open discussion on CaptainFact')}
-            rel="noopener noreferrer"
-          >
-            <h1 className={title}>CaptainFact <img src={imgNewTab} alt=""/></h1>
-          </a>
-          {onCloseClick &&
-          <button title={t('Close sidebar')} className={closeBtn} onClick={onCloseClick}>
+    const {t} = this.props
+    const {onCloseClick} = this.props.onCloseClick
+    return (
+      <div className={header}>
+        <a
+          href={`${FRONTEND_URL}/videos/${this.props.videoHashId}`}
+          target="_BLANK"
+          title={t('OpenDiscussion')}
+          rel="noopener noreferrer"
+        >
+          <h1 className={title}>CaptainFact <img src={this.props.imgNewTab} alt=""/></h1>
+        </a>
+        {onCloseClick &&
+          <button title={t('closeSidebar')} className={closeBtn} onClick={onCloseClick}>
             <img src={this.props.imgClose} alt={t('Close')}/>
           </button>
-          }
-        </div>
-      )
+        }
+      </div>
+    )
   }
 }
 

@@ -115,7 +115,7 @@ export default class Sidebar extends Component {
         {this.renderStatementJumpLink(t('Previous'), prevStatement, <img src={imgPrev} alt="<"/>)}
         {statements.size > 1 &&
           <button className={jumpLink} onClick={() => this.toggleView()}>
-            {this.state.currentView === 'facts' ? t('Show Statements') : t('Show Facts') }
+            {this.state.currentView === 'facts' ? t('ShowStatements') : t('ShowFacts') }
           </button>
         }
         {this.renderStatementJumpLink(t('Next'), nextStatement, null, <img src={imgNext} alt=">"/>)}

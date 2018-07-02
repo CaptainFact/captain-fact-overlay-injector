@@ -25,4 +25,3 @@ export const VideoState = State('Video', {
   },
   reset: () => INITIAL_STATE()
 })
-
