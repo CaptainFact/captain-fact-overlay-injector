@@ -19,13 +19,13 @@ export const Header = ({
     <a
       href={`${FRONTEND_URL}/videos/${videoHashId}`}
       target="_BLANK"
-      title={ t('Open discussion on CaptainFact') }
+      title={t('Open discussion on CaptainFact')}
       rel="noopener noreferrer"
     >
       <h1 className={title}>CaptainFact <img src={imgNewTab} alt=""/></h1>
     </a>
     {onCloseClick &&
-    <button title={ t('Close sidebar') } className={closeBtn} onClick={onCloseClick}>
+    <button title={t('Close sidebar')} className={closeBtn} onClick={onCloseClick}>
       <img src={imgClose} alt={t('Close')}/>
     </button>
     }

@@ -9,7 +9,7 @@ const getHostName = url =>
   upperCase(url.replace(/https?:\/\//, '').replace(/\/.*/g, ''))
 
 const Source = ({
-  source: {url, title, site_name}, 
+  source: {url, title, site_name},
   imgNewTab = DEFAULT_IMG_NEW_TAB
 }) => (
   <a href={url} target="_BLANK" rel="noopener noreferrer" className={sourceLink}>

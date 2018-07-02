@@ -19,7 +19,7 @@ export class Fact extends React.PureComponent {
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
-            <img src={this.props.graphics.star || starImageFile} alt={ this.props.t('pts') } />
+            <img src={this.props.graphics.star || starImageFile} alt={this.props.t('pts')} />
           </span>
           <Source source={source} imgNewTab={this.props.graphics.newTab}/>
         </div>
