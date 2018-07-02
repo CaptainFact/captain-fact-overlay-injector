@@ -17,7 +17,7 @@ export const VideoState = State('Video', {
     })
   },
   fetchFailure(state, errors) {
-    console.log(`[CaptainFact] Error while fetching video info: ${errors}`)
+    console.warn(`[CaptainFact] Error while fetching video info: ${errors}`)
     return state
   },
   setLoading(state, isLoading = true) {

@@ -27,6 +27,7 @@ rules:
   semi: ['error', 'never']
   import/first: ['warn']
   no-trailing-spaces: ['warn']
+  no-console: ['error', { "allow": ["warn", "error"] }]
   no-continue: off
   no-plusplus: off
   radix: off
@@ -75,7 +76,6 @@ rules:
 
   # Following rule haves been disabled for compatibility with
   # existing code. Some of them should be re-activated in the future.
-  no-console: off
   no-shadow: off
   object-curly-spacing: off
   object-curly-newline: off
