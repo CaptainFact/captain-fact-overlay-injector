@@ -141,7 +141,6 @@ export default class Sidebar extends Component {
           onCloseClick={isOverlay ? InterfaceState.closeSidebar : null}
           imgNewTab={graphics.newTab}
           imgClose={graphics.close}
-          t={this.props.t}
         />
         {this.renderStatementNavigateLinks(currentStatementIdx)}
         <div className={sidebarContent}>
