@@ -94,6 +94,7 @@
     "i18next-browser-languagedetector": "^2.2.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
+    "jest-cli": "^23.2.0",
     "jumpstate": "^2.2.2",
     "preact": "^8.2.9",
     "preact-compat": "^3.18.0",

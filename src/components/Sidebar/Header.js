@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { translate } from 'react-i18next'
 
 import { FRONTEND_URL } from '../../constants'
@@ -9,10 +9,10 @@ import DEFAULT_IMG_NEW_TAB from '../../assets/new_tab.png'
 import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
 
 @translate(['translations'])
-export default class Header extends Component {
+class Header extends React.PureComponent {
   render() {
-    const {t} = this.props
-    const {onCloseClick} = this.props.onCloseClick
+    const { t, onCloseClick} = this.props
+    console.log(DEFAULT_IMG_CLOSE)
     return (
       <div className={header}>
         <a
@@ -34,8 +34,10 @@ export default class Header extends Component {
 }
 
 Header.defaultProps = {
-  videoHashId: undefined,
+  videoHashId: null,
   onCloseClick: null,
   imgNewTab: DEFAULT_IMG_NEW_TAB,
   imgClose: DEFAULT_IMG_CLOSE
 }
+
+export default Header
