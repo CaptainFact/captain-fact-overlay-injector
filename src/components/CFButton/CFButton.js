@@ -13,7 +13,7 @@ import iconNeutral from '../../assets/icon.png'
 import iconConfirm from '../../assets/icon_confirm.png'
 import iconRefute from '../../assets/icon_refute.png'
 
-@translate(['translations'], { wait: true })
+@translate(['translations'])
 export class CFButton extends React.PureComponent {
   render() {
     if (!this.props.hasVideo || !this.props.hasStatements)

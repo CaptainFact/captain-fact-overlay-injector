@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import TimeDisplay from '../Utils/TimeDisplay'
 import { statementText, statementDisplay, focused, tag } from './Statement.css'
 
-@translate(['translations'], { wait: true })
+@translate(['translations'])
 export default class Statement extends PureComponent {
   render() {
     const { text, speaker, time } = this.props.statement

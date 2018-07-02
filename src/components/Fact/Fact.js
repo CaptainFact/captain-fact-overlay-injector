@@ -8,7 +8,7 @@ import { fact, approvingFact, refutingFact, regularFact, userSection, right, sco
 
 import starImageFile from '../../assets/star.png'
 
-@translate(['translations'], { wait: true })
+@translate(['translations'])
 export class Fact extends React.PureComponent {
   render() {
     const { approve, text, source, user, score } = this.props.comment

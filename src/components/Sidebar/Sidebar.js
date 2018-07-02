@@ -29,7 +29,7 @@ import DEFAULT_IMG_NEXT from '../../assets/next.svg'
   imgNext: getGraphics(state).next || DEFAULT_IMG_NEXT,
   imgPrev: getGraphics(state).prev || DEFAULT_IMG_PREV
 }))
-@translate(['translations'], { wait: true })
+@translate(['translations'])
 export default class Sidebar extends Component {
   constructor(props) {
     super(props)
