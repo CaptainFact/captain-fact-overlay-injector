@@ -35,7 +35,7 @@ rules:
   no-nested-ternary: ['warn']
   prefer-const: ['warn']
   import/no-named-as-default: ['warn']
-  import/no-extraneous-dependencies: off # Don't play way with preact
+  import/no-extraneous-dependencies: ['error'] # Don't play way with preact
   import/no-unresolved: ['error', {ignore: ['env-constants']}]
   import/extensions: off
   no-restricted-globals: ["error", "event", "fdescribe"]
@@ -58,6 +58,7 @@ rules:
   react/no-array-index-key: ['warn']
   react/jsx-uses-react: ['error']
   react/jsx-uses-vars: ['error']
+  react/require-default-props: ['warn']
   jsx-a11y/accessible-emoji: ['warn']
   jsx-a11y/anchor-is-valid:
     - warn
@@ -70,6 +71,7 @@ rules:
   jsx-a11y/media-has-caption: ['warn']
   jsx-a11y/no-noninteractive-element-interactions: ['warn']
   jsx-a11y/anchor-has-content: off
+  import/export: ['warn']
 
   # Following rule haves been disabled for compatibility with
   # existing code. Some of them should be re-activated in the future.
@@ -93,7 +95,6 @@ rules:
   class-methods-use-this: off
   prefer-promise-reject-errors: off
   import/prefer-default-export: off
-  import/export: off
   block-spacing: off
   brace-style: off
   no-multi-spaces: off
@@ -102,7 +103,6 @@ rules:
   react/no-string-refs: off
   react/react-in-jsx-scope: off # Generates erros in tests
   react/sort-comp: off
-  react/require-default-props: off
   react/jsx-filename-extension: off
 
 globals:
