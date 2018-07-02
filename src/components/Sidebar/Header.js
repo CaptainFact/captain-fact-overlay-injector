@@ -12,7 +12,6 @@ import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
 class Header extends React.PureComponent {
   render() {
     const { t, onCloseClick} = this.props
-    console.log(DEFAULT_IMG_CLOSE)
     return (
       <div className={header}>
         <a
