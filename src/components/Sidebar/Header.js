@@ -1,5 +1,4 @@
 import React from 'react'
-import { translate } from 'react-i18next'
 
 import { FRONTEND_URL } from '../../constants'
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
+import { I18nextProvider } from 'react-i18next'
 
 import store from './components/App/store'
 import { InterfaceState } from './components/App/interface_reducer'
@@ -10,8 +10,9 @@ import videoAdapters from './lib/video_adapters'
 import OnOffToggle from './components/OnOffToggle/OnOffToggle'
 import App from './components/App/App'
 
-import { I18nextProvider } from 'react-i18next'
 import i18n from './1i18n'
+
+const ReactDOM = require('react-dom')
 
 class CaptainFactOverlayInjector {
   constructor(config) {
