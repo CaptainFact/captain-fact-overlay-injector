@@ -98,7 +98,6 @@
     "jumpstate": "^2.2.2",
     "preact": "^8.2.9",
     "preact-compat": "^3.18.0",
-    "react": "^16.4.1",
     "react-dock": "^0.2.3",
     "react-i18next": "^7.7.0",
     "react-redux": "^5.0.7",
