@@ -20,7 +20,7 @@ export const optionsToQueryString = (options) => {
 @translate(['translations'])
 class Header extends React.PureComponent {
   render() {
-    const { t, onCloseClick} = this.props
+    const { t, onCloseClick, videoHashId, urlParams } = this.props
     return (
       <div className={header}>
         <a
