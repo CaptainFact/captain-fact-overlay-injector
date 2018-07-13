@@ -1,7 +1,10 @@
 import i18n from 'i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import store from './components/App/store'
 
-i18n.use(LanguageDetector).init({
+import { JS_ENV } from 'env-constants'
+
+i18n.init({
+  lng: store.getState().Configuration.app.language,
   resources: {
     en: {
       translations: {
@@ -36,12 +39,8 @@ i18n.use(LanguageDetector).init({
       }
     }
   },
-  fallbackLng: {
-    'en-US': ['en'],
-    'fr-FR': ['fr'],
-    default: ['en'],
-  },
-  debug: true,
+  fallbackLng: 'en',
+  debug: JS_ENV === 'dev',
 
   // have a common namespace used around the full app
   ns: ['translations'],
