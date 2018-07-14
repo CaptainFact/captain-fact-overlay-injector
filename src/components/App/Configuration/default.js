@@ -66,7 +66,7 @@ export default new Record({
     display: 'overlay',
 
     /**
-      * Language used by default in UI: english
+      * Language used by default in UI: browser locale, fallback to english
       */
     language: browserLocale(),
 

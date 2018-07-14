@@ -3,6 +3,7 @@ import store from './components/App/store'
 
 import { JS_ENV } from 'env-constants'
 
+
 i18n.init({
   lng: store.getState().Configuration.app.language,
   resources: {

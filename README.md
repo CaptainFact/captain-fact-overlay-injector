@@ -230,6 +230,12 @@ Injector has following methods :
    * this method to force autosize refresh
    */
   forceResize()
+
+  /**
+   * Change the locale for all instanced components
+   * @param {string} locale - Two-chars locale ('en' or 'fr')
+   */
+  changeLanguage(locale)
 ```
 
 # Developing
