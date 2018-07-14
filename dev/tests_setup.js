@@ -8,6 +8,7 @@ Enzyme.configure({ adapter: new Adapter() })
 // Make Enzyme functions available in all test files without importing
 global.shallow = shallow
 global.render = render
+global.tMock = str => `Translated<${str}>`
 
 // Add a helper to register snapshot
 global.snapshot = component => expect(shallow(component)).toMatchSnapshot()

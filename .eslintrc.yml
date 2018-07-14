@@ -106,6 +106,8 @@ rules:
   react/jsx-filename-extension: off
 
 globals:
-  snapshot: false # For tests
-  shallow: false
   CF_VERSION: false
+  # For tests
+  snapshot: false
+  shallow: false
+  tMock: false
