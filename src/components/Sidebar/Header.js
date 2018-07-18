@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 
 import { FRONTEND_URL } from '../../constants'
 
@@ -6,6 +7,7 @@ import { header, closeBtn, title } from './Header.css'
 
 import DEFAULT_IMG_NEW_TAB from '../../assets/new_tab.png'
 import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
+
 
 export const optionsToQueryString = (options) => {
   if (!options || Object.keys(options).length === 0)
@@ -15,29 +17,36 @@ export const optionsToQueryString = (options) => {
   ).join('&')}`
 }
 
-export const Header = ({
-  videoHashId,
-  onCloseClick = null,
-  imgNewTab = DEFAULT_IMG_NEW_TAB,
-  imgClose = DEFAULT_IMG_CLOSE,
-  urlParams = {}
-}) => (
-  <div className={header}>
-    <a
-      href={`${FRONTEND_URL}/videos/${videoHashId}${optionsToQueryString(urlParams)}`}
-      target="_BLANK"
-      title="Open discussion on CaptainFact"
-      rel="noopener noreferrer"
-    >
-      <h1 className={title}>CaptainFact <img src={imgNewTab} alt=""/></h1>
-    </a>
-    {onCloseClick &&
-    <button title="Close sidebar" className={closeBtn} onClick={onCloseClick}>
-      <img src={imgClose} alt="Close"/>
-    </button>
-    }
-  </div>
-)
+@translate(['translations'])
+class Header extends React.PureComponent {
+  render() {
+    const { t, onCloseClick, videoHashId, urlParams } = this.props
+    return (
+      <div className={header}>
+        <a
+          href={`${FRONTEND_URL}/videos/${videoHashId}${optionsToQueryString(urlParams)}`}
+          target="_BLANK"
+          title={t('OpenDiscussion')}
+          rel="noopener noreferrer"
+        >
+          <h1 className={title}>CaptainFact <img src={this.props.imgNewTab} alt=""/></h1>
+        </a>
+        {onCloseClick &&
+          <button title={t('closeSidebar')} className={closeBtn} onClick={onCloseClick}>
+            <img src={this.props.imgClose} alt={t('Close')}/>
+          </button>
+        }
+      </div>
+    )
+  }
+}
 
+Header.defaultProps = {
+  videoHashId: null,
+  onCloseClick: null,
+  imgNewTab: DEFAULT_IMG_NEW_TAB,
+  imgClose: DEFAULT_IMG_CLOSE,
+  urlParams: {}
+}
 
 export default Header

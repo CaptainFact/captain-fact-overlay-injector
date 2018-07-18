@@ -1,11 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 import Source from './Source'
 import UserAppellation from './UserAppellation'
+
 import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
+
 import starImageFile from '../../assets/star.png'
-import { connect } from 'react-redux'
 
-
+@translate(['translations'])
 export class Fact extends React.PureComponent {
   render() {
     const { approve, text, source, user, score } = this.props.comment
@@ -16,7 +19,7 @@ export class Fact extends React.PureComponent {
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
-            <img src={this.props.graphics.star || starImageFile} alt="pts"/>
+            <img src={this.props.graphics.star || starImageFile} alt={this.props.t('pts')} />
           </span>
           <Source source={source} imgNewTab={this.props.graphics.newTab}/>
         </div>

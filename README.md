@@ -151,7 +151,12 @@ window.CaptainFactOverlayConfig = {
      * block - a solid block to inject facts somewhere else. **You MUST specify factsInjector if using this mode**
      */
     display: 'overlay',
-  
+
+    /**
+      * Language used by default in UI: english
+      */
+    language: 'en',
+
     /**
      * Add a slide effect on sidebar entrance / leave when using overlay display. This will add a 'overflow: hidden'
      * on your component. Disable this if animation breaks your UI.
@@ -225,6 +230,12 @@ Injector has following methods :
    * this method to force autosize refresh
    */
   forceResize()
+
+  /**
+   * Change the locale for all instanced components
+   * @param {string} locale - Two-chars locale ('en' or 'fr')
+   */
+  changeLanguage(locale)
 ```
 
 # Developing

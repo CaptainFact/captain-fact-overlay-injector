@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
+import { I18nextProvider } from 'react-i18next'
 
 import store from './components/App/store'
 import { InterfaceState } from './components/App/interface_reducer'
@@ -9,6 +10,8 @@ import { ConfigurationState } from './components/App/Configuration/reducer'
 import videoAdapters from './lib/video_adapters'
 import OnOffToggle from './components/OnOffToggle/OnOffToggle'
 import App from './components/App/App'
+
+import i18n from './i18n'
 
 
 class CaptainFactOverlayInjector {
@@ -87,6 +90,14 @@ class CaptainFactOverlayInjector {
     InterfaceState.forceResize()
   }
 
+  /**
+   * Change the locale for all instanced components
+   * @param {string} locale - Two-chars locale ('en' or 'fr')
+   */
+  changeLanguage(locale) {
+    i18n.changeLanguage(locale)
+  }
+
   // ---- Private API ----
 
   mountAll() {
@@ -123,9 +134,9 @@ class CaptainFactOverlayInjector {
 
     // Send components generators to injector
     const injector = this.config.injector.factsInjector || this.defaultFactsInjector
-    injector(
-      this.factsMounter, video, () => <App videoUrl={videoUrl} player={player} container={video}/>
-    )
+    injector(this.factsMounter, video, () => (
+      <App videoUrl={videoUrl} player={player} container={video}/>
+    ))
   }
 
   defaultFactsInjector(mountFunc, video, facts) {
@@ -154,7 +165,13 @@ class CaptainFactOverlayInjector {
     for (const container of allContainers) {
       this.mountWithStore(
         container,
-        <OnOffToggle enable={this.enable} disable={this.disable} icon={this.config.app.graphics.logo.neutral}/>
+        (
+          <OnOffToggle
+            enable={this.enable}
+            disable={this.disable}
+            icon={this.config.app.graphics.logo.neutral}
+          />
+        )
       )
     }
   }
@@ -166,18 +183,22 @@ class CaptainFactOverlayInjector {
    */
   mountWithStore(node, component) {
     ReactDOM.render(
-      <Provider store={store}>
-        {component}
-      </Provider>
+      <I18nextProvider i18n={i18n}>
+        <Provider store={store}>
+          {component}
+        </Provider>
+      </I18nextProvider>
       , node)
   }
 }
 
 // If config is defined in the global scope, instantiate after window.onload
-if (typeof window !== 'undefined' && typeof window.CaptainFactOverlayConfig !== 'undefined')
+if (typeof window !== 'undefined' && typeof window.CaptainFactOverlayConfig !== 'undefined') {
   window.addEventListener('load', () => {
-    window.injectedCaptainFactOverlay = new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
+    window.injectedCaptainFactOverlay =
+      new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
   })
+}
 
 
 export default CaptainFactOverlayInjector
