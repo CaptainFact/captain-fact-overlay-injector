@@ -10,7 +10,7 @@ import { fetchVideo } from '../Video/effects'
 
 import styles from './App.css'
 import { InterfaceState } from './interface_reducer'
-
+import i18n from '../../i18n'
 
 const SIZE_REGEX = /(\d+)(px|em|rem)$/
 const BASE_DIM = 800 * 450
@@ -41,9 +41,17 @@ export default class App extends React.PureComponent {
 
   componentDidMount() {
     fetchVideo(this.props.videoUrl)
+    i18n.changeLanguage(this.props.config.app.language)
     if (this.props.config.app.autoSize) {
       window.addEventListener('resize', this.onResize)
       window.addEventListener('onfullscreenchange', this.onResize)
+    }
+  }
+
+  componentDidUpdate(oldProps) {
+    const currentLocale = this.props.config.app.language
+    if (oldProps.config.app.language !== currentLocale) {
+      i18n.changeLanguage(currentLocale)
     }
   }
 

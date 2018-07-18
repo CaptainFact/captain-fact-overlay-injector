@@ -27,6 +27,7 @@ rules:
   semi: ['error', 'never']
   import/first: ['warn']
   no-trailing-spaces: ['warn']
+  no-console: ['error', { "allow": ["warn", "error"] }]
   no-continue: off
   no-plusplus: off
   radix: off
@@ -35,7 +36,7 @@ rules:
   no-nested-ternary: ['warn']
   prefer-const: ['warn']
   import/no-named-as-default: ['warn']
-  import/no-extraneous-dependencies: off # Don't play way with preact
+  import/no-extraneous-dependencies: ['error'] # Don't play way with preact
   import/no-unresolved: ['error', {ignore: ['env-constants']}]
   import/extensions: off
   no-restricted-globals: ["error", "event", "fdescribe"]
@@ -56,8 +57,11 @@ rules:
   react/self-closing-comp: ['warn']
   react/jsx-indent: ['warn']
   react/no-array-index-key: ['warn']
+  react/jsx-uses-react: ['error']
+  react/jsx-uses-vars: ['error']
+  react/require-default-props: ['warn']
   jsx-a11y/accessible-emoji: ['warn']
-  jsx-a11y/anchor-is-valid: 
+  jsx-a11y/anchor-is-valid:
     - warn
     - components: ['Link']
       specialLink: ['To']
@@ -68,10 +72,10 @@ rules:
   jsx-a11y/media-has-caption: ['warn']
   jsx-a11y/no-noninteractive-element-interactions: ['warn']
   jsx-a11y/anchor-has-content: off
+  import/export: ['warn']
 
   # Following rule haves been disabled for compatibility with
   # existing code. Some of them should be re-activated in the future.
-  no-console: off
   no-shadow: off
   object-curly-spacing: off
   object-curly-newline: off
@@ -91,7 +95,6 @@ rules:
   class-methods-use-this: off
   prefer-promise-reject-errors: off
   import/prefer-default-export: off
-  import/export: off
   block-spacing: off
   brace-style: off
   no-multi-spaces: off
@@ -100,10 +103,11 @@ rules:
   react/no-string-refs: off
   react/react-in-jsx-scope: off # Generates erros in tests
   react/sort-comp: off
-  react/require-default-props: off
   react/jsx-filename-extension: off
 
 globals:
-  snapshot: false # For tests
-  shallow: false
   CF_VERSION: false
+  # For tests
+  snapshot: false
+  shallow: false
+  tMock: false

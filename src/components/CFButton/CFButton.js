@@ -2,6 +2,7 @@ import 'isomorphic-fetch'
 import React from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
+import { translate } from 'react-i18next'
 
 import { cfbutton, pulse, hidden } from './CFButton.css'
 import { InterfaceState } from '../App/interface_reducer'
@@ -12,20 +13,21 @@ import iconNeutral from '../../assets/icon.png'
 import iconConfirm from '../../assets/icon_confirm.png'
 import iconRefute from '../../assets/icon_refute.png'
 
-
+@translate(['translations'])
 export class CFButton extends React.PureComponent {
   render() {
     if (!this.props.hasVideo || !this.props.hasStatements)
       return null
 
     const globalScore = this.calculateGlobalScore()
+    const { t } = this.props
     return (
-      <img 
+      <img
         src={this.getIcon(globalScore)}
         className={this.getClassNames()}
-        title="CaptainFact"
+        title={t('CaptainFact')}
         onClick={InterfaceState.openSidebar}
-        alt="CF"
+        alt={t('acronymCF')}
       />
     )
   }
