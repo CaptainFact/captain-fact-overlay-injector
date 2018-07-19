@@ -29,7 +29,7 @@ i18n.init({
         At: 'À',
         Previous: 'Précédent',
         Next: 'Suivant',
-        ShowStatements: 'Voir les Citations',
+        ShowStatements: 'Voir les citations',
         ShowFacts: 'Voir les sources',
         Close: 'Fermer',
         closeSidebar: 'Fermer la barre latérale',
