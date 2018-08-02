@@ -51,6 +51,12 @@
   padding-left: 0.4em;
 }
 
+.anonymous {
+  color: #dedede;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
 .userCommentText {
   font-style: italic;
   color: #dadada;

@@ -98,6 +98,7 @@ exports[`with text 1`] = `
   >
     <div>
       <img
+        alt=""
         height="24"
       />
       <div
