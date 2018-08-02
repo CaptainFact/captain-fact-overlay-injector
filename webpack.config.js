@@ -3,6 +3,7 @@ const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 const COMMON_PLUGINS = [
@@ -81,7 +82,10 @@ module.exports = (env='dev') => {
       }),
       new CompressionPlugin({
         test: /\.js/
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: 'src/assets', to: 'assets'}
+      ])
     ])
   }
 
