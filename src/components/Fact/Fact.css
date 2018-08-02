@@ -1,6 +1,5 @@
 .fact {
   display: block;
-  border: 1px solid rgba(101, 101, 101, 0.65)
 }
 
 .fact:not(:last-child) {
@@ -33,7 +32,7 @@
 }
 
 .userSection {
-  background-color: #4a4343;
+  background-color: #797979;
   width: 100%;
 }
 
@@ -66,25 +65,17 @@
 /* Approving facts */
 
 .approvingFact > .sourceSection {
-  background-color: #2EBE00;
-}
-
-.approvingFact > .sourceSection:hover {
-  background-color: #2bb300;
+  background-color: #63a04f;
 }
 
 .approvingFact > .userSection {
-  background-color: #228c00;
+  background-color: #5d8449;
 }
 
 /* Refuting facts */
 
 .refutingFact > .sourceSection {
-  background-color: #c5132c;
-}
-
-.refutingFact > .sourceSection:hover {
-  background-color: #bd122a;
+  background-color: #c24b52;
 }
 
 .refutingFact > .userSection {
@@ -92,10 +83,7 @@
 }
 
 /* Regular fact */
-.regularFact > .sourceSection {
-  background: #636363;
-}
 
-.regularFact > .sourceSection:hover {
-  background-color: #5d5d5d;
+.regularFact > .sourceSection {
+  background: #8c8c8c;
 }
