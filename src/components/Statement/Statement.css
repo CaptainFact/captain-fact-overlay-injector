@@ -1,7 +1,5 @@
 .statementDisplay {
   text-align: left;
-  padding: 0.5em;
-  background: #31455d;
   color: #eaeaea;
   font-size: 0.9em;
 }
@@ -10,29 +8,37 @@
   box-shadow: 0 0 12px -3px black inset;
 }
 
-.statementText {
-  font-style: italic;
-  margin: 0.35em 0 0 0;
-  display: inline;
+.tagContainer {
+  display: flex;
+  background: #e4e4e4;
 }
 
 .tag {
   align-items: center;
   background-color: whitesmoke;
-  border-radius: 25px;
+  border-radius: 0 1em 0 0;
   color: #4a4a4a;
   display: inline-flex;
   font-size: 0.9em;
   justify-content: center;
   line-height: 1.5;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  margin-right: 0.4em;
+  padding: 0.25em 1em;
   white-space: pre;
   vertical-align: middle;
-  margin-bottom: 1px;
+}
+
+.timer {
+  margin-right: 0.5em;
 }
 
 .tag a:hover {
   color: #0761ce;
+}
+
+.statementText {
+  font-style: italic;
+  border-top: 2px solid #f5f5f5;
+  margin: 0;
+  padding: 0.5em;
+  background: #416378;
 }

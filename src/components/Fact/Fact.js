@@ -4,18 +4,22 @@ import { translate } from 'react-i18next'
 import Source from './Source'
 import UserAppellation from './UserAppellation'
 
-import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText } from './Fact.css'
+import { fact, approvingFact, refutingFact, regularFact, userSection, right, scoreTag, sourceSection, userCommentText, anonymous } from './Fact.css'
 
 import starImageFile from '../../assets/star.png'
+
+
+const mapStateToProps = state => ({
+  graphics: state.Configuration.getIn(['app', 'graphics'])
+})
 
 @translate(['translations'])
 export class Fact extends React.PureComponent {
   render() {
     const { approve, text, source, user, score } = this.props.comment
-    const factType = approve === true ? approvingFact : approve === false ? refutingFact : regularFact
 
     return (
-      <div className={`${fact} ${factType}`}>
+      <div className={`${fact} ${getFactType(approve)}`}>
         <div className={sourceSection}>
           <span className={scoreTag}>
             <span>{score || 0} </span>
@@ -25,20 +29,37 @@ export class Fact extends React.PureComponent {
         </div>
         {text && text.length > 0 &&
           <div className={userSection}>
-            <div>
-              <img src={user.miniPictureUrl} height="24"/>
-              <div className={right}>
-                <UserAppellation user={user}/>&nbsp;
-                <span className={userCommentText}>{text}</span>
-              </div>
-            </div>
+            {this.renderUserComment(user, text)}
           </div>
         }
       </div>
     )
   }
+
+  renderUserComment(user, text) {
+    return user ? (
+      <div>
+        <img src={user.miniPictureUrl} height="24" alt=""/>
+        <div className={right}>
+          <UserAppellation user={user}/>&nbsp;
+          <span className={userCommentText}>{text}</span>
+        </div>
+      </div>
+    ) : (
+      <div>
+        <span className={anonymous}>{this.props.t('anonymous')}</span>
+        <span className={userCommentText}>{text}</span>
+      </div>
+    )
+  }
 }
 
-export default connect(state => ({
-  graphics: state.Configuration.getIn(['app', 'graphics'])
-}))(Fact)
+function getFactType(approve) {
+  if (approve === true)
+    return approvingFact
+  else if (approve === false)
+    return refutingFact
+  return regularFact
+}
+
+export default connect(mapStateToProps)(Fact)

@@ -20,7 +20,8 @@ i18n.init({
         pts: 'pts',
         OpenDiscussion: 'Open discussion on CaptainFact',
         acronymCF: 'CF',
-        CaptainFact: 'CaptainFact'
+        CaptainFact: 'CaptainFact',
+        anonymous: 'Anonymous user:'
       }
     },
     fr: {
@@ -36,7 +37,8 @@ i18n.init({
         pts: 'pts',
         OpenDiscussion: 'Ouvrir la discussion sur CaptainFact',
         acronymCF: 'CF',
-        CaptainFact: 'CaptainFact'
+        CaptainFact: 'CaptainFact',
+        anonymous: 'Utilisateur anonyme\u00A0:'
       }
     }
   },

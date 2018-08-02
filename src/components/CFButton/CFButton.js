@@ -9,9 +9,9 @@ import { InterfaceState } from '../App/interface_reducer'
 import { getFocusedStatement } from '../Statement/selectors'
 import { getGraphics } from '../App/Configuration/selectors'
 
-import iconNeutral from '../../assets/icon.png'
-import iconConfirm from '../../assets/icon_confirm.png'
-import iconRefute from '../../assets/icon_refute.png'
+import iconNeutral from '../../assets/logo-borderless.svg'
+import iconConfirm from '../../assets/confirm-borderless.svg'
+import iconRefute from '../../assets/refute-borderless.svg'
 
 @translate(['translations'])
 export class CFButton extends React.PureComponent {

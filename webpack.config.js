@@ -3,6 +3,7 @@ const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 const COMMON_PLUGINS = [
@@ -49,11 +50,11 @@ module.exports = (env='dev') => {
           ]
         },
         {
-          test: /\.(png|svg|jpg|gif)$/,
+          test: /\.(png|svg|jpg|jpeg|gif)$/,
           use: {
             loader: 'file-loader',
             options: {
-              name: '/[path][name].[ext]',
+              name: '[path][name].[ext]',
               context: 'src',
               publicPath: isProd ? 'https://embed.captainfact.io' : ''
             }
@@ -81,7 +82,10 @@ module.exports = (env='dev') => {
       }),
       new CompressionPlugin({
         test: /\.js/
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: 'src/assets', to: 'assets'}
+      ])
     ])
   }
 
