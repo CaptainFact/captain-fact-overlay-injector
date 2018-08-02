@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import {container, icon, title, radioBtn, active} from './OnOffToggle.css'
-import DEFAULT_ICON from '../../assets/icon.png'
+import DEFAULT_ICON from '../../assets/logo-borderless.svg'
 
 
 export class OnOffToggle extends React.PureComponent {
