@@ -54,7 +54,7 @@ module.exports = (env='dev') => {
           use: {
             loader: 'file-loader',
             options: {
-              name: '/[path][name].[ext]',
+              name: '[path][name].[ext]',
               context: 'src',
               publicPath: isProd ? 'https://embed.captainfact.io' : ''
             }
