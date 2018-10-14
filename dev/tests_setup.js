@@ -11,12 +11,16 @@ global.render = render
 global.tMock = str => `Translated<${str}>`
 
 // Add a helper to register snapshot
-global.snapshot = component => expect(shallow(component)).toMatchSnapshot()
+global.snapshot = Component => expect(shallow(Component)).toMatchSnapshot()
 
 jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate HoC receive the t function as a prop
+  // this mock makes sure any components using the translate HoC receive
+  // the t function as a prop
   translate: () => Component => {
-    Component.defaultProps = { ...Component.defaultProps, t: (str) => str }
+    Component.defaultProps = {
+      ...Component.defaultProps,
+      t: (str) => `translated<${str}>`
+    }
     return Component
   }
 }))

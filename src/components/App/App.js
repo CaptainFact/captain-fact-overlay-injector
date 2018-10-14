@@ -63,15 +63,14 @@ export default class App extends React.PureComponent {
   }
 
   render() {
-    if (!this.props.video)
-      return <div style={{display: 'none'}}/>
+    if (!this.props.video) return <div style={{display: 'none'}}/>
     return (
       <div
         className={classNames(styles.app, this.getScreenType())}
         style={{fontSize: this.getSize()}}
       >
-        {this.props.config.app.display === 'overlay' &&
-        <CFButton onClick={InterfaceState.openSidebar}/>
+        {this.props.config.app.display === 'overlay'
+        && <CFButton onClick={InterfaceState.openSidebar}/>
         }
         <Sidebar video={this.props.video} player={this.props.player}/>
       </div>
@@ -86,8 +85,7 @@ export default class App extends React.PureComponent {
     const containerWidth = this.props.container.offsetWidth
     let screenType
     for (const threshold in SIZE_THRESHOLDS) {
-      if (containerWidth < threshold)
-        break
+      if (containerWidth < threshold) break
       screenType = SIZE_THRESHOLDS[threshold]
     }
     return screenType
@@ -95,8 +93,7 @@ export default class App extends React.PureComponent {
 
   getSize() {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
-    if (!parsedSize)
-      return this.props.config.app.baseSize
+    if (!parsedSize) return this.props.config.app.baseSize
 
     const playerDim = this.props.container.offsetWidth * this.props.container.offsetHeight
     const minRatio = (((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL) + MIN_RATIO

@@ -5,9 +5,9 @@ const browserLocale = () => {
     return defaultLanguage
   }
   return (
-    window.navigator.userLanguage ||
-    window.navigator.language ||
-    defaultLanguage
+    window.navigator.userLanguage
+    || window.navigator.language
+    || defaultLanguage
   ).split('-')[0].toLowerCase()
 }
 

@@ -1,7 +1,7 @@
 import { Record } from 'immutable'
 import { API_URL } from '../../../constants'
 
-import browserLocale from './../../../lib/language_detector'
+import browserLocale from '../../../lib/language_detector'
 
 export default new Record({
   injector: new Record({

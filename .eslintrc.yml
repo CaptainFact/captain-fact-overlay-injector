@@ -36,8 +36,8 @@ rules:
   no-nested-ternary: ['warn']
   prefer-const: ['warn']
   import/no-named-as-default: ['warn']
-  import/no-extraneous-dependencies: ['error'] # Don't play way with preact
-  import/no-unresolved: ['error', {ignore: ['env-constants']}]
+  import/no-extraneous-dependencies: off # Doesn't play way with preact
+  import/no-unresolved: ['error', {ignore: ['env-constants', 'react-dom']}]
   import/extensions: off
   no-restricted-globals: ["error", "event", "fdescribe"]
   no-mixed-operators: ['warn']
@@ -60,6 +60,7 @@ rules:
   react/jsx-uses-react: ['error']
   react/jsx-uses-vars: ['error']
   react/require-default-props: ['warn']
+  react/destructuring-assignment: ['warn']
   jsx-a11y/accessible-emoji: ['warn']
   jsx-a11y/anchor-is-valid:
     - warn

@@ -23,10 +23,8 @@ export class OnOffToggle extends React.PureComponent {
   }
 
   setEnabled(enabled) {
-    if (!this.props.isEnabled && enabled)
-      this.props.enable()
-    else if (this.props.isEnabled && !enabled)
-      this.props.disable()
+    if (!this.props.isEnabled && enabled) this.props.enable()
+    else if (this.props.isEnabled && !enabled) this.props.disable()
   }
 }
 

@@ -7,11 +7,10 @@ export const getFocusedStatement = createSelector(
   state => state.Statements.data,
   state => state.Playback.position,
   (statements, position) => {
-    if (position === null)
-      return null
-    const statement = statements.findLast(st =>
-      position >= st.time && position <= st.time + STATEMENT_FOCUS_TIME
-    )
+    if (position === null) return null
+    const statement = statements.findLast(st => {
+      return position >= st.time && position <= st.time + STATEMENT_FOCUS_TIME
+    })
     return statement || null
   }
 )

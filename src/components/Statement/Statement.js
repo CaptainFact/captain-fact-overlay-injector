@@ -8,17 +8,17 @@ import { statementText, statementDisplay, focused, tag, tagContainer, timer } fr
 @translate(['translations'])
 export default class Statement extends PureComponent {
   render() {
-    const { text, speaker, time } = this.props.statement
+    const { isFocused, textPrefix, onTimeClick, statement: { text, speaker, time } } = this.props
     return (
-      <div className={classnames(statementDisplay, {[focused]: this.props.isFocused})}>
+      <div className={classnames(statementDisplay, { [focused]: isFocused })}>
         <div className={tagContainer}>
           <div className={tag}>
-            {this.props.textPrefix || ''}
+            {textPrefix || ''}
             <TimeDisplay
               className={timer}
               textBefore=""
               time={time}
-              handleClick={this.props.onTimeClick}
+              handleClick={onTimeClick}
             />
             {speaker !== null && <strong>{speaker.fullName}</strong>}
           </div>
