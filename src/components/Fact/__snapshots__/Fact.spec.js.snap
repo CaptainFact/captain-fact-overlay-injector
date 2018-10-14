@@ -15,7 +15,7 @@ exports[`approving fact 1`] = `
          
       </span>
       <img
-        alt="pts"
+        alt="translated<pts>"
         src="test-file-stub"
       />
     </span>
@@ -39,7 +39,7 @@ exports[`custom star image 1`] = `
          
       </span>
       <img
-        alt="pts"
+        alt="translated<pts>"
         src="custom.jpg"
       />
     </span>
@@ -63,7 +63,7 @@ exports[`refuting fact 1`] = `
          
       </span>
       <img
-        alt="pts"
+        alt="translated<pts>"
         src="test-file-stub"
       />
     </span>
@@ -87,7 +87,7 @@ exports[`with text 1`] = `
          
       </span>
       <img
-        alt="pts"
+        alt="translated<pts>"
         src="test-file-stub"
       />
     </span>
