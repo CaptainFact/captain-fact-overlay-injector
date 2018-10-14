@@ -24,6 +24,7 @@
       <td>
         <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=staging" alt="Build Status"/></a>
         <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=staging'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=staging' alt='Coverage Status' /></a>
+        <a href='https://greenkeeper.io/'><img src='https://badges.greenkeeper.io/CaptainFact/captain-fact-overlay-injector.svg' alt='Greenkeeper badge' /></a>
       </td>
     </tr>
   </tbody>
