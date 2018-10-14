@@ -12,7 +12,7 @@ const COMMON_PLUGINS = [
   })
 ]
 
-module.exports = (env='dev') => {
+module.exports = (env = 'dev') => {
   const isProd = env === 'production'
   console.log(`Build for ${env}`)
 
@@ -23,18 +23,18 @@ module.exports = (env='dev') => {
       'captain-fact-overlay-injector.min': './src/index.js'
     },
     devtool: 'inline-source-map',
-    devServer: {contentBase: './dist', port: 3342},
+    devServer: { contentBase: './dist', port: 3342 },
     plugins: COMMON_PLUGINS.concat([]),
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
         'env-constants': path.join(__dirname, `./constants/${env}.js`),
-        'react': 'preact-compat',
+        react: 'preact-compat',
         'react-dom': 'preact-compat'
       }
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
@@ -84,7 +84,7 @@ module.exports = (env='dev') => {
         test: /\.js/
       }),
       new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets'}
+        { from: 'src/assets', to: 'assets' }
       ])
     ])
   }
