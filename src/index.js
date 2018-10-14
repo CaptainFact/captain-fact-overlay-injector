@@ -114,11 +114,9 @@ class CaptainFactOverlayInjector {
   }
 
   mountAllFactsEngine() {
-    if (!this.isEnabled())
-      return false
+    if (!this.isEnabled()) return false
     const videos = this.config.injector.videosSelector()
-    if (videos.length === 0 || !videos[0])
-      return 0
+    if (videos.length === 0 || !videos[0]) return 0
     // TODO We only support a single video at the moment
     this.mountFactEngine(videos[0])
   }
@@ -129,8 +127,7 @@ class CaptainFactOverlayInjector {
     const player = this.config.injector.getPlayer(video, videoAdapters)
 
     // Ensure parent will hide sidebar correctly with animated overlay
-    if (this.config.app.animated !== false && isOverlay)
-      video.style.overflow = 'hidden'
+    if (this.config.app.animated !== false && isOverlay) video.style.overflow = 'hidden'
 
     // Send components generators to injector
     const injector = this.config.injector.factsInjector || this.defaultFactsInjector
@@ -159,8 +156,7 @@ class CaptainFactOverlayInjector {
   }
 
   mountActivateToggleBtns() {
-    if (!this.config.injector.onOffToggleSelector)
-      return 0
+    if (!this.config.injector.onOffToggleSelector) return 0
     const allContainers = this.config.injector.onOffToggleSelector()
     for (const container of allContainers) {
       this.mountWithStore(
@@ -187,16 +183,15 @@ class CaptainFactOverlayInjector {
         <Provider store={store}>
           {component}
         </Provider>
-      </I18nextProvider>
-      , node)
+      </I18nextProvider>,
+      node)
   }
 }
 
 // If config is defined in the global scope, instantiate after window.onload
 if (typeof window !== 'undefined' && typeof window.CaptainFactOverlayConfig !== 'undefined') {
   window.addEventListener('load', () => {
-    window.injectedCaptainFactOverlay =
-      new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
+    window.injectedCaptainFactOverlay =      new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
   })
 }
 

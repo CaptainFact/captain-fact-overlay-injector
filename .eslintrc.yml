@@ -60,6 +60,7 @@ rules:
   react/jsx-uses-react: ['error']
   react/jsx-uses-vars: ['error']
   react/require-default-props: ['warn']
+  react/destructuring-assignment: ['warn']
   jsx-a11y/accessible-emoji: ['warn']
   jsx-a11y/anchor-is-valid:
     - warn

@@ -10,8 +10,7 @@ export default class FactsContainer extends React.PureComponent {
     return (
       <div>
         <div className={title}>Sources</div>
-        {this.props.comments.map(comment =>
-          <Fact key={comment.id} comment={comment}/>
+        {this.props.comments.map(comment => <Fact key={comment.id} comment={comment}/>
         ).toArray()}
       </div>
     )

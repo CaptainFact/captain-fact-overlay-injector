@@ -13,7 +13,8 @@ exports[`default render 1`] = `
     <h1
       className="title"
     >
-      CaptainFact 
+      CaptainFact
+       
       <img
         alt=""
         src="test-file-stub"
@@ -36,7 +37,8 @@ exports[`new tab image can be override 1`] = `
     <h1
       className="title"
     >
-      CaptainFact 
+      CaptainFact
+       
       <img
         alt=""
         src="overrided-pic.jpg"
@@ -59,23 +61,24 @@ exports[`show toggle if given a close function 1`] = `
     <h1
       className="title"
     >
-      CaptainFact 
+      CaptainFact
+       
       <img
         alt=""
         src="test-file-stub"
       />
     </h1>
   </a>
-  <button
+  <Button
     className="closeBtn"
     onClick={[Function]}
     title="Translated<closeSidebar>"
   >
     <img
-      alt="Translated<Close>"
+      alt="X"
       src="test-file-stub"
     />
-  </button>
+  </Button>
 </div>
 `;
 
@@ -92,7 +95,8 @@ exports[`with empty url params 1`] = `
     <h1
       className="title"
     >
-      CaptainFact 
+      CaptainFact
+       
       <img
         alt=""
         src="test-file-stub"
@@ -115,7 +119,8 @@ exports[`with statement in url params 1`] = `
     <h1
       className="title"
     >
-      CaptainFact 
+      CaptainFact
+       
       <img
         alt=""
         src="test-file-stub"

@@ -16,8 +16,7 @@ import iconRefute from '../../assets/refute-borderless.svg'
 @translate(['translations'])
 export class CFButton extends React.PureComponent {
   render() {
-    if (!this.props.hasVideo || !this.props.hasStatements)
-      return null
+    if (!this.props.hasVideo || !this.props.hasStatements) return null
 
     const globalScore = this.calculateGlobalScore()
     const { t } = this.props
@@ -40,23 +39,18 @@ export class CFButton extends React.PureComponent {
   }
 
   getIcon(globalScore) {
-    if (globalScore > 0)
-      return (this.props.icons && this.props.icons.confirm) || iconConfirm
-    else if (globalScore < 0)
-      return (this.props.icons && this.props.icons.refute) || iconRefute
+    if (globalScore > 0) return (this.props.icons && this.props.icons.confirm) || iconConfirm
+    if (globalScore < 0) return (this.props.icons && this.props.icons.refute) || iconRefute
     return (this.props.icons && this.props.icons.neutral) || iconNeutral
   }
 
   calculateGlobalScore() {
     // TODO This should be in Redux
-    if (!this.props.statement)
-      return 0
+    if (!this.props.statement) return 0
 
     return this.props.statement.comments.reduce((score, comment) => {
-      if (comment.approve === true)
-        return score + Math.max(comment.score, 0)
-      else if (comment.approve === false)
-        return score - Math.max(comment.score, 0)
+      if (comment.approve === true) return score + Math.max(comment.score, 0)
+      if (comment.approve === false) return score - Math.max(comment.score, 0)
       return score
     }, 0)
   }
