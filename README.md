@@ -14,6 +14,7 @@
       <td>
         <a href="https://discord.gg/2Qd7hMz" title="Discord"><img src="https://discordapp.com/api/guilds/416782744748687361/widget.png" alt="Discord"></a>
         <a href="https://twitter.com/CaptainFact_io" title="Twitter"><img src="https://img.shields.io/twitter/follow/CaptainFact_io.svg?style=social&label=Follow"></a>
+        <a href="https://opencollective.com/captainfact_io" title="Backers on Open Collective"><img src="https://opencollective.com/captainfact_io/backers/badge.svg"></a>
         <a href="./LICENSE"><img src="https://img.shields.io/github/license/CaptainFact/captain-fact-overlay-injector.svg" alt="AGPL3"></a>
       </td>
       <td>
@@ -249,3 +250,14 @@ Injector has following methods :
   * `./dev/start_graphql_api.sh` - Start the GraphQL API. You can access GraphiQL at http://localhost:4002/graphiql
   * `npm start` - Start the overlay injector test pages on http://localhost:3342
   * `npm run test` - run all unit tests
+
+## Linked projects
+
+* [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
+* [API](https://github.com/CaptainFact/captain-fact-api)
+* [Frontend](https://github.com/CaptainFact/captain-fact-frontend)
+* [Extension](https://github.com/CaptainFact/captain-fact-extension)
+
+# Feature requests
+
+[![Feature Requests](http://feathub.com/CaptainFact/captain-fact?format=svg)](http://feathub.com/CaptainFact/captain-fact)
