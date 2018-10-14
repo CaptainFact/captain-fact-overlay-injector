@@ -56,7 +56,7 @@ module.exports = (env='dev') => {
             options: {
               name: '[path][name].[ext]',
               context: 'src',
-              publicPath: isProd ? 'https://embed.captainfact.io' : ''
+              publicPath: isProd ? 'https://embed.captainfact.io' : '/'
             }
           }
         }
