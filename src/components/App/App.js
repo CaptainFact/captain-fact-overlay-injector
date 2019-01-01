@@ -27,16 +27,17 @@ const SIZE_THRESHOLDS = {
   1408: 'cf_xfullhd'
 }
 
-@connect(state => ({
+const mapStateToProps = state => ({
   video: state.Video.data,
   config: state.Configuration,
   forceResize: state.Interface.forceResize
-}))
-export default class App extends React.PureComponent {
+})
+
+class App extends React.PureComponent {
   constructor(props) {
     super(props)
     this.onResize = debounce(this.onResize.bind(this), 200)
-    this.state = {forceResize: null}
+    this.state = { forceResize: null }
   }
 
   componentDidMount() {
@@ -63,22 +64,22 @@ export default class App extends React.PureComponent {
   }
 
   render() {
-    if (!this.props.video) return <div style={{display: 'none'}}/>
+    if (!this.props.video) return <div style={{ display: 'none' }} />
     return (
       <div
         className={classNames(styles.app, this.getScreenType())}
-        style={{fontSize: this.getSize()}}
+        style={{ fontSize: this.getSize() }}
       >
-        {this.props.config.app.display === 'overlay'
-        && <CFButton onClick={InterfaceState.openSidebar}/>
-        }
-        <Sidebar video={this.props.video} player={this.props.player}/>
+        {this.props.config.app.display === 'overlay' && (
+          <CFButton onClick={InterfaceState.openSidebar} />
+        )}
+        <Sidebar video={this.props.video} player={this.props.player} />
       </div>
     )
   }
 
   onResize() {
-    this.setState({forceResize: Date.now()})
+    this.setState({ forceResize: Date.now() })
   }
 
   getScreenType() {
@@ -95,10 +96,12 @@ export default class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize) return this.props.config.app.baseSize
 
-    const playerDim = this.props.container.offsetWidth * this.props.container.offsetHeight
-    const minRatio = (((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL) + MIN_RATIO
+    const playerDim =      this.props.container.offsetWidth * this.props.container.offsetHeight
+    const minRatio =      ((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL + MIN_RATIO
     const modifierRatio = Math.min(minRatio, MAX_RATIO)
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`
   }
 }
+
+export default connect(mapStateToProps)(App)
