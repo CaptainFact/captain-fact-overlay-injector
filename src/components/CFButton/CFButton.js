@@ -13,7 +13,6 @@ import iconNeutral from '../../assets/logo-borderless.svg'
 import iconConfirm from '../../assets/confirm-borderless.svg'
 import iconRefute from '../../assets/refute-borderless.svg'
 
-@translate(['translations'])
 export class CFButton extends React.PureComponent {
   render() {
     if (!this.props.hasVideo || !this.props.hasStatements) return null
@@ -63,4 +62,4 @@ export default connect(state => ({
   statement: getFocusedStatement(state),
   icons: getGraphics(state).logo,
   baseSize: state.Configuration.app.baseSize
-}))(CFButton)
+}))(translate(['translations'])(CFButton))
