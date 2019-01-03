@@ -258,7 +258,3 @@ Injector has following methods :
 * [API](https://github.com/CaptainFact/captain-fact-api)
 * [Frontend](https://github.com/CaptainFact/captain-fact-frontend)
 * [Extension](https://github.com/CaptainFact/captain-fact-extension)
-
-# Feature requests
-
-[![Feature Requests](http://feathub.com/CaptainFact/captain-fact?format=svg)](http://feathub.com/CaptainFact/captain-fact)
