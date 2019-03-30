@@ -5,8 +5,7 @@
   <thead>
     <tr>
       <th>Community</th>
-      <th>Master</th>
-      <th>Staging</th>
+      <th>Code</th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +15,6 @@
         <a href="https://twitter.com/CaptainFact_io" title="Twitter"><img src="https://img.shields.io/twitter/follow/CaptainFact_io.svg?style=social&label=Follow"></a>
         <a href="https://opencollective.com/captainfact_io" title="Backers on Open Collective"><img src="https://opencollective.com/captainfact_io/backers/badge.svg"></a>
         <a href="./LICENSE"><img src="https://img.shields.io/github/license/CaptainFact/captain-fact-overlay-injector.svg" alt="AGPL3"></a>
-      </td>
-      <td>
-        <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=master" alt="Build Status"/></a>
-        <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=master'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=master' alt='Coverage Status' /></a>
       </td>
       <td>
         <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=staging" alt="Build Status"/></a>
