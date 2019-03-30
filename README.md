@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th>Community</th>
-      <th>Code</th>
+      <th width="400">Code</th>
     </tr>
   </thead>
   <tbody>
