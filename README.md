@@ -37,8 +37,8 @@
 
 <hr/>
 
-This repo holds the overlay injector script, that basically add facts over videos.
-It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension)
+This repo holds the overlay injector script, that basically add facts onto videos.
+It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension),
 and can be integrated on any website freely. 
 
 You can check the [live demo](https://embed.captainfact.io) with various integrations or the production version
@@ -48,7 +48,7 @@ used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.
 
 - [x] Basic injection
 - [x] Dynamic configuration
-- [x] Autosize
+- [x] Autosizing
 - [ ] Multiple videos on a single page
 
 # Usage
@@ -100,14 +100,14 @@ window.CaptainFactOverlayConfig = {
     videosSelector: undefined,
 
     /**
-     * Function that resolves url for a given video
+     * Function that resolves URL for a given video
      * 
      * @param {object} video - The video tag as returned by videosSelector
      */
     urlExtractor: undefined,
 
     /**
-     * Function that resolves an url for a given video
+     * Function that resolves an URL for a given video
      *
      * @param {object} video - The video tag as returned by videosSelector
      * @param {object} adapters - adapters list for different types of players.
@@ -152,13 +152,13 @@ window.CaptainFactOverlayConfig = {
     display: 'overlay',
 
     /**
-      * Language used by default in UI: english
+      * Language used by default in UI: English
       */
     language: 'en',
 
     /**
      * Add a slide effect on sidebar entrance / leave when using overlay display. This will add a 'overflow: hidden'
-     * on your component. Disable this if animation breaks your UI.
+     * for your component. Turn this off if the animation breaks your UI.
      */
     animate: true,
   
@@ -193,7 +193,7 @@ window.CaptainFactOverlayConfig = {
 
 # API methods
 
-Injector has following methods :
+The injector these methods:
 
 ```javascript
   /**
@@ -253,5 +253,5 @@ Injector has following methods :
 
 * [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
 * [API](https://github.com/CaptainFact/captain-fact-api)
-* [Frontend](https://github.com/CaptainFact/captain-fact-frontend)
+* [Front-end](https://github.com/CaptainFact/captain-fact-frontend)
 * [Extension](https://github.com/CaptainFact/captain-fact-extension)
