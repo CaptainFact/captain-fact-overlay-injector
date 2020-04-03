@@ -67,7 +67,7 @@
     "eslint-plugin-react": "^7.17.0",
     "file-loader": "^3.0.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "^25.2.6",
     "jest-serializer-html-string": "^1.0.1",
     "postcss-loader": "^2.1.5",
     "preact-compat-enzyme": "^0.2.5",
