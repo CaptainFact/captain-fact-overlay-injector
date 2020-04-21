@@ -69,7 +69,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.4.0",
     "jest-serializer-html-string": "^1.0.1",
-    "postcss-loader": "^2.1.5",
+    "postcss-loader": "^3.0.0",
     "preact-compat-enzyme": "^0.2.5",
     "preact-render-to-string": "^4.1.0",
     "preact-test-utils": "^0.1.3",
