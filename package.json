@@ -93,7 +93,7 @@
     "jest-cli": "^24.5.0",
     "jumpstate": "^2.2.2",
     "preact": "^8.5.3",
-    "preact-compat": "^3.18.4",
+    "preact-compat": "^3.19.0",
     "react-dock": "^0.2.3",
     "react-i18next": "^8.0.7",
     "react-redux": "^5.0.7",
