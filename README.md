@@ -239,15 +239,28 @@ The injector these methods:
 
 # Developing
 
-* Install (if you don't have them):
-  * [Docker](https://docs.docker.com/install/) (to start the API easily)
-  * [Node.js](http://nodejs.org)
-  * App dependencies: `npm install`
-  
-* Run:
-  * `./dev/start_graphql_api.sh` - Start the GraphQL API. You can access GraphiQL at http://localhost:4002/graphiql
-  * `npm start` - Start the overlay injector test pages on http://localhost:3342
-  * `npm run test` - run all unit tests
+## Start the API
+
+It is strongly recommended to start the API locally from the official project: https://github.com/CaptainFact/captain-fact-overlay-injector/pull/240
+
+However, if you're looking to contribute quickly you may find the Docker image pretty handy:
+
+- Install (if you don't have them):
+
+  - [Docker](https://docs.docker.com/install/)
+    and [docker-compose](https://docs.docker.com/compose/install/)
+    (to start the API easily)
+- Run `docker-compose up` - Start the API
+
+## Start the injector web-interface
+
+- Install
+  - NodeJS, ideally using [asdf-vm](https://github.com/asdf-vm/asdf) with `NODEJS_CHECK_SIGNATURES=no asdf install`
+  - App dependencies: `npm install`
+
+- Run:
+  - `npm start` - Start the injector web-interface
+  - `npm run test` - Runs all unit tests
 
 ## Linked projects
 
