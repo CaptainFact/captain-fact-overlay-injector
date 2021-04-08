@@ -15,9 +15,10 @@
         <a href="https://twitter.com/CaptainFact_io" title="Twitter"><img src="https://img.shields.io/twitter/follow/CaptainFact_io.svg?style=social&label=Follow"></a>
         <a href="https://opencollective.com/captainfact_io" title="Backers on Open Collective"><img src="https://opencollective.com/captainfact_io/backers/badge.svg"></a>
         <a href="./LICENSE"><img src="https://img.shields.io/github/license/CaptainFact/captain-fact-overlay-injector.svg" alt="AGPL3"></a>
+        <a href="https://github.com/CaptainFact/captain-fact-overlay-injector/releases"><img src="https://img.shields.io/github/v/release/CaptainFact/captain-fact-overlay-injector" alt="GitHub release" /></a>
       </td>
       <td>
-        <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=staging" alt="Build Status"/></a>
+        <a href="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml"><img src="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml/badge.svg?branch=staging" alt="Build Status"/></a>
         <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=staging'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=staging' alt='Coverage Status' /></a>
         
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=CaptainFact/captain-fact-overlay-injector)](https://dependabot.com)
