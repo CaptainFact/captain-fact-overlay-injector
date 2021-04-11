@@ -6,10 +6,8 @@ class CaptainFactHttpApi {
     return promise.then(response => {
       return response.text().then((body) => {
         body = body ? JSON.parse(body) : null
-        if (body.errors)
-          throw body.errors
-        else
-          return body.data
+        if (body.errors) throw body.errors
+        else return body.data
       })
     })
   }

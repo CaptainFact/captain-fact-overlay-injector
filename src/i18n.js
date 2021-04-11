@@ -1,7 +1,6 @@
 import i18n from 'i18next'
-import store from './components/App/store'
-
 import { JS_ENV } from 'env-constants'
+import store from './components/App/store'
 
 
 i18n.init({

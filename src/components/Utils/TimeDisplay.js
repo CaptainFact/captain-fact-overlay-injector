@@ -6,8 +6,7 @@ import { link } from './TimeDisplay.css'
 
 
 function formatSeconds(totalSeconds) {
-  if (!totalSeconds)
-    return '0:00:00'
+  if (!totalSeconds) return '0:00:00'
 
   const sign = totalSeconds < 0 ? '-' : ''
   const absSeconds = Math.abs(totalSeconds)
@@ -29,7 +28,12 @@ const TimeDisplay = ({ time, handleClick, className,  textBefore = '' }) => {
     </a>
   ) : formattedTime
 
-  return <span>{textBefore}{content}</span>
+  return (
+    <span>
+      {textBefore}
+      {content}
+    </span>
+  )
 }
 
 export default TimeDisplay
