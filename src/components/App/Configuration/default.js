@@ -66,8 +66,8 @@ export default new Record({
     display: 'overlay',
 
     /**
-      * Language used by default in UI: browser locale, fallback to english
-      */
+     * Language used by default in UI: browser locale, fallback to english
+     */
     language: browserLocale(),
 
     /**
@@ -101,10 +101,10 @@ export default new Record({
       next: undefined,
       prev: undefined,
       close: undefined,
-    })()
+    })(),
   })(),
 
   services: new Record({
-    apiURL: API_URL
-  })()
+    apiURL: API_URL,
+  })(),
 })()

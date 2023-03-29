@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.idea
+dist/*
+!dist/test
+!dist/index.html
+!dist/robots.txt
+coverage
+/dev/__db_data

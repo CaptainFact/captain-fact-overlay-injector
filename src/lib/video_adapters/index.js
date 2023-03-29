@@ -3,5 +3,5 @@ import YoutubePlayer from './youtube'
 
 export default {
   HTML5: HTML5Player,
-  Youtube: YoutubePlayer
+  Youtube: YoutubePlayer,
 }

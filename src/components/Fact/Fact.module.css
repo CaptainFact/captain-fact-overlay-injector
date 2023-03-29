@@ -23,7 +23,8 @@
   float: right;
 }
 
-.scoreTag span, .scoreTag img {
+.scoreTag span,
+.scoreTag img {
   vertical-align: middle;
 }
 

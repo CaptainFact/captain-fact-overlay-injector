@@ -1,91 +1,96 @@
 const webpack = require('webpack')
 const path = require('path')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const COMMON_PLUGINS = [
   new webpack.DefinePlugin({
-    CF_VERSION: JSON.stringify(require('./package.json').version)
-  })
+    CF_VERSION: JSON.stringify(require('./package.json').version),
+  }),
 ]
 
-module.exports = (env = 'dev') => {
-  const isProd = env === 'production'
+module.exports = ({ production }) => {
+  const env = production ? 'production' : 'dev'
   console.log(`Build for ${env}`)
 
   // Default config
   const config = {
+    mode: production ? 'production' : 'development',
     entry: {
       'captain-fact-overlay-injector': './src/index.js',
-      'captain-fact-overlay-injector.min': './src/index.js'
+      'captain-fact-overlay-injector.min': './src/index.js',
     },
     devtool: 'inline-source-map',
-    devServer: { contentBase: './dist', port: 3342 },
+    devServer: {
+      static: { directory: path.join(__dirname, 'dist') },
+      port: 3342,
+    },
     plugins: COMMON_PLUGINS.concat([]),
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
-        'env-constants': path.join(__dirname, `./constants/${env}.js`),
-        react: 'preact-compat',
-        'react-dom': 'preact-compat'
-      }
+        'env-constants': path.resolve(__dirname, `constants/${env}.js`),
+      },
     },
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
-          }
-        }, {
+            loader: 'babel-loader',
+          },
+        },
+        {
           test: /\.css$/,
           use: [
             'style-loader',
-            'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-            'postcss-loader'
-          ]
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true,
+                sourceMap: true,
+              },
+            },
+          ],
         },
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/,
+          test: /\.(png|jpg|jpeg|gif|svg)$/,
           use: {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
               name: '[path][name].[ext]',
               context: 'src',
-              publicPath: isProd ? 'https://embed.captainfact.io' : '/'
-            }
-          }
-        }
-      ]
+              publicPath: production ? 'https://embed.captainfact.io' : '/',
+            },
+          },
+        },
+      ],
     },
     output: {
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist'),
       library: 'CaptainFactOverlayInjector',
-      libraryTarget: 'umd'
-    }
+      libraryTarget: 'umd',
+      libraryExport: 'default',
+    },
   }
 
   // Production override
-  if (isProd) {
+  if (production) {
     delete config.devtool
     config.plugins = COMMON_PLUGINS.concat([
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new UglifyJSPlugin({
-        include: /\.min\.js$/
+        'process.env.NODE_ENV': JSON.stringify('production'),
       }),
       new CompressionPlugin({
-        test: /\.js/
+        test: /\.js/,
       }),
-      new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' }
-      ])
+      new CopyWebpackPlugin({
+        patterns: [{ from: 'src/assets', to: 'assets' }],
+      }),
     ])
   }
 

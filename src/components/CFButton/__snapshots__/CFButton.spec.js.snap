@@ -20,9 +20,9 @@ exports[`Has default icons 2`] = `
 />
 `;
 
-exports[`Returns nothing if it has no video or statement 1`] = `""`;
+exports[`Returns nothing if it has no video or statement 1`] = `null`;
 
-exports[`Returns nothing if it has no video or statement 2`] = `""`;
+exports[`Returns nothing if it has no video or statement 2`] = `null`;
 
 exports[`approve icon if approve 1`] = `
 <img

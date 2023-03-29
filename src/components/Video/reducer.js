@@ -2,10 +2,9 @@ import { Record } from 'immutable'
 import { State } from 'jumpstate'
 import Video from './record'
 
-
 const INITIAL_STATE = new Record({
   isLoading: false,
-  data: null
+  data: null,
 })
 
 export const VideoState = State('Video', {
@@ -13,7 +12,7 @@ export const VideoState = State('Video', {
   fetchSuccess(state, data) {
     return state.merge({
       isLoading: false,
-      data: new Video(data)
+      data: new Video(data),
     })
   },
   fetchFailure(state, errors) {
@@ -23,5 +22,5 @@ export const VideoState = State('Video', {
   setLoading(state, isLoading = true) {
     return state.set('isLoading', isLoading)
   },
-  reset: () => INITIAL_STATE()
+  reset: () => INITIAL_STATE(),
 })

@@ -8,7 +8,7 @@
   border-radius: 1em 0 0 1em;
   border: 1px solid lightgrey;
   font-size: 1em;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .container > * {
@@ -52,7 +52,7 @@
 
 .radioBtn.active {
   background-color: #406479;
-  box-shadow: inset 0 1px 10px hsla(0,0%,4%,.43);
+  box-shadow: inset 0 1px 10px hsla(0, 0%, 4%, 0.43);
   color: #fff;
 }
 

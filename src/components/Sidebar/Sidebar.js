@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { translate } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import classnames from 'classnames'
 
 import Statement from '../Statement/Statement'
@@ -11,7 +11,13 @@ import { PlaybackState } from '../App/playback_reducer'
 import { getGraphics } from '../App/Configuration/selectors'
 import Header from './Header'
 
-import {
+import styles from './Sidebar.module.css'
+
+import DEFAULT_IMG_PREV from '../../assets/prev.svg'
+import DEFAULT_IMG_NEXT from '../../assets/next.svg'
+import Button from '../Utils/Button'
+
+const {
   sidebar,
   sidebarContent,
   jumpLink,
@@ -22,21 +28,17 @@ import {
   slideOut,
   statementsList,
   isBlock,
-  animated
-} from './Sidebar.css'
+  animated,
+} = styles
 
-import DEFAULT_IMG_PREV from '../../assets/prev.svg'
-import DEFAULT_IMG_NEXT from '../../assets/next.svg'
-import Button from '../Utils/Button'
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   statements: state.Statements.data,
   isLoading: state.Statements.isLoading,
   isCollapsed: state.Interface.sidebarCollapsed,
   videoHashId: state.Video.data.hashId,
   config: state.Configuration.get('app'),
   imgNext: getGraphics(state).next || DEFAULT_IMG_NEXT,
-  imgPrev: getGraphics(state).prev || DEFAULT_IMG_PREV
+  imgPrev: getGraphics(state).prev || DEFAULT_IMG_PREV,
 })
 
 class Sidebar extends Component {
@@ -44,13 +46,13 @@ class Sidebar extends Component {
     super(props)
     this.state = {
       currentTime: null,
-      currentView: 'facts'
+      currentView: 'facts',
     }
     this.collapseAnimation = null
     this.handleTimeClick = this.handleTimeClick.bind(this)
   }
 
-  componentWillUpdate(nextProps) {
+  UNSAFE_componentWillUpdate(nextProps) {
     const { isCollapsed } = this.props
     if (isCollapsed && !nextProps.isCollapsed) {
       this.collapseAnimation = slideIn
@@ -88,8 +90,10 @@ class Sidebar extends Component {
     // TODO Move to redux selector
     const { currentTime } = this.state
     if (currentTime === null) return -1
-    return this.props.statements.findLastIndex(st => {
-      return currentTime >= st.time && currentTime <= st.time + STATEMENT_FOCUS_TIME
+    return this.props.statements.findLastIndex((st) => {
+      return (
+        currentTime >= st.time && currentTime <= st.time + STATEMENT_FOCUS_TIME
+      )
     })
   }
 
@@ -100,24 +104,27 @@ class Sidebar extends Component {
     if (this.props.player) this.props.player.setPosition(time)
   }
 
-  renderStatementJumpLink(jumpType, statement, textBefore = '', textAfter = '') {
+  renderStatementJumpLink(
+    jumpType,
+    statement,
+    textBefore = '',
+    textAfter = ''
+  ) {
     return (
       <Button
         className={classnames(jumpLink, { [disabled]: !statement })}
-        onClick={() => (statement ? this.handleTimeClick(statement.time) : true)}
+        onClick={() =>
+          statement ? this.handleTimeClick(statement.time) : true
+        }
       >
-        {textBefore}
-        {' '}
-        {jumpType}
-        {' '}
-        {textAfter}
+        {textBefore} {jumpType} {textAfter}
       </Button>
     )
   }
 
   toggleView() {
-    this.setState(prevState => ({
-      currentView: prevState.currentView === 'facts' ? 'statements' : 'facts'
+    this.setState((prevState) => ({
+      currentView: prevState.currentView === 'facts' ? 'statements' : 'facts',
     }))
   }
 
@@ -157,21 +164,23 @@ class Sidebar extends Component {
 
   render() {
     const currentStatementIdx = this.getFocusedStatementIndex()
-    const currentStatement =      currentStatementIdx === -1
-      ? null
-      : this.props.statements.get(currentStatementIdx)
+    const currentStatement =
+      currentStatementIdx === -1
+        ? null
+        : this.props.statements.get(currentStatementIdx)
     const {
       statements,
       isCollapsed,
-      config: { display, animate, graphics }
+      config: { display, animate, graphics },
     } = this.props
     const isOverlay = display === 'overlay'
     const classes = classnames(sidebar, this.collapseAnimation, {
       [collapsed]: isOverlay && isCollapsed,
       [isBlock]: display === 'block',
-      [animated]: animate
+      [animated]: animate,
     })
-    const urlParams =      currentStatement != null ? { statement: currentStatement.id } : {}
+    const urlParams =
+      currentStatement != null ? { statement: currentStatement.id } : {}
 
     return (
       <div className={classes}>
@@ -197,7 +206,7 @@ class Sidebar extends Component {
           {this.state.currentView === 'statements' && (
             <div className={statementsList}>
               {statements
-                .map(s => (
+                .map((s) => (
                   <Statement
                     key={s.id}
                     statement={s}
@@ -214,4 +223,6 @@ class Sidebar extends Component {
   }
 }
 
-export default connect(mapStateToProps)(translate(['translations'])(Sidebar))
+export default connect(mapStateToProps)(
+  withTranslation(['translations'])(Sidebar)
+)

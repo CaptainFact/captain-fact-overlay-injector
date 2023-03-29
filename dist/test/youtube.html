@@ -1,52 +1,62 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <title>CaptainFact Overlay Injector - Testing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <h1>Youtube video (iframe), facts in a separate block</h1>
-  <h2><a href="/"><= Back to index</a></h2>
-  <hr/><br/>
-  <iframe id="video" type="text/html" width="640" height="360"
-          src="https://www.youtube.com/embed/3HgwtHenFWs?enablejsapi=1"
-          frameborder="0"></iframe>
-  <div>
-    <h2>Facts</h2>
-    <div id="facts-container"></div>
-  </div>
-  <div>
-    <h2>Activation Toggle</h2>
-    <div class="toggle-btn-container"></div>
-  </div>
+  <head>
+    <title>CaptainFact Overlay Injector - Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Youtube video (iframe), facts in a separate block</h1>
+    <h2><a href="/"><= Back to index</a></h2>
+    <hr />
+    <br />
+    <iframe
+      id="video"
+      type="text/html"
+      width="640"
+      height="360"
+      src="https://www.youtube.com/embed/3HgwtHenFWs?enablejsapi=1"
+      frameborder="0"
+    ></iframe>
+    <div>
+      <h2>Facts</h2>
+      <div id="facts-container"></div>
+    </div>
+    <div>
+      <h2>Activation Toggle</h2>
+      <div class="toggle-btn-container"></div>
+    </div>
 
-  <!-- Overlay injection -->
-  <script src="../captain-fact-overlay-injector.min.js"></script>
+    <!-- Overlay injection -->
+    <script src="../captain-fact-overlay-injector.min.js"></script>
 
-  <!-- Load Youtube API -->
-  <script>
-    let video = document.getElementById('video')
-    let player = null
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player(video, {
-        videoId: '3HgwtHenFWs',
-        events: {onReady: initialize}
-      });
-    }
-    function initialize() {
-      new window.CaptainFactOverlayInjector({
-        injector: {
-          videosSelector: document => [video],
-          urlExtractor: video => "https://www.youtube.com/watch?v=3HgwtHenFWs",
-          onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container'),
-          factsInjector: (mountFunc, video, facts) => mountFunc(document.getElementById('facts-container'), facts),
-          getPlayer: (video, adapters) => new adapters.Youtube(player),
-        },
-        app: {
-          display: 'block'
-        }
-      })
-    }
-  </script>
-  <script src="https://www.youtube.com/iframe_api"></script>
-</body>
+    <!-- Load Youtube API -->
+    <script>
+      let video = document.getElementById('video')
+      let player = null
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player(video, {
+          videoId: '3HgwtHenFWs',
+          events: { onReady: initialize },
+        })
+      }
+      function initialize() {
+        new window.CaptainFactOverlayInjector({
+          injector: {
+            videosSelector: (document) => [video],
+            urlExtractor: (video) =>
+              'https://www.youtube.com/watch?v=3HgwtHenFWs',
+            onOffToggleSelector: () =>
+              document.getElementsByClassName('toggle-btn-container'),
+            factsInjector: (mountFunc, video, facts) =>
+              mountFunc(document.getElementById('facts-container'), facts),
+            getPlayer: (video, adapters) => new adapters.Youtube(player),
+          },
+          app: {
+            display: 'block',
+          },
+        })
+      }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+  </body>
 </html>
