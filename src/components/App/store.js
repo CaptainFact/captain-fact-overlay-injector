@@ -1,6 +1,4 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-// import logger from 'redux-logger'
-// import { ENV } from 'config'
 import { CreateJumpstateMiddleware } from 'jumpstate'
 
 import { StatementsState } from '../Statement/reducer'
@@ -20,8 +18,6 @@ const reducers = combineReducers({
 
 // Declare middlewares
 const middlewares = [CreateJumpstateMiddleware()]
-// if (ENV === 'dev')
-//   middlewares.push(logger)
 
 // Build store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
