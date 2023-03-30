@@ -9,26 +9,26 @@ import { PlaybackState } from './playback_reducer'
 import { InterfaceState } from './interface_reducer'
 import { ConfigurationState } from './Configuration/reducer'
 
-
 // Declare reducers
 const reducers = combineReducers({
   Video: VideoState,
   Statements: StatementsState,
   Interface: InterfaceState,
   Playback: PlaybackState,
-  Configuration: ConfigurationState
+  Configuration: ConfigurationState,
 })
-
 
 // Declare middlewares
 const middlewares = [CreateJumpstateMiddleware()]
 // if (ENV === 'dev')
 //   middlewares.push(logger)
 
-
 // Build store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)))
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(...middlewares))
+)
 store.reset = () => {
   VideoState.reset()
   StatementsState.reset()

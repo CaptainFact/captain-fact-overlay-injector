@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
 
@@ -13,7 +13,6 @@ import App from './components/App/App'
 
 import i18n from './i18n'
 
-
 class CaptainFactOverlayInjector {
   constructor(config) {
     ConfigurationState.load(config)
@@ -25,7 +24,7 @@ class CaptainFactOverlayInjector {
     this.enable = this.enable.bind(this)
     this.disable = this.disable.bind(this)
 
-    this.mountAll()
+    this.mountAll(true)
   }
 
   // ---- Public API ----
@@ -78,7 +77,9 @@ class CaptainFactOverlayInjector {
    */
   isEnabled() {
     // Only use isEnabled if ON / OFF toggle is present
-    return this.config.injector.onOffToggleSelector ? store.getState().Interface.isEnabled : true
+    return this.config.injector.onOffToggleSelector
+      ? store.getState().Interface.isEnabled
+      : true
   }
 
   /**
@@ -100,25 +101,27 @@ class CaptainFactOverlayInjector {
 
   // ---- Private API ----
 
-  mountAll() {
-    this.mountActivateToggleBtns()
+  mountAll(mountToggle = false) {
+    if (mountToggle) {
+      this.mountActivateToggleBtns()
+    }
     this.mountAllFactsEngine()
   }
 
   unmountAll() {
     // Delete all DOM elements
-    this.mountedFacts.map(domNode => ReactDOM.unmountComponentAtNode(domNode))
-    this.injectedFactsContainers.map(domNode => domNode.parentNode.removeChild(domNode))
+    this.mountedFacts.map((root) => root.unmount())
+    this.injectedFactsContainers.map((domNode) =>
+      domNode.parentNode.removeChild(domNode)
+    )
     this.mountedFacts = []
     this.injectedFactsContainers = []
   }
 
   mountAllFactsEngine() {
-    if (!this.isEnabled())
-      return false
+    if (!this.isEnabled()) return false
     const videos = this.config.injector.videosSelector()
-    if (videos.length === 0 || !videos[0])
-      return 0
+    if (videos.length === 0 || !videos[0]) return 0
     // TODO We only support a single video at the moment
     this.mountFactEngine(videos[0])
   }
@@ -129,13 +132,16 @@ class CaptainFactOverlayInjector {
     const player = this.config.injector.getPlayer(video, videoAdapters)
 
     // Ensure parent will hide sidebar correctly with animated overlay
-    if (this.config.app.animated !== false && isOverlay)
+    if (this.config.app.animated !== false && isOverlay) {
       video.style.overflow = 'hidden'
+    }
 
     // Send components generators to injector
-    const injector = this.config.injector.factsInjector || this.defaultFactsInjector
+    const injector =
+      this.config.injector.factsInjector || this.defaultFactsInjector
+    console.log('INJECTOR', injector, video)
     injector(this.factsMounter, video, () => (
-      <App videoUrl={videoUrl} player={player} container={video}/>
+      <App videoUrl={videoUrl} player={player} container={video} />
     ))
   }
 
@@ -153,25 +159,22 @@ class CaptainFactOverlayInjector {
   factsMounter(container, componentGenerator) {
     const component = componentGenerator()
     if (component) {
-      this.mountWithStore(container, component)
-      this.mountedFacts.push(container)
+      const root = this.mountWithStore(container, component)
+      this.mountedFacts.push(root)
     }
   }
 
   mountActivateToggleBtns() {
-    if (!this.config.injector.onOffToggleSelector)
-      return 0
+    if (!this.config.injector.onOffToggleSelector) return 0
     const allContainers = this.config.injector.onOffToggleSelector()
     for (const container of allContainers) {
       this.mountWithStore(
         container,
-        (
-          <OnOffToggle
-            enable={this.enable}
-            disable={this.disable}
-            icon={this.config.app.graphics.logo.neutral}
-          />
-        )
+        <OnOffToggle
+          enable={this.enable}
+          disable={this.disable}
+          icon={this.config.app.graphics.logo.neutral}
+        />
       )
     }
   }
@@ -182,23 +185,27 @@ class CaptainFactOverlayInjector {
    * @param component - The component to mount
    */
   mountWithStore(node, component) {
-    ReactDOM.render(
+    console.log('MOUNT', node, component)
+    const root = createRoot(node)
+    root.render(
       <I18nextProvider i18n={i18n}>
-        <Provider store={store}>
-          {component}
-        </Provider>
+        <Provider store={store}>{component}</Provider>
       </I18nextProvider>
-      , node)
+    )
+    return root
   }
 }
 
 // If config is defined in the global scope, instantiate after window.onload
-if (typeof window !== 'undefined' && typeof window.CaptainFactOverlayConfig !== 'undefined') {
+if (
+  typeof window !== 'undefined' &&
+  typeof window.CaptainFactOverlayConfig !== 'undefined'
+) {
   window.addEventListener('load', () => {
-    window.injectedCaptainFactOverlay =
-      new CaptainFactOverlayInjector(window.CaptainFactOverlayConfig)
+    window.injectedCaptainFactOverlay = new CaptainFactOverlayInjector(
+      window.CaptainFactOverlayConfig
+    )
   })
 }
-
 
 export default CaptainFactOverlayInjector

@@ -1,29 +1,49 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <title>CaptainFact Overlay Injector - Testing</title>
-</head>
-<body style="font-size: 2em;">
-  <h1 style="margin: 30px 30px 0;text-align: center;">
-    <img style="vertical-align: middle;" width="120" src="/assets/logo.svg">
-    <span style="vertical-align: middle;">Overlay's injector tests</span>
-  </h1>
-  <h2 style="font-size: 0.75em;color: grey; text-align: center;">Version: <span id="app-version"></span></h2>
-  <hr>
-  <br>
-  <ul style="margin: 0 auto;max-width: 720px;">
-    <li><a href="/test/videojs.html">VideoJS, overlayed</a></li>
-    <li><a href="/test/html5.html">Simple HTML5 player, overlayed (no fullscreen)</a></li>
-    <li><a href="/test/theater_mode_html5.html">Simple HTML5 player, theater mode (no fullscreen)</a></li>
-    <li><a href="/test/youtube.html">Youtube video (iframe), facts in a separate block</a></li>
-    <li><a href="/test/thinkerview.html">Thinkerview-like player & CSS</a></li>
-    <li><a href="/test/responsiveness.html">Responsiveness</a></li>
-    <li><a href="/test/no_video.html">No video, just good old facts in a div</a></li>
-    <li><a href="/test/no_video_en.html">Same but with English forced</a></li>
-    <li><a href="/test/no_video_fr.html">Same but with French forced</a></li>
-  </ul>
-  <script src="./captain-fact-overlay-injector.js"></script>
-  <script>
-    document.getElementById("app-version").innerHTML = window.CaptainFactOverlayInjector.getVersion()
-  </script>
-</body>
+  <head>
+    <title>CaptainFact Overlay Injector - Testing</title>
+  </head>
+  <body style="font-size: 2em">
+    <h1 style="margin: 30px 30px 0; text-align: center">
+      <img style="vertical-align: middle" width="120" src="/assets/logo.svg" />
+      <span style="vertical-align: middle">Overlay's injector tests</span>
+    </h1>
+    <h2 style="font-size: 0.75em; color: grey; text-align: center">
+      Version: <span id="app-version"></span>
+    </h2>
+    <hr />
+    <br />
+    <ul style="margin: 0 auto; max-width: 720px">
+      <li><a href="/test/videojs.html">VideoJS, overlayed</a></li>
+      <li>
+        <a href="/test/html5.html"
+          >Simple HTML5 player, overlayed (no fullscreen)</a
+        >
+      </li>
+      <li>
+        <a href="/test/theater_mode_html5.html"
+          >Simple HTML5 player, theater mode (no fullscreen)</a
+        >
+      </li>
+      <li>
+        <a href="/test/youtube.html"
+          >Youtube video (iframe), facts in a separate block</a
+        >
+      </li>
+      <li>
+        <a href="/test/thinkerview.html">Thinkerview-like player & CSS</a>
+      </li>
+      <li><a href="/test/responsiveness.html">Responsiveness</a></li>
+      <li>
+        <a href="/test/no_video.html">No video, just good old facts in a div</a>
+      </li>
+      <li><a href="/test/no_video_en.html">Same but with English forced</a></li>
+      <li><a href="/test/no_video_fr.html">Same but with French forced</a></li>
+    </ul>
+    <script src="./captain-fact-overlay-injector.js"></script>
+    <script>
+      document.getElementById('app-version').innerHTML =
+        window.CaptainFactOverlayInjector.getVersion()
+    </script>
+  </body>
 </html>

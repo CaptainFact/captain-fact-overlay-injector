@@ -2,54 +2,54 @@
 
 exports[`Has default icons 1`] = `
 <img
-  alt="acronymCF"
+  alt="translated<acronymCF>"
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
-  title="CaptainFact"
+  title="translated<CaptainFact>"
 />
 `;
 
 exports[`Has default icons 2`] = `
 <img
-  alt="acronymCF"
+  alt="translated<acronymCF>"
   className="cfbutton pulse"
   onClick={[Function]}
   src="test-file-stub"
-  title="CaptainFact"
+  title="translated<CaptainFact>"
 />
 `;
 
-exports[`Returns nothing if it has no video or statement 1`] = `""`;
+exports[`Returns nothing if it has no video or statement 1`] = `null`;
 
-exports[`Returns nothing if it has no video or statement 2`] = `""`;
+exports[`Returns nothing if it has no video or statement 2`] = `null`;
 
 exports[`approve icon if approve 1`] = `
 <img
-  alt="acronymCF"
+  alt="translated<acronymCF>"
   className="cfbutton pulse"
   onClick={[Function]}
   src="approve-icon.jpg"
-  title="CaptainFact"
+  title="translated<CaptainFact>"
 />
 `;
 
 exports[`neutral icon if unsure 1`] = `
 <img
-  alt="acronymCF"
+  alt="translated<acronymCF>"
   className="cfbutton pulse"
   onClick={[Function]}
   src="neutral-icon.jpg"
-  title="CaptainFact"
+  title="translated<CaptainFact>"
 />
 `;
 
 exports[`refute icon if refute 1`] = `
 <img
-  alt="acronymCF"
+  alt="translated<acronymCF>"
   className="cfbutton pulse"
   onClick={[Function]}
   src="refute-icon.jpg"
-  title="CaptainFact"
+  title="translated<CaptainFact>"
 />
 `;

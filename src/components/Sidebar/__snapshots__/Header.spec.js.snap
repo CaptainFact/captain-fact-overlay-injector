@@ -70,9 +70,10 @@ exports[`show toggle if given a close function 1`] = `
     className="closeBtn"
     onClick={[Function]}
     title="Translated<closeSidebar>"
+    type="button"
   >
     <img
-      alt="Translated<Close>"
+      alt="X"
       src="test-file-stub"
     />
   </button>

@@ -1,7 +1,7 @@
 import { Record } from 'immutable'
 import { API_URL } from '../../../constants'
 
-import browserLocale from './../../../lib/language_detector'
+import browserLocale from '../../../lib/language_detector'
 
 export default new Record({
   injector: new Record({
@@ -66,8 +66,8 @@ export default new Record({
     display: 'overlay',
 
     /**
-      * Language used by default in UI: browser locale, fallback to english
-      */
+     * Language used by default in UI: browser locale, fallback to english
+     */
     language: browserLocale(),
 
     /**
@@ -101,10 +101,10 @@ export default new Record({
       next: undefined,
       prev: undefined,
       close: undefined,
-    })()
+    })(),
   })(),
 
   services: new Record({
-    apiURL: API_URL
-  })()
+    apiURL: API_URL,
+  })(),
 })()

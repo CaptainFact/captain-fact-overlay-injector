@@ -5,8 +5,7 @@
   <thead>
     <tr>
       <th>Community</th>
-      <th>Master</th>
-      <th>Staging</th>
+      <th width="400">Code</th>
     </tr>
   </thead>
   <tbody>
@@ -16,17 +15,14 @@
         <a href="https://twitter.com/CaptainFact_io" title="Twitter"><img src="https://img.shields.io/twitter/follow/CaptainFact_io.svg?style=social&label=Follow"></a>
         <a href="https://opencollective.com/captainfact_io" title="Backers on Open Collective"><img src="https://opencollective.com/captainfact_io/backers/badge.svg"></a>
         <a href="./LICENSE"><img src="https://img.shields.io/github/license/CaptainFact/captain-fact-overlay-injector.svg" alt="AGPL3"></a>
+        <a href="https://github.com/CaptainFact/captain-fact-overlay-injector/releases"><img src="https://img.shields.io/github/v/release/CaptainFact/captain-fact-overlay-injector" alt="GitHub release" /></a>
       </td>
       <td>
-        <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=master" alt="Build Status"/></a>
-        <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=master'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=master' alt='Coverage Status' /></a>
-      </td>
-      <td>
-        <a href="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector"><img src="https://travis-ci.org/CaptainFact/captain-fact-overlay-injector.svg?branch=staging" alt="Build Status"/></a>
+        <a href="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml"><img src="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml/badge.svg?branch=staging" alt="Build Status"/></a>
         <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=staging'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=staging' alt='Coverage Status' /></a>
-      </td>
-    </tr>
-  </tbody>
+</td>
+</tr>
+</tbody>
 </table>
 
 <hr/>
@@ -39,9 +35,9 @@
 
 <hr/>
 
-This repo holds the overlay injector script, that basically add facts over videos.
-It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension)
-and can be integrated on any website freely. 
+This repo holds the overlay injector script, that basically add facts onto videos.
+It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension),
+and can be integrated on any website freely.
 
 You can check the [live demo](https://embed.captainfact.io) with various integrations or the production version
 used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.com)
@@ -50,7 +46,7 @@ used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.
 
 - [x] Basic injection
 - [x] Dynamic configuration
-- [x] Autosize
+- [x] Autosizing
 - [ ] Multiple videos on a single page
 
 # Usage
@@ -68,7 +64,10 @@ waiting for it to be ready.
 </script>
 
 <!-- Import CaptainFact main script -->
-<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js" async/>
+<script
+  src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js"
+  async
+/>
 ```
 
 ## Imperative approach
@@ -76,13 +75,15 @@ waiting for it to be ready.
 You can also import the library and instantiate it yourself:
 
 ```html
-<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js"/>
+<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js" />
 ```
 
 Then:
 
 ```javascript
-let injector = new window.CaptainFactOverlayInjector({ /* Config here */ })
+let injector = new window.CaptainFactOverlayInjector({
+  /* Config here */
+})
 ```
 
 # Configuration
@@ -102,14 +103,14 @@ window.CaptainFactOverlayConfig = {
     videosSelector: undefined,
 
     /**
-     * Function that resolves url for a given video
-     * 
+     * Function that resolves URL for a given video
+     *
      * @param {object} video - The video tag as returned by videosSelector
      */
     urlExtractor: undefined,
 
     /**
-     * Function that resolves an url for a given video
+     * Function that resolves an URL for a given video
      *
      * @param {object} video - The video tag as returned by videosSelector
      * @param {object} adapters - adapters list for different types of players.
@@ -137,14 +138,14 @@ window.CaptainFactOverlayConfig = {
      *                           (only for "overlay" display mode)
      */
     factsInjector: undefined,
-    
+
     /**
      * Function that return a list of HTML node where
      * CaptainFact ON / OFF toggle should be injected
      */
     onOffToggleSelector: undefined,
   },
-  
+
   app: {
     /**
      * Display type
@@ -154,26 +155,26 @@ window.CaptainFactOverlayConfig = {
     display: 'overlay',
 
     /**
-      * Language used by default in UI: english
-      */
+     * Language used by default in UI: English
+     */
     language: 'en',
 
     /**
      * Add a slide effect on sidebar entrance / leave when using overlay display. This will add a 'overflow: hidden'
-     * on your component. Disable this if animation breaks your UI.
+     * for your component. Turn this off if the animation breaks your UI.
      */
     animate: true,
-  
+
     /**
-    * Enable autosize. It looks at parent container's size and adapt `baseSize` based on it 
-    */
+     * Enable autosize. It looks at parent container's size and adapt `baseSize` based on it
+     */
     autoSize: true,
-    
+
     /**
      * Minimum text size.
      */
     baseSize: '15px',
-  
+
     /**
      * Graphics resources URL. Can be used to override default icons
      */
@@ -187,77 +188,82 @@ window.CaptainFactOverlayConfig = {
       star: undefined,
       next: undefined,
       prev: undefined,
-      close: undefined
-    }
-  }
+      close: undefined,
+    },
+  },
 }
 ```
 
 # API methods
 
-Injector has following methods :
+The injector these methods:
 
 ```javascript
-  /**
-   * (static) Return the current lib version
-   * @returns {string}
-   */
-  getVersion()
+/**
+ * (static) Return the current lib version
+ * @returns {string}
+ */
+getVersion()
 
-  /**
-   * Enable the fact injector
-   * @returns {boolean} - returns false if already enabled or mounted
-   */
-  enable()
+/**
+ * Enable the fact injector
+ * @returns {boolean} - returns false if already enabled or mounted
+ */
+enable()
 
-  /**
-   * Disable fact injector and unmount all mounted facts
-   */
-  disable()
+/**
+ * Disable fact injector and unmount all mounted facts
+ */
+disable()
 
-  /**
-   * Unmount existing overlay and reload everything (except configuration)
-   */
-  reload()
-  
-  /**
-   * @returns {boolean} true if enabled, false otherwise
-   */
-  isEnabled()
-  
-  /**
-   * Autosize only triggers on window size change or fullscreen toggle.
-   * If your application has special needs or resize events, you can use
-   * this method to force autosize refresh
-   */
-  forceResize()
+/**
+ * Unmount existing overlay and reload everything (except configuration)
+ */
+reload()
 
-  /**
-   * Change the locale for all instanced components
-   * @param {string} locale - Two-chars locale ('en' or 'fr')
-   */
-  changeLanguage(locale)
+/**
+ * @returns {boolean} true if enabled, false otherwise
+ */
+isEnabled()
+
+/**
+ * Autosize only triggers on window size change or fullscreen toggle.
+ * If your application has special needs or resize events, you can use
+ * this method to force autosize refresh
+ */
+forceResize()
+
+/**
+ * Change the locale for all instanced components
+ * @param {string} locale - Two-chars locale ('en' or 'fr')
+ */
+changeLanguage(locale)
 ```
 
 # Developing
 
-* Install (if you don't have them):
-  * [Docker](https://docs.docker.com/install/) (to start the API easily)
-  * [Node.js](http://nodejs.org)
-  * App dependencies: `npm install`
-  
-* Run:
-  * `./dev/start_graphql_api.sh` - Start the GraphQL API. You can access GraphiQL at http://localhost:4002/graphiql
-  * `npm start` - Start the overlay injector test pages on http://localhost:3342
-  * `npm run test` - run all unit tests
+## Start the API
+
+See https://github.com/CaptainFact/captain-fact-api
+
+## Start the Frontend
+
+See https://github.com/CaptainFact/captain-fact-frontend
+
+## Start the injector development interface
+
+- Install
+
+  - NodeJS, ideally using [asdf-vm](https://github.com/asdf-vm/asdf) with `NODEJS_CHECK_SIGNATURES=no asdf install`
+  - App dependencies: `npm install`
+
+- Run:
+  - `npm start` - Start the injector web-interface
+  - `npm run test` - Runs all unit tests
 
 ## Linked projects
 
-* [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
-* [API](https://github.com/CaptainFact/captain-fact-api)
-* [Frontend](https://github.com/CaptainFact/captain-fact-frontend)
-* [Extension](https://github.com/CaptainFact/captain-fact-extension)
-
-# Feature requests
-
-[![Feature Requests](http://feathub.com/CaptainFact/captain-fact?format=svg)](http://feathub.com/CaptainFact/captain-fact)
+- [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
+- [API](https://github.com/CaptainFact/captain-fact-api)
+- [Front-end](https://github.com/CaptainFact/captain-fact-frontend)
+- [Extension](https://github.com/CaptainFact/captain-fact-extension)

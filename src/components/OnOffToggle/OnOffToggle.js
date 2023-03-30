@@ -2,20 +2,35 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import {container, icon, title, radioBtn, active} from './OnOffToggle.css'
+import styles from './OnOffToggle.module.css'
 import DEFAULT_ICON from '../../assets/logo-borderless.svg'
-
 
 export class OnOffToggle extends React.PureComponent {
   render() {
     return (
-      <div className={container}>
-        <img className={icon} src={this.props.icon || DEFAULT_ICON}/>
-        <a href="https://captainfact.io" target="__BLANK" className={title}>CaptainFact</a>
-        <div className={classNames(radioBtn, {[active]: this.props.isEnabled})} onClick={() => this.setEnabled(true)}>
+      <div className={styles.container}>
+        <img className={styles.icon} src={this.props.icon || DEFAULT_ICON} />
+        <a
+          href="https://captainfact.io"
+          target="__BLANK"
+          className={styles.title}
+        >
+          CaptainFact
+        </a>
+        <div
+          className={classNames(styles.radioBtn, {
+            [styles.active]: this.props.isEnabled,
+          })}
+          onClick={() => this.setEnabled(true)}
+        >
           <span>ON</span>
         </div>
-        <div className={classNames(radioBtn, {[active]: !this.props.isEnabled})} onClick={() => this.setEnabled(false)}>
+        <div
+          className={classNames(styles.radioBtn, {
+            [styles.active]: !this.props.isEnabled,
+          })}
+          onClick={() => this.setEnabled(false)}
+        >
           <span>OFF</span>
         </div>
       </div>
@@ -23,11 +38,11 @@ export class OnOffToggle extends React.PureComponent {
   }
 
   setEnabled(enabled) {
-    if (!this.props.isEnabled && enabled)
-      this.props.enable()
-    else if (this.props.isEnabled && !enabled)
-      this.props.disable()
+    if (!this.props.isEnabled && enabled) this.props.enable()
+    else if (this.props.isEnabled && !enabled) this.props.disable()
   }
 }
 
-export default connect(state => ({isEnabled: state.Interface.isEnabled}))(OnOffToggle)
+export default connect((state) => ({ isEnabled: state.Interface.isEnabled }))(
+  OnOffToggle
+)

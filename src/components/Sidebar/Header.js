@@ -1,41 +1,47 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 
 import { FRONTEND_URL } from '../../constants'
 
-import { header, closeBtn, title } from './Header.css'
+import styles from './Header.module.css'
 
 import DEFAULT_IMG_NEW_TAB from '../../assets/new_tab.png'
 import DEFAULT_IMG_CLOSE from '../../assets/close.svg'
-
+import Button from '../Utils/Button'
 
 export const optionsToQueryString = (options) => {
-  if (!options || Object.keys(options).length === 0)
-    return ''
-  return `?${Object.entries(options).map(([key, value]) =>
-    `${key}=${encodeURIComponent(value)}`
-  ).join('&')}`
+  if (!options || Object.keys(options).length === 0) return ''
+  return `?${Object.entries(options)
+    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+    .join('&')}`
 }
 
-@translate(['translations'])
 class Header extends React.PureComponent {
   render() {
     const { t, onCloseClick, videoHashId, urlParams } = this.props
     return (
-      <div className={header}>
+      <div className={styles.header}>
         <a
-          href={`${FRONTEND_URL}/videos/${videoHashId}${optionsToQueryString(urlParams)}`}
+          href={`${FRONTEND_URL}/videos/${videoHashId}${optionsToQueryString(
+            urlParams
+          )}`}
           target="_BLANK"
           title={t('OpenDiscussion')}
           rel="noopener noreferrer"
         >
-          <h1 className={title}>CaptainFact <img src={this.props.imgNewTab} alt=""/></h1>
+          <h1 className={styles.title}>
+            CaptainFact <img src={this.props.imgNewTab} alt="" />
+          </h1>
         </a>
-        {onCloseClick &&
-          <button title={t('closeSidebar')} className={closeBtn} onClick={onCloseClick}>
-            <img src={this.props.imgClose} alt={t('Close')}/>
-          </button>
-        }
+        {onCloseClick && (
+          <Button
+            title={t('closeSidebar')}
+            className={styles.closeBtn}
+            onClick={onCloseClick}
+          >
+            <img src={this.props.imgClose} alt="X" />
+          </Button>
+        )}
       </div>
     )
   }
@@ -46,7 +52,7 @@ Header.defaultProps = {
   onCloseClick: null,
   imgNewTab: DEFAULT_IMG_NEW_TAB,
   imgClose: DEFAULT_IMG_CLOSE,
-  urlParams: {}
+  urlParams: {},
 }
 
-export default Header
+export default withTranslation(['translations'])(Header)

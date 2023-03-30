@@ -1,12 +1,15 @@
 import React from 'react'
 
-import { container } from './UserAppellation.css'
+import styles from './UserAppellation.module.css'
 import { FRONTEND_URL } from '../../constants'
 
-
-export const UserAppellation = ({user: {username, name}}) => {
+export const UserAppellation = ({ user: { username, name } }) => {
   return (
-    <a href={`${FRONTEND_URL}/u/${username}`} className={container} title={name}>
+    <a
+      href={`${FRONTEND_URL}/u/${username}`}
+      className={styles.container}
+      title={name}
+    >
       <strong>{`@${username}`}</strong>
     </a>
   )

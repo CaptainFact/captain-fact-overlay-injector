@@ -2,12 +2,10 @@ import React from 'react'
 import padLeft from 'voca/pad_left'
 import classNames from 'classnames'
 
-import { link } from './TimeDisplay.css'
-
+import styles from './TimeDisplay.module.css'
 
 function formatSeconds(totalSeconds) {
-  if (!totalSeconds)
-    return '0:00:00'
+  if (!totalSeconds) return '0:00:00'
 
   const sign = totalSeconds < 0 ? '-' : ''
   const absSeconds = Math.abs(totalSeconds)
@@ -18,18 +16,25 @@ function formatSeconds(totalSeconds) {
   return `${sign}${hours}:${padLeft(minutes, 2, '0')}:${seconds}`
 }
 
-const TimeDisplay = ({ time, handleClick, className,  textBefore = '' }) => {
+const TimeDisplay = ({ time, handleClick, className, textBefore = '' }) => {
   const formattedTime = formatSeconds(time)
   const content = handleClick ? (
     <a
       onClick={() => handleClick(time)}
-      className={classNames(link, className)}
+      className={classNames(styles.link, className)}
     >
       {formattedTime}
     </a>
-  ) : formattedTime
+  ) : (
+    formattedTime
+  )
 
-  return <span>{textBefore}{content}</span>
+  return (
+    <span>
+      {textBefore}
+      {content}
+    </span>
+  )
 }
 
 export default TimeDisplay

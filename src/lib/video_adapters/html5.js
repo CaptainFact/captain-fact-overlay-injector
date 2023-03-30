@@ -34,7 +34,6 @@ export default class HTML5Player {
 
   // ----- Private -----
   _onTimeUpdate() {
-    if (this.timeUpdatedFunc)
-      this.timeUpdatedFunc(this.videoTag.currentTime)
+    if (this.timeUpdatedFunc) this.timeUpdatedFunc(this.videoTag.currentTime)
   }
 }
