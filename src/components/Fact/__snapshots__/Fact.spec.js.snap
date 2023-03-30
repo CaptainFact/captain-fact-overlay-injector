@@ -19,7 +19,30 @@ exports[`approving fact 1`] = `
         src="test-file-stub"
       />
     </span>
-    <Source />
+    <a
+      className="sourceLink"
+      href="https://example.com"
+      rel="noopener noreferrer"
+      target="_BLANK"
+    >
+      <div
+        className="siteNameContainer"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+         
+        <span
+          className="siteName"
+        >
+          EXAMPLE.COM
+        </span>
+      </div>
+      <span
+        className="articleTitle"
+      />
+    </a>
   </div>
 </div>
 `;
@@ -43,7 +66,30 @@ exports[`custom star image 1`] = `
         src="custom.jpg"
       />
     </span>
-    <Source />
+    <a
+      className="sourceLink"
+      href="https://example.com"
+      rel="noopener noreferrer"
+      target="_BLANK"
+    >
+      <div
+        className="siteNameContainer"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+         
+        <span
+          className="siteName"
+        >
+          EXAMPLE.COM
+        </span>
+      </div>
+      <span
+        className="articleTitle"
+      />
+    </a>
   </div>
 </div>
 `;
@@ -67,7 +113,30 @@ exports[`refuting fact 1`] = `
         src="test-file-stub"
       />
     </span>
-    <Source />
+    <a
+      className="sourceLink"
+      href="https://example.com"
+      rel="noopener noreferrer"
+      target="_BLANK"
+    >
+      <div
+        className="siteNameContainer"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+         
+        <span
+          className="siteName"
+        >
+          EXAMPLE.COM
+        </span>
+      </div>
+      <span
+        className="articleTitle"
+      />
+    </a>
   </div>
 </div>
 `;
@@ -91,7 +160,30 @@ exports[`with text 1`] = `
         src="test-file-stub"
       />
     </span>
-    <Source />
+    <a
+      className="sourceLink"
+      href="https://example.com"
+      rel="noopener noreferrer"
+      target="_BLANK"
+    >
+      <div
+        className="siteNameContainer"
+      >
+        <img
+          alt=""
+          src="test-file-stub"
+        />
+         
+        <span
+          className="siteName"
+        >
+          EXAMPLE.COM
+        </span>
+      </div>
+      <span
+        className="articleTitle"
+      />
+    </a>
   </div>
   <div
     className="userSection"
@@ -104,13 +196,14 @@ exports[`with text 1`] = `
       <div
         className="right"
       >
-        <UserAppellation
-          user={
-            Object {
-              "id": 42,
-            }
-          }
-        />
+        <a
+          className="container"
+          href="https://testing.captainfact.io/u/undefined"
+        >
+          <strong>
+            @undefined
+          </strong>
+        </a>
          
         <span
           className="userCommentText"

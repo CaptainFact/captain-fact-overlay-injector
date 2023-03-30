@@ -1,16 +1,12 @@
 import React, { PureComponent } from 'react'
-import { translate } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import classnames from 'classnames'
 
 import TimeDisplay from '../Utils/TimeDisplay'
-import {
-  statementText,
-  statementDisplay,
-  focused,
-  tag,
-  tagContainer,
-  timer
-} from './Statement.css'
+import styles from './Statement.module.css'
+
+const { statementText, statementDisplay, focused, tag, tagContainer, timer } =
+  styles
 
 class Statement extends PureComponent {
   render() {
@@ -18,7 +14,7 @@ class Statement extends PureComponent {
       isFocused,
       textPrefix,
       onTimeClick,
-      statement: { text, speaker, time }
+      statement: { text, speaker, time },
     } = this.props
     return (
       <div className={classnames(statementDisplay, { [focused]: isFocused })}>
@@ -42,4 +38,4 @@ class Statement extends PureComponent {
   }
 }
 
-export default translate(['translations'])(Statement)
+export default withTranslation(['translations'])(Statement)

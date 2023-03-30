@@ -8,7 +8,7 @@ import CFButton from '../CFButton/CFButton'
 import Sidebar from '../Sidebar/Sidebar'
 import { fetchVideo } from '../Video/effects'
 
-import styles from './App.css'
+import styles from './App.module.css'
 import { InterfaceState } from './interface_reducer'
 import i18n from '../../i18n'
 
@@ -24,13 +24,13 @@ const SIZE_THRESHOLDS = {
   769: 'cf_xtablet',
   1024: 'cf_xdesktop',
   1216: 'cf_xwidescreen',
-  1408: 'cf_xfullhd'
+  1408: 'cf_xfullhd',
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   video: state.Video.data,
   config: state.Configuration,
-  forceResize: state.Interface.forceResize
+  forceResize: state.Interface.forceResize,
 })
 
 class App extends React.PureComponent {
@@ -96,8 +96,10 @@ class App extends React.PureComponent {
     const parsedSize = SIZE_REGEX.exec(this.props.config.app.baseSize)
     if (!parsedSize) return this.props.config.app.baseSize
 
-    const playerDim =      this.props.container.offsetWidth * this.props.container.offsetHeight
-    const minRatio =      ((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL + MIN_RATIO
+    const playerDim =
+      this.props.container.offsetWidth * this.props.container.offsetHeight
+    const minRatio =
+      ((playerDim - BASE_DIM) * RATIO_INTERVAL) / DIM_INTERVAL + MIN_RATIO
     const modifierRatio = Math.min(minRatio, MAX_RATIO)
     const size = parseInt(parsedSize[1]) * modifierRatio
     return `${size}${parsedSize[2]}`

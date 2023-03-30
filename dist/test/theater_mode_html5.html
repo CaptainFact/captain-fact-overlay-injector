@@ -1,36 +1,50 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <title>CaptainFact Overlay Injector - Testing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<h1>Simple HTML5 player, theater mode (no fullscreen)</h1>
-<h2><a href="/"><= Back to index</a></h2>
-<hr/>
-<br/>
-<div id="video" style="display: block; width: 100%; height: 70%; position: relative;">
-  <video controls width="100%" height="100%" poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg">
-    <source src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
-            type="video/mp4">
-  </video>
-</div>
-<br/><br/>
-<div>
-  <h2>Activation Toggle</h2>
-  <div class="toggle-btn-container"></div>
-</div>
+  <head>
+    <title>CaptainFact Overlay Injector - Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Simple HTML5 player, theater mode (no fullscreen)</h1>
+    <h2><a href="/"><= Back to index</a></h2>
+    <hr />
+    <br />
+    <div
+      id="video"
+      style="display: block; width: 100%; height: 70%; position: relative"
+    >
+      <video
+        controls
+        width="100%"
+        height="100%"
+        poster="https://thinkerview.com/wp-content/uploads/FredericTaddei-1024x576.jpg"
+      >
+        <source
+          src="//thinkerview.com/podcast-download/1983/frederic-taddei-limites-debat.mp4?ref=videoplayer&res=360"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <br /><br />
+    <div>
+      <h2>Activation Toggle</h2>
+      <div class="toggle-btn-container"></div>
+    </div>
 
-<!-- CaptainFact injection -->
-<script>
-  window.CaptainFactOverlayConfig = {
-    injector: {
-      videosSelector: () => [document.getElementById('video')],
-      urlExtractor: video => "https://www.youtube.com/watch?v=3HgwtHenFWs",
-      getPlayer: (video, adapters) => new adapters.HTML5(video.querySelector('video')),
-      onOffToggleSelector: () => document.getElementsByClassName('toggle-btn-container')
-    }
-  }
-</script>
-<script src="../captain-fact-overlay-injector.min.js"></script>
-</body>
+    <!-- CaptainFact injection -->
+    <script>
+      window.CaptainFactOverlayConfig = {
+        injector: {
+          videosSelector: () => [document.getElementById('video')],
+          urlExtractor: (video) =>
+            'https://www.youtube.com/watch?v=3HgwtHenFWs',
+          getPlayer: (video, adapters) =>
+            new adapters.HTML5(video.querySelector('video')),
+          onOffToggleSelector: () =>
+            document.getElementsByClassName('toggle-btn-container'),
+        },
+      }
+    </script>
+    <script src="../captain-fact-overlay-injector.min.js"></script>
+  </body>
 </html>

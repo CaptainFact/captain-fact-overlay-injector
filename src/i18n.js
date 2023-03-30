@@ -1,9 +1,8 @@
 import i18n from 'i18next'
-import { JS_ENV } from 'env-constants'
 import store from './components/App/store'
+import { initReactI18next } from 'react-i18next'
 
-
-i18n.init({
+i18n.use(initReactI18next).init({
   lng: store.getState().Configuration.app.language,
   resources: {
     en: {
@@ -20,8 +19,8 @@ i18n.init({
         OpenDiscussion: 'Open discussion on CaptainFact',
         acronymCF: 'CF',
         CaptainFact: 'CaptainFact',
-        anonymous: 'Anonymous user:'
-      }
+        anonymous: 'Anonymous user:',
+      },
     },
     fr: {
       translations: {
@@ -37,12 +36,11 @@ i18n.init({
         OpenDiscussion: 'Ouvrir la discussion sur CaptainFact',
         acronymCF: 'CF',
         CaptainFact: 'CaptainFact',
-        anonymous: 'Utilisateur anonyme\u00A0:'
-      }
-    }
+        anonymous: 'Utilisateur anonyme\u00A0:',
+      },
+    },
   },
   fallbackLng: 'en',
-  debug: JS_ENV === 'dev',
 
   // have a common namespace used around the full app
   ns: ['translations'],
@@ -51,12 +49,12 @@ i18n.init({
   keySeparator: false, // we use content as keys
 
   interpolation: {
-    formatSeparator: ','
+    formatSeparator: ',',
   },
 
   react: {
-    wait: true
-  }
+    wait: true,
+  },
 })
 
 export default i18n

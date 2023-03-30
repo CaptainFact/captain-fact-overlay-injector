@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-fetch'
 
-
 class CaptainFactHttpApi {
   prepareResponse(promise) {
-    return promise.then(response => {
+    return promise.then((response) => {
       return response.text().then((body) => {
         body = body ? JSON.parse(body) : null
         if (body.errors) throw body.errors
@@ -16,7 +15,7 @@ class CaptainFactHttpApi {
     const response = fetch(apiURL, {
       method: requestType,
       body: data ? JSON.stringify(data) : '',
-      headers: {'Content-Type': 'application/json'}
+      headers: { 'Content-Type': 'application/json' },
     })
     return this.prepareResponse(response)
   }
@@ -25,7 +24,6 @@ class CaptainFactHttpApi {
     return this.makeRequest(apiURL, 'POST', data)
   }
 }
-
 
 // Configure HttpApi
 const HttpApi = new CaptainFactHttpApi()

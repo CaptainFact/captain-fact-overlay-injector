@@ -20,9 +20,6 @@
       <td>
         <a href="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml"><img src="https://github.com/CaptainFact/captain-fact-overlay-injector/actions/workflows/ci.yml/badge.svg?branch=staging" alt="Build Status"/></a>
         <a href='https://coveralls.io/github/CaptainFact/captain-fact-overlay-injector?branch=staging'><img src='https://coveralls.io/repos/github/CaptainFact/captain-fact-overlay-injector/badge.svg?branch=staging' alt='Coverage Status' /></a>
-        
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=CaptainFact/captain-fact-overlay-injector)](https://dependabot.com)
-
 </td>
 </tr>
 </tbody>
@@ -40,7 +37,7 @@
 
 This repo holds the overlay injector script, that basically add facts onto videos.
 It is used by [the browser extension](https://github.com/CaptainFact/captain-fact-extension),
-and can be integrated on any website freely. 
+and can be integrated on any website freely.
 
 You can check the [live demo](https://embed.captainfact.io) with various integrations or the production version
 used by the French channel Thinkerview on [thinkerview.com](https://thinkerview.com)
@@ -67,7 +64,10 @@ waiting for it to be ready.
 </script>
 
 <!-- Import CaptainFact main script -->
-<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js" async/>
+<script
+  src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js"
+  async
+/>
 ```
 
 ## Imperative approach
@@ -75,13 +75,15 @@ waiting for it to be ready.
 You can also import the library and instantiate it yourself:
 
 ```html
-<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js"/>
+<script src="https://embed.captainfact.io/captain-fact-overlay-injector.min.js" />
 ```
 
 Then:
 
 ```javascript
-let injector = new window.CaptainFactOverlayInjector({ /* Config here */ })
+let injector = new window.CaptainFactOverlayInjector({
+  /* Config here */
+})
 ```
 
 # Configuration
@@ -102,7 +104,7 @@ window.CaptainFactOverlayConfig = {
 
     /**
      * Function that resolves URL for a given video
-     * 
+     *
      * @param {object} video - The video tag as returned by videosSelector
      */
     urlExtractor: undefined,
@@ -136,14 +138,14 @@ window.CaptainFactOverlayConfig = {
      *                           (only for "overlay" display mode)
      */
     factsInjector: undefined,
-    
+
     /**
      * Function that return a list of HTML node where
      * CaptainFact ON / OFF toggle should be injected
      */
     onOffToggleSelector: undefined,
   },
-  
+
   app: {
     /**
      * Display type
@@ -153,8 +155,8 @@ window.CaptainFactOverlayConfig = {
     display: 'overlay',
 
     /**
-      * Language used by default in UI: English
-      */
+     * Language used by default in UI: English
+     */
     language: 'en',
 
     /**
@@ -162,17 +164,17 @@ window.CaptainFactOverlayConfig = {
      * for your component. Turn this off if the animation breaks your UI.
      */
     animate: true,
-  
+
     /**
-    * Enable autosize. It looks at parent container's size and adapt `baseSize` based on it 
-    */
+     * Enable autosize. It looks at parent container's size and adapt `baseSize` based on it
+     */
     autoSize: true,
-    
+
     /**
      * Minimum text size.
      */
     baseSize: '15px',
-  
+
     /**
      * Graphics resources URL. Can be used to override default icons
      */
@@ -186,9 +188,9 @@ window.CaptainFactOverlayConfig = {
       star: undefined,
       next: undefined,
       prev: undefined,
-      close: undefined
-    }
-  }
+      close: undefined,
+    },
+  },
 }
 ```
 
@@ -197,65 +199,61 @@ window.CaptainFactOverlayConfig = {
 The injector these methods:
 
 ```javascript
-  /**
-   * (static) Return the current lib version
-   * @returns {string}
-   */
-  getVersion()
+/**
+ * (static) Return the current lib version
+ * @returns {string}
+ */
+getVersion()
 
-  /**
-   * Enable the fact injector
-   * @returns {boolean} - returns false if already enabled or mounted
-   */
-  enable()
+/**
+ * Enable the fact injector
+ * @returns {boolean} - returns false if already enabled or mounted
+ */
+enable()
 
-  /**
-   * Disable fact injector and unmount all mounted facts
-   */
-  disable()
+/**
+ * Disable fact injector and unmount all mounted facts
+ */
+disable()
 
-  /**
-   * Unmount existing overlay and reload everything (except configuration)
-   */
-  reload()
-  
-  /**
-   * @returns {boolean} true if enabled, false otherwise
-   */
-  isEnabled()
-  
-  /**
-   * Autosize only triggers on window size change or fullscreen toggle.
-   * If your application has special needs or resize events, you can use
-   * this method to force autosize refresh
-   */
-  forceResize()
+/**
+ * Unmount existing overlay and reload everything (except configuration)
+ */
+reload()
 
-  /**
-   * Change the locale for all instanced components
-   * @param {string} locale - Two-chars locale ('en' or 'fr')
-   */
-  changeLanguage(locale)
+/**
+ * @returns {boolean} true if enabled, false otherwise
+ */
+isEnabled()
+
+/**
+ * Autosize only triggers on window size change or fullscreen toggle.
+ * If your application has special needs or resize events, you can use
+ * this method to force autosize refresh
+ */
+forceResize()
+
+/**
+ * Change the locale for all instanced components
+ * @param {string} locale - Two-chars locale ('en' or 'fr')
+ */
+changeLanguage(locale)
 ```
 
 # Developing
 
 ## Start the API
 
-It is strongly recommended to start the API locally from the official project: https://github.com/CaptainFact/captain-fact-overlay-injector/pull/240
+See https://github.com/CaptainFact/captain-fact-api
 
-However, if you're looking to contribute quickly you may find the Docker image pretty handy:
+## Start the Frontend
 
-- Install (if you don't have them):
+See https://github.com/CaptainFact/captain-fact-frontend
 
-  - [Docker](https://docs.docker.com/install/)
-    and [docker-compose](https://docs.docker.com/compose/install/)
-    (to start the API easily)
-- Run `docker-compose up` - Start the API
-
-## Start the injector web-interface
+## Start the injector development interface
 
 - Install
+
   - NodeJS, ideally using [asdf-vm](https://github.com/asdf-vm/asdf) with `NODEJS_CHECK_SIGNATURES=no asdf install`
   - App dependencies: `npm install`
 
@@ -265,7 +263,7 @@ However, if you're looking to contribute quickly you may find the Docker image p
 
 ## Linked projects
 
-* [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
-* [API](https://github.com/CaptainFact/captain-fact-api)
-* [Front-end](https://github.com/CaptainFact/captain-fact-frontend)
-* [Extension](https://github.com/CaptainFact/captain-fact-extension)
+- [Community discussions and documentation](https://github.com/CaptainFact/captain-fact/)
+- [API](https://github.com/CaptainFact/captain-fact-api)
+- [Front-end](https://github.com/CaptainFact/captain-fact-frontend)
+- [Extension](https://github.com/CaptainFact/captain-fact-extension)
