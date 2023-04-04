@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const COMMON_PLUGINS = [
   new webpack.DefinePlugin({
@@ -10,9 +9,9 @@ const COMMON_PLUGINS = [
   }),
 ]
 
-module.exports = ({ production }) => {
-  const env = production ? 'production' : 'dev'
-  console.log(`Build for ${env}`)
+module.exports = ({ production, staging }) => {
+  const env = production ? 'production' : staging ? 'staging' : 'dev'
+  console.log(`Build Injector for ${env}`)
 
   // Default config
   const config = {

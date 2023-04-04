@@ -64,7 +64,9 @@ class App extends React.PureComponent {
   }
 
   render() {
-    if (!this.props.video) return <div style={{ display: 'none' }} />
+    if (!this.props.video) {
+      return <div style={{ display: 'none' }} />
+    }
     return (
       <div
         className={classNames(styles.app, this.getScreenType())}
