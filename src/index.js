@@ -23,7 +23,10 @@ class CaptainFactOverlayInjector {
     this.factsMounter = this.factsMounter.bind(this)
     this.enable = this.enable.bind(this)
     this.disable = this.disable.bind(this)
-
+    console.log(
+      `[CaptainFact] Overlay injector v${CF_VERSION} loaded with config:`,
+      config
+    )
     this.mountAll(true)
   }
 
@@ -139,7 +142,6 @@ class CaptainFactOverlayInjector {
     // Send components generators to injector
     const injector =
       this.config.injector.factsInjector || this.defaultFactsInjector
-    console.log('INJECTOR', injector, video)
     injector(this.factsMounter, video, () => (
       <App videoUrl={videoUrl} player={player} container={video} />
     ))
@@ -185,7 +187,7 @@ class CaptainFactOverlayInjector {
    * @param component - The component to mount
    */
   mountWithStore(node, component) {
-    console.log('MOUNT', node, component)
+    console.log('[CaptainFact] Mounting component')
     const root = createRoot(node)
     root.render(
       <I18nextProvider i18n={i18n}>
