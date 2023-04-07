@@ -65,7 +65,7 @@ class App extends React.PureComponent {
 
   render() {
     if (!this.props.video) {
-      return <div style={{ display: 'none' }} />
+      return null
     }
     return (
       <div

@@ -187,7 +187,7 @@ class CaptainFactOverlayInjector {
    * @param component - The component to mount
    */
   mountWithStore(node, component) {
-    console.log('[CaptainFact] Mounting component')
+    console.debug('[CaptainFact] Mounting component')
     const root = createRoot(node)
     root.render(
       <I18nextProvider i18n={i18n}>
