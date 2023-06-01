@@ -80,7 +80,7 @@
     "jest-cli": "^29.5.0",
     "jumpstate": "^2.2.2",
     "react": "^18.2.0",
-    "react-i18next": "^12.2.0",
+    "react-i18next": "^12.3.1",
     "react-redux": "^8.0.5",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
